@@ -1,5 +1,5 @@
 // Písmenkovo offline: the app is kept on the phone; the voice packs are added in the background.
-const CACHE = 'pismenkovo-v3';
+const CACHE = 'pismenkovo-v4';
 const CORE = [
   './', './index.html', './manifest.webmanifest', './voice/index.json',
   './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon.png',

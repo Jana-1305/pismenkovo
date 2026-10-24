@@ -229,6 +229,12 @@ button:focus-visible{outline:4px solid var(--sun);outline-offset:3px}
   .tools{flex-direction:column;align-items:stretch}
   .modes{width:auto}
 }
+/* portrait: colors in two short rows under the picture, so the picture gets the height */
+@media (max-aspect-ratio:1/1){
+  .tools{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 16px}
+  .palette{flex:1 1 100%;grid-template-columns:repeat(7,minmax(0,64px));justify-content:center;gap:8px}
+  .chip{min-width:0}
+}
 
 /* ---------- scenes ---------- */
 .scene{width:100%;height:100%;display:block;touch-action:none}

@@ -1906,6 +1906,10 @@ function advance(x, y){
     if (d2 < tol2 && (i - T.progress)*stepPx <= T.budget) best = i;
     else if (best >= 0 && d2 > far2) break;   // left the finger's neighbourhood: never skip to a later pass over the same line
   }
+  if (best >= N-4){   // the end of a line counts only when the finger really gets there (the wide tolerance must not finish it early)
+    const [ex, ey] = px(P[N-1]);
+    if (Math.hypot(ex-x, ey-y) > Math.max(26, T.tol*0.42)) best = Math.min(best, N-5);
+  }
   if (best > T.progress){
     T.budget = Math.max(0, T.budget - (best - T.progress)*stepPx);
     T.progress = best; T.off = false;

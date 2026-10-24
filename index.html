@@ -1,0 +1,2983 @@
+<!doctype html>
+<html lang="sk"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Písmenkovo</title>
+<meta name="description" content="Písmenkovo – obťahovanie písaných písmen so zvieratkami na vyfarbenie.">
+<meta name="theme-color" content="#f5f9ff">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Písmenkovo">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+body{margin:0;padding:0}
+[hidden]{display:none!important}
+/* baloo-2-latin-ext-500-normal */
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(./fonts/baloo-2-latin-ext-500-normal.woff2) format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+/* baloo-2-latin-500-normal */
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(./fonts/baloo-2-latin-500-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+/* baloo-2-latin-ext-600-normal */
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(./fonts/baloo-2-latin-ext-600-normal.woff2) format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+/* baloo-2-latin-600-normal */
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(./fonts/baloo-2-latin-600-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+/* baloo-2-latin-ext-700-normal */
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(./fonts/baloo-2-latin-ext-700-normal.woff2) format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+/* baloo-2-latin-700-normal */
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(./fonts/baloo-2-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+/* baloo-2-latin-ext-800-normal */
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  src: url(./fonts/baloo-2-latin-ext-800-normal.woff2) format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+/* baloo-2-latin-800-normal */
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  src: url(./fonts/baloo-2-latin-800-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+</style>
+<style>
+/* Layout: one-screen toy app on school-notebook paper; chunky "toy" buttons with hard ink shadows; screens swap in place.
+   Deliberately single light look (kids' coloring-book world), every color set explicitly. */
+:root{
+  --paper:#f5f9ff;
+  --card:#ffffff;
+  --ink:#23264a;
+  --muted:#5d6488;
+  --line:#bcd0f2;
+  --lienka:#e5383b;
+  --leaf:#38a556;
+  --sun:#ffc93c;
+  --display:"Baloo 2","Chalkboard SE","Comic Sans MS",ui-rounded,system-ui,sans-serif;
+  color-scheme:light;
+}
+html,body{height:100%}
+@supports (height:100dvh){html,body{height:100dvh}}
+body{
+  background:var(--paper);color:var(--ink);font-family:var(--display);
+  overflow:hidden;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
+}
+button{font-family:inherit;color:inherit;cursor:pointer}
+button:focus-visible{outline:4px solid var(--sun);outline-offset:3px}
+.screen{height:100%;display:flex;flex-direction:column;min-height:0}
+
+/* ---------- toy buttons ---------- */
+.pill{
+  display:inline-flex;align-items:center;gap:.45em;
+  font-weight:700;font-size:1.15rem;line-height:1;
+  padding:.62em 1.05em;border-radius:999px;
+  border:3px solid var(--ink);background:var(--card);
+  box-shadow:0 4px 0 var(--ink);transition:transform .08s,box-shadow .08s;
+  white-space:nowrap;
+}
+.pill:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.pill.primary{background:var(--leaf);color:#fff}
+.pill svg,.icon-btn svg{width:1.3em;height:1.3em;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.icon-btn{
+  width:58px;height:58px;border-radius:18px;display:grid;place-items:center;flex:none;
+  border:3px solid var(--ink);background:var(--card);box-shadow:0 4px 0 var(--ink);font-size:1.2rem;
+}
+.icon-btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+
+/* ---------- home ---------- */
+#home{overflow-y:auto;-webkit-overflow-scrolling:touch;padding:20px 24px 32px;gap:18px;
+  background-image:repeating-linear-gradient(to bottom,transparent 0 39px,#dde7f8 39px 41px);
+}
+.home-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px}
+.logo svg{width:64px;height:64px;flex:none}
+.logo h1{margin:0;font-size:clamp(2.1rem,5vw,3.2rem);font-weight:800;letter-spacing:.5px;line-height:1}
+.logo h1 span{color:var(--lienka)}
+.head-actions{display:flex;gap:10px;flex-wrap:wrap}
+.lead{margin:0;font-size:clamp(1.15rem,2.4vw,1.45rem);font-weight:600;color:var(--muted);max-width:40ch;text-wrap:balance}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px}
+.card{
+  text-align:left;padding:0;border:3px solid var(--ink);border-radius:24px;background:var(--card);
+  box-shadow:0 6px 0 var(--ink);overflow:hidden;display:flex;flex-direction:column;transition:transform .1s,box-shadow .1s;
+}
+.card:active{transform:translateY(4px);box-shadow:0 2px 0 var(--ink)}
+.card-top{background:#fbfdff;border-bottom:3px dashed #c9d6ee;aspect-ratio:4/3;display:grid;place-items:center;padding:8px}
+.card-top svg{width:100%;height:100%}
+.card-foot{display:flex;align-items:center;gap:12px;padding:12px 14px}
+.reward{width:62px;height:62px;flex:none;border-radius:16px;border:3px solid var(--ink);overflow:hidden;position:relative;background:#fff;display:grid;place-items:center}
+.reward .mystery{font-size:2rem;font-weight:800;color:#fff;background:var(--c);width:100%;height:100%;display:grid;place-items:center}
+.card-meta{display:flex;flex-direction:column;min-width:0}
+.card-meta b{font-size:1.35rem;line-height:1.1}
+.card-meta small{font-size:1rem;color:var(--muted);font-weight:600}
+.stars{font-size:1.3rem;letter-spacing:2px;color:#d5dbea;line-height:1.1}
+.stars i{font-style:normal;color:var(--sun);-webkit-text-stroke:1px #c58f00}
+.card.soon{border-style:dashed;box-shadow:none;background:transparent;display:grid;place-items:center;min-height:220px;cursor:default;text-align:center;padding:16px;color:var(--muted)}
+.card.soon .soon-letters{font-size:2.6rem;font-weight:800;letter-spacing:6px;color:#b3bfd9}
+.card.soon p{margin:0;font-size:1.1rem;font-weight:600}
+.tabs{display:flex;gap:12px;flex-wrap:wrap}
+.tab{
+  display:inline-flex;align-items:baseline;gap:.5em;font-weight:800;font-size:clamp(1.15rem,2.6vw,1.4rem);
+  padding:.5em 1.1em;border-radius:999px;border:3px solid var(--ink);background:var(--card);box-shadow:0 4px 0 var(--ink);
+}
+.tab span{font-weight:600;color:var(--muted);font-size:.85em}
+.tab.on{background:var(--ink);color:#fff;transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.tab.on span{color:#c9d3f0}
+.card.locked .card-top{opacity:.45}
+.card.locked .card-meta small{color:var(--lienka)}
+.card.nope{animation:shake .45s ease}
+.reward .mystery.lock svg{width:30px;height:30px;fill:none;stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.parents{margin:4px 0 0;max-width:62ch;font-family:system-ui,sans-serif;font-size:.95rem;line-height:1.5;color:var(--muted);background:var(--card);border:2px solid #d4ddef;border-radius:14px;padding:12px 16px}
+.parents b{color:var(--ink)}
+.voicebox{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
+.voicebox select{font:inherit;font-size:1rem;padding:.45em .6em;border:2px solid var(--ink);border-radius:10px;background:#fff;color:var(--ink);max-width:100%}
+.voicebox .pill{font-size:.95rem;padding:.45em .8em;box-shadow:0 3px 0 var(--ink);font-family:var(--display)}
+.voicebox #voiceTip{flex-basis:100%;font-size:.9rem}
+
+/* ---------- bars ---------- */
+.bar{display:flex;align-items:center;gap:12px;padding:12px 16px;flex:none;flex-wrap:wrap}
+.bar-title{flex:1;min-width:0;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:800;line-height:1.05;text-wrap:balance}
+.bar-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+/* ---------- trace ---------- */
+.stage{position:relative;flex:1;min-height:0;margin:0 16px 16px;border:3px solid var(--ink);border-radius:26px;overflow:hidden;background:#fbfdff}
+#traceCanvas,#drawCanvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;display:block}
+.praise{
+  position:absolute;left:50%;top:10%;transform:translateX(-50%);
+  font-size:clamp(2.6rem,8vw,5rem);font-weight:800;color:var(--leaf);
+  -webkit-text-stroke:3px var(--ink);paint-order:stroke fill;pointer-events:none;
+  animation:praise .6s cubic-bezier(.34,1.56,.64,1) both;white-space:nowrap;
+}
+@keyframes praise{from{transform:translateX(-50%) scale(.2) rotate(-12deg);opacity:0}to{transform:translateX(-50%) scale(1) rotate(-3deg);opacity:1}}
+
+/* ---------- coloring ---------- */
+.color-body{flex:1;min-height:0;display:flex;gap:14px;padding:0 16px 16px}
+.scene-wrap{flex:1;min-width:0;min-height:0;display:grid;place-items:center}
+.scene-box{position:relative;border:3px solid var(--ink);border-radius:26px;overflow:hidden;background:#fff}
+.scene-box.fill-mode #drawCanvas{pointer-events:none}
+#sceneSvg{position:absolute;inset:0}
+.tools{flex:none;width:236px;display:flex;flex-direction:column;gap:14px;overflow-y:auto}
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mode{
+  display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px 6px;
+  border:3px solid var(--ink);border-radius:16px;background:var(--card);box-shadow:0 4px 0 var(--ink);
+  font-weight:700;font-size:.95rem;
+}
+.mode svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.mode.on{background:var(--sun);transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.palette{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:2px}
+.chip{
+  aspect-ratio:1;border-radius:50%;border:3px solid var(--ink);background:var(--c);
+  box-shadow:0 3px 0 var(--ink);transition:transform .12s;min-width:44px;
+}
+.chip.on{transform:scale(1.12);box-shadow:0 0 0 4px #fff,0 0 0 7px var(--ink)}
+@media (max-aspect-ratio:1/1){
+  .color-body{flex-direction:column}
+  .tools{width:auto;flex-direction:row;align-items:center;overflow:visible}
+  .modes{flex:none;width:210px}
+  .palette{flex:1;grid-template-columns:repeat(auto-fill,minmax(46px,1fr))}
+}
+@media (max-width:560px){
+  .tools{flex-direction:column;align-items:stretch}
+  .modes{width:auto}
+}
+
+/* ---------- scenes ---------- */
+.scene{width:100%;height:100%;display:block;touch-action:none}
+.scene [data-r]{stroke:var(--ink);stroke-width:4;stroke-linejoin:round;transition:fill .15s}
+.scene .letter{fill:none;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0}
+.scene .deco{pointer-events:none}
+.scene.anim .part{transform-box:fill-box;transform-origin:center;animation:grow .55s cubic-bezier(.34,1.56,.64,1) both;animation-delay:calc(1.8s + var(--i) * 45ms)}
+.scene.anim .letter{animation:draw .9s ease-out .15s both}
+.scene.anim .lg{transform-box:fill-box;transform-origin:center;animation:fly .9s cubic-bezier(.6,0,.3,1.15) 1.2s both}
+.scene [data-r].tip{animation:tipflash .45s ease-in-out 4}
+@keyframes tipflash{50%{opacity:.25}}
+.scene [data-r].bump{transform-box:fill-box;transform-origin:center;animation:bump .32s ease both;animation-delay:0s}
+@keyframes grow{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes fly{from{transform:translate(var(--dx),var(--dy)) scale(var(--k))}to{transform:none}}
+@keyframes bump{50%{transform:scale(1.07)}}
+
+/* ---------- album ---------- */
+#album{overflow-y:auto}
+.album-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:18px;padding:4px 16px 32px}
+.album-item{margin:0;display:flex;flex-direction:column;gap:6px}
+.thumb{position:relative;aspect-ratio:1;max-width:100%;border:3px solid var(--ink);border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 5px 0 var(--ink)}
+.thumb svg,.thumb img,.reward svg,.reward img{position:absolute;inset:0;width:100%;height:100%}
+.album-item figcaption{font-weight:700;font-size:1.1rem;text-align:center}
+.empty{margin:40px 16px;text-align:center;font-size:1.3rem;color:var(--muted);font-weight:600}
+
+/* ---------- matching game ---------- */
+.game-banner{
+  display:flex;align-items:center;gap:18px;text-align:left;padding:14px 20px;flex-wrap:wrap;
+  border:3px solid var(--ink);border-radius:24px;background:var(--sun);box-shadow:0 6px 0 var(--ink);
+  transition:transform .1s,box-shadow .1s;
+}
+.game-banner:active{transform:translateY(4px);box-shadow:0 2px 0 var(--ink)}
+.game-banner .gb-pics{display:flex;flex:none}
+.game-banner .gb-pics .reward{margin-left:-16px;transform:rotate(var(--r))}
+.game-banner .gb-pics .reward:first-child{margin-left:0}
+.game-banner .gb-text{min-width:0;flex:1}
+.game-banner b{display:block;font-size:clamp(1.4rem,3vw,1.8rem);line-height:1.1}
+.game-banner small{font-size:1.1rem;font-weight:600}
+.game-banner.locked{background:#eef2fa;border-style:dashed;box-shadow:none;cursor:default;color:var(--muted)}
+.game-banner.locked:active{transform:none}
+
+.g-dots{display:flex;gap:6px;align-items:center}
+.g-dots span{width:22px;height:22px;border-radius:50%;border:3px solid var(--ink);background:#fff}
+.g-dots span.ok{background:var(--leaf)}
+.g-dots span.half{background:var(--sun)}
+.g-dots span.now{box-shadow:0 0 0 3px #fff,0 0 0 6px var(--ink)}
+.g-body{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(14px,3.5vh,34px);padding:0 16px 20px}
+.g-ask{margin:0;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:800;text-align:center;text-wrap:balance}
+.g-prompt{height:min(34vh,290px);max-width:100%;aspect-ratio:var(--ar,1);border:3px solid var(--ink);border-radius:24px;background:#fff;overflow:hidden;position:relative;box-shadow:0 6px 0 var(--ink)}
+.g-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2.5vw,30px);width:min(100%,calc(3 * min(30vh,250px) + 60px))}
+.choice{
+  position:relative;aspect-ratio:1;padding:0;border:3px solid var(--ink);border-radius:24px;background:#fff;overflow:hidden;
+  box-shadow:0 6px 0 var(--ink);transition:transform .1s,box-shadow .1s,opacity .3s;
+}
+.choice:active{transform:translateY(4px);box-shadow:0 2px 0 var(--ink)}
+.choice.right{border-color:var(--leaf);box-shadow:0 0 0 6px var(--leaf),0 6px 0 var(--ink);animation:hop .6s ease}
+.choice.wrong{opacity:.4;animation:shake .45s ease;pointer-events:none}
+.ptile,.ptile svg{position:absolute;inset:0;width:100%;height:100%}
+.ltile{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6% 6% 4%}
+.ltile .lt-svg{flex:1;min-height:0;width:100%}
+.ltile .lt-svg svg{width:100%;height:100%}
+.ltile .lt-print{font-weight:700;font-size:clamp(1rem,2.4vh,1.5rem);color:var(--muted);line-height:1.1;letter-spacing:2px}
+@keyframes hop{30%{transform:translateY(-14px) scale(1.04)}60%{transform:translateY(0) scale(1)}80%{transform:translateY(-5px)}}
+@keyframes shake{20%{transform:translateX(-10px) rotate(-3deg)}40%{transform:translateX(9px) rotate(2deg)}60%{transform:translateX(-6px)}80%{transform:translateX(4px)}}
+
+.g-end{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+.g-end .big-stars{font-size:clamp(3rem,10vw,5.5rem);letter-spacing:6px;line-height:1;color:#d5dbea}
+.g-end .big-stars i{font-style:normal;color:var(--sun);-webkit-text-stroke:3px var(--ink);display:inline-block;animation:starpop .6s cubic-bezier(.34,1.56,.64,1) both;animation-delay:calc(var(--n) * .25s)}
+.g-end h2{margin:0;font-size:clamp(2rem,6vw,3.4rem);font-weight:800;line-height:1.05}
+.g-end .g-end-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+@keyframes starpop{from{transform:scale(0) rotate(-40deg)}to{transform:scale(1) rotate(0)}}
+
+/* ---------- kids (3-year-old) home, pickers, animals, color train ---------- */
+#kids{overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 16px 20px;gap:16px;background-image:repeating-linear-gradient(to bottom,transparent 0 39px,#dde7f8 39px 41px)}
+.kids-head{display:flex;align-items:center;gap:12px}
+.kids-logo{width:clamp(44px,10vw,64px);height:auto;flex:none}
+.kids-head h1{flex:1;min-width:0;margin:0;font-size:clamp(2rem,8vw,3.4rem);font-weight:800;line-height:1}
+.kids-grid{flex:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,3vw,26px);align-content:center}
+@media (min-aspect-ratio:5/4){.kids-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.ktile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:10px;min-height:min(30vh,240px);
+  border:4px solid var(--ink);border-radius:30px;background:var(--c);box-shadow:0 8px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+.ktile:active{transform:translateY(6px);box-shadow:0 2px 0 var(--ink)}
+.ktile svg{width:88%;height:auto;max-height:22vh}
+.ktile b{font-size:clamp(1.3rem,4.5vw,2rem);font-weight:800;line-height:1.1}
+.parent-btn{touch-action:none;-webkit-user-select:none;user-select:none;align-self:center;position:relative;overflow:hidden;font:inherit;font-size:.95rem;font-weight:600;color:var(--muted);background:#fff;border:2px dashed #b3bfd9;border-radius:999px;padding:.55em 1.2em}
+.parent-btn i{position:absolute;inset:0;background:#d6e2f7;transform-origin:left;transform:scaleX(0)}
+.parent-btn.hold i{transform:scaleX(1);transition:transform 1.4s linear}
+.parent-btn span{position:relative}
+#kpick,#animals{overflow:hidden}
+.kpick-grid{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(42vw,190px),1fr));grid-auto-rows:max-content;gap:16px;padding:4px 16px 26px;align-content:start}
+.kcard:not(.big)::before{content:'';display:block;padding-top:100%}   /* square, even inside a scrolling grid */
+.kcard{position:relative;padding:0;border:4px solid var(--ink);border-radius:26px;background:#fff;box-shadow:0 6px 0 var(--ink);overflow:hidden;transition:transform .1s,box-shadow .1s}
+.kcard:active{transform:translateY(4px);box-shadow:0 2px 0 var(--ink)}
+.kcard.big{aspect-ratio:auto;min-height:min(34vh,260px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:var(--c,#fff)}
+.kcard.big b{font-size:clamp(1.2rem,4vw,1.8rem);font-weight:800}
+.kcard.big svg{width:80%;height:auto}
+.kcard .kline{position:absolute;inset:8% 6% 20%}
+.kcard .kline svg{width:100%;height:100%}
+.kcard.withbadge .kline{inset:4% 4% 26% 30%}
+.kbadge{position:absolute;left:7px;bottom:7px;width:40%;aspect-ratio:1;border:3px solid var(--ink);border-radius:14px;overflow:hidden;background:#fff}
+.kbadge svg{position:absolute;inset:0;width:100%;height:100%}
+.kcard.withbadge .kstars{left:auto;right:10px;text-align:right}
+.ktabs{grid-column:1/-1;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.kcard .kstars{position:absolute;left:0;right:0;bottom:6px;text-align:center;font-size:1.3rem;color:#d5dbea;letter-spacing:2px}
+.kcard .kstars i{font-style:normal;color:var(--sun);-webkit-text-stroke:1px #c58f00}
+.kcard.bounce{animation:hop .6s ease}
+.ct-ask{display:flex;align-items:center;gap:14px;font-weight:800;font-size:clamp(1.4rem,4.5vw,2.2rem)}
+.ct-ask i{width:clamp(56px,14vw,90px);aspect-ratio:1;border-radius:50%;border:4px solid var(--ink);background:var(--c);box-shadow:0 5px 0 var(--ink)}
+.ct-track{--w:clamp(50px,calc((100vw - 60px) / 6.6),110px)}
+.ct-choices{--w:clamp(80px,26vw,130px);gap:16px 22px}
+.wagon.counted::after{content:attr(data-n);position:absolute;left:0;right:0;top:-1.05em;text-align:center;font-weight:800;font-size:calc(var(--w) * .55);line-height:1;color:var(--ink);animation:starpop .4s cubic-bezier(.34,1.56,.64,1)}
+
+/* ---------- trains: letter train (reading) + rail puzzle (logic) ---------- */
+.wt-body{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:space-evenly;gap:10px;padding:0 10px 14px;overflow:hidden}
+.wt-pic{height:min(28vh,250px);aspect-ratio:1;border:3px solid var(--ink);border-radius:22px;background:#fff;position:relative;overflow:hidden;box-shadow:0 5px 0 var(--ink);flex:none}
+.wt-track{--w:clamp(42px,calc((100vw - 60px) / 7.4),92px);position:relative;width:100%;display:flex;justify-content:center;padding-bottom:10px;overflow:hidden}
+.wt-track::after{content:'';position:absolute;left:0;right:0;bottom:3px;height:8px;border-radius:3px;
+  background:repeating-linear-gradient(90deg,#8a5a3b 0 8px,transparent 8px 20px),linear-gradient(#4a4f63 0 2px,transparent 2px 6px,#4a4f63 6px 8px)}
+.wt-train{display:flex;align-items:flex-end;gap:2px;transition:transform 2.4s cubic-bezier(.5,0,.85,.4)}
+.wt-train.go{transform:translateX(-140vw)}
+.wt-loco{width:calc(var(--w) * 1.35);flex:none}
+.wt-loco svg,.wagon svg{display:block;width:100%;height:auto}
+.wagon{width:var(--w);flex:none;position:relative;padding:0;border:0;background:none;font-family:inherit}
+.wagon b{position:absolute;left:5%;right:5%;top:7%;height:62%;display:grid;place-items:center;font-weight:800;font-size:calc(var(--w) * .52);line-height:1;color:#fff;-webkit-text-stroke:2px var(--ink);paint-order:stroke fill}
+.wagon.empty b{color:#c3cbe0;-webkit-text-stroke:0}
+.wagon.next{animation:wnext 1s ease-in-out infinite}
+@keyframes wnext{50%{transform:translateY(-7px)}}
+.wt-choices{--w:clamp(52px,15vw,92px);display:flex;flex-wrap:wrap;justify-content:center;gap:10px 12px;max-width:620px}
+.wt-choices .wagon{cursor:pointer;transition:transform .1s}
+.wt-choices .wagon:active{transform:translateY(3px)}
+.wt-choices .wagon.used{visibility:hidden}
+.wt-choices .wagon.wrong{animation:shake .45s ease}
+.rails-body{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 10px 12px}
+.rails-board{flex:1;min-height:0;width:100%;display:grid;place-items:center}
+.rails-board svg{width:100%;height:100%;display:block}
+.rails-board .tile{cursor:pointer}
+.rails-board .tile.fixed{cursor:default}
+.rails-board .rot{transform-box:fill-box;transform-origin:center;transition:transform .22s ease}
+.rails-msg{min-height:3.2rem;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;font-weight:800;font-size:clamp(1.1rem,3vw,1.6rem);text-align:center}
+.train-card-top{display:grid;place-items:center}
+
+/* ---------- learning colors: rainbow meter, color name toast, suggested chip ---------- */
+.rainbow{display:flex;align-items:center;gap:6px;flex:none}
+.rainbow i{width:28px;height:28px;border-radius:50%;border:3px dashed #b3bfd9;background:#fff;flex:none}
+.rainbow i.on{border:3px solid var(--ink);background:var(--c)}
+.rainbow i.new{animation:starpop .5s cubic-bezier(.34,1.56,.64,1)}
+.rainbow.full{animation:hop .7s ease}
+.chip.suggest{animation:wiggle .5s ease-in-out 6}
+@keyframes wiggle{25%{transform:scale(1.22) rotate(-12deg)}75%{transform:scale(1.22) rotate(12deg)}}
+.ctoast{position:absolute;left:50%;top:12px;transform:translateX(-50%);z-index:2;pointer-events:none;
+  display:flex;align-items:center;gap:.4em;padding:.2em .8em;border-radius:999px;border:3px solid var(--ink);background:#fff;
+  font-weight:800;font-size:clamp(1.3rem,4vw,1.8rem);line-height:1.2;box-shadow:0 4px 0 var(--ink);white-space:nowrap;animation:tpop .35s cubic-bezier(.34,1.56,.64,1)}
+.ctoast b{width:1em;height:1em;border-radius:50%;border:3px solid var(--ink);background:var(--c)}
+@keyframes tpop{from{transform:translateX(-50%) scale(.3);opacity:0}to{transform:translateX(-50%) scale(1);opacity:1}}
+
+/* ---------- "press Hotovo" hint ---------- */
+#color .bar{position:relative;z-index:3}
+#doneBtn{position:relative}
+#doneBtn.call{animation:glow 1s ease-in-out infinite}
+.hint-arrow{position:absolute;top:calc(100% + 8px);left:50%;width:54px;height:62px;margin-left:-27px;pointer-events:none;animation:nudge .8s ease-in-out infinite}
+.hint-arrow svg{width:100%;height:100%;display:block}
+@keyframes nudge{50%{transform:translateY(12px)}}
+@keyframes glow{50%{box-shadow:0 4px 0 var(--ink),0 0 0 9px rgba(255,201,60,.95)}}
+
+/* ---------- phones (finger, small screen) ---------- */
+@media (max-width:600px), (max-height:500px){
+  .bar{padding:8px 10px;gap:8px}
+  .bar-title{font-size:1.25rem}
+  .icon-btn{width:48px;height:48px;border-radius:14px;box-shadow:0 3px 0 var(--ink)}
+  .pill{font-size:1rem;padding:.55em .85em;box-shadow:0 3px 0 var(--ink)}
+  .stage{margin:0 10px 10px;border-radius:20px}
+  .color-body{padding:0 10px 10px;gap:10px}
+  .scene-box{border-radius:20px}
+  .g-dots span{width:16px;height:16px;border-width:2px}
+  .g-body{gap:12px;padding:0 10px 12px}
+}
+@media (max-width:600px){
+  #home{padding:14px 14px 24px;gap:14px}
+  .logo svg{width:48px;height:48px}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .card{border-radius:18px;box-shadow:0 4px 0 var(--ink)}
+  .card-foot{padding:8px 10px;gap:8px}
+  .reward{width:46px;height:46px;border-radius:12px}
+  .reward .mystery{font-size:1.5rem}
+  .card-meta b{font-size:1.05rem}
+  .card-meta small{font-size:.85rem;line-height:1.2}
+  .stars{font-size:1.05rem;letter-spacing:1px}
+  .game-banner{padding:12px 14px;gap:12px}
+  .tab{font-size:1.05rem;padding:.45em .9em}
+  .album-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:4px 10px 24px}
+  .g-choices{gap:10px}
+  .choice{border-radius:18px}
+  .palette{gap:8px}
+  .chip{min-width:38px}
+}
+@media (max-width:480px){
+  .home-head{flex-wrap:nowrap}
+  .logo{gap:8px;min-width:0}
+  .logo h1{font-size:clamp(1.4rem,7.5vw,1.9rem)}
+  .logo svg{width:36px;height:36px}
+  .head-actions .pill{box-shadow:0 3px 0 var(--ink)}
+  .head-actions{flex-wrap:nowrap;gap:8px}
+  .head-actions .pill{padding:.5em .7em}
+  #soundBtn .lbl,#albumBtn .lbl{display:none}
+  .tab span{display:none}
+  .tabs{gap:8px}
+  .tab{font-size:1rem;padding:.45em .8em}
+  .lead{font-size:1.05rem}
+  .card-foot{gap:6px;padding:8px}
+  .reward{width:38px;height:38px;border-radius:10px}
+  .reward .mystery{font-size:1.2rem}
+  .card-meta b{font-size:.98rem}
+  .card-meta small{font-size:.8rem}
+  .bar .pill .lbl{display:none}
+  .bar .pill{padding:.55em .7em}
+  #game .bar-title{display:none}
+  #game .g-dots{flex:1;justify-content:center}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .scene.anim .part,.scene.anim .letter,.scene.anim .lg,.praise,.scene [data-r].bump,.choice.right,.choice.wrong,.g-end .big-stars i{animation:none}
+}
+</style>
+
+</head><body>
+<div id="app" style="height:100%">
+
+<!-- ================= KIDS HOME (3-year-olds) ================= -->
+<section id="kids" class="screen" hidden>
+  <header class="kids-head">
+    <svg class="kids-logo" viewBox="0 0 64 64" aria-hidden="true"><circle cx="46" cy="32" r="11" fill="#23264a"/><circle cx="50" cy="28" r="3" fill="#fff"/><circle cx="50" cy="36" r="3" fill="#fff"/><circle cx="28" cy="32" r="22" fill="#e5383b" stroke="#23264a" stroke-width="3.5"/><path d="M44 32H6" stroke="#23264a" stroke-width="3"/><circle cx="30" cy="20" r="4.5" fill="#23264a"/><circle cx="30" cy="44" r="4.5" fill="#23264a"/><circle cx="16" cy="24" r="3.8" fill="#23264a"/><circle cx="16" cy="40" r="3.8" fill="#23264a"/></svg>
+    <h1 id="kidsHello">Ahoj!</h1>
+    <button class="icon-btn" id="kAlbum" aria-label="Moja zbierka"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></button>
+  </header>
+  <div class="kids-grid" id="kidsGrid"></div>
+  <button class="parent-btn" id="parentBtn"><i></i><span>Pre rodičov a väčšie deti – podržte</span></button>
+</section>
+
+<!-- ================= KIDS PICKER (lines, pictures, train games) ================= -->
+<section id="kpick" class="screen" hidden>
+  <header class="bar">
+    <button class="icon-btn" data-home aria-label="Domov"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></svg></button>
+    <div class="bar-title" id="kpickTitle"></div>
+  </header>
+  <div class="kpick-grid" id="kpickGrid"></div>
+</section>
+
+<!-- ================= ANIMALS: names + sounds, then "where is ...?" ================= -->
+<section id="animals" class="screen" hidden>
+  <header class="bar">
+    <button class="icon-btn" data-home aria-label="Domov"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></svg></button>
+    <div class="bar-title">Zvieratká</div>
+    <div class="bar-actions"><button class="pill primary" id="aqStart"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></svg>Hra</button></div>
+  </header>
+  <div class="kpick-grid" id="anGrid"></div>
+</section>
+
+<section id="aquiz" class="screen" hidden>
+  <header class="bar">
+    <button class="icon-btn" data-home aria-label="Domov"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></svg></button>
+    <div class="g-dots" id="aqDots" style="flex:1;justify-content:center"></div>
+    <button class="icon-btn" id="aqRepeat" aria-label="Zopakuj otázku"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5c1.6 1.8 1.6 5.2 0 7"/><path d="M19 6c3 3 3 9 0 12"/></svg></button>
+  </header>
+  <div class="g-body" id="aqBody">
+    <p class="g-ask" id="aqAsk"></p>
+    <div class="g-choices" id="aqChoices"></div>
+  </div>
+  <div class="g-body" id="aqEnd" hidden>
+    <div class="g-end">
+      <div class="big-stars" id="aqStars"></div>
+      <h2 id="aqEndTitle">Super!</h2>
+      <div class="g-end-actions">
+        <button class="pill primary" id="aqAgain"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg>Hrať znova</button>
+        <button class="pill" data-home><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/></svg>Domov</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COLOR TRAIN: colors + counting ================= -->
+<section id="ctrain" class="screen" hidden>
+  <header class="bar">
+    <button class="icon-btn" data-home aria-label="Domov"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></svg></button>
+    <div class="bar-title">Farebný vláčik</div>
+    <button class="icon-btn" id="ctRepeat" aria-label="Zopakuj"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5c1.6 1.8 1.6 5.2 0 7"/><path d="M19 6c3 3 3 9 0 12"/></svg></button>
+  </header>
+  <div class="wt-body">
+    <div class="ct-ask" id="ctAsk"></div>
+    <div class="wt-track ct-track"><div class="wt-train" id="ctTrain"></div></div>
+    <div class="wt-choices ct-choices" id="ctChoices"></div>
+  </div>
+</section>
+
+<!-- ================= HOME ================= -->
+<section id="home" class="screen">
+  <header class="home-head">
+    <div class="logo">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="46" cy="32" r="11" fill="#23264a"/>
+        <circle cx="50" cy="28" r="3" fill="#fff"/><circle cx="50" cy="36" r="3" fill="#fff"/>
+        <circle cx="28" cy="32" r="22" fill="#e5383b" stroke="#23264a" stroke-width="3.5"/>
+        <path d="M44 32H6" stroke="#23264a" stroke-width="3"/>
+        <circle cx="30" cy="20" r="4.5" fill="#23264a"/><circle cx="30" cy="44" r="4.5" fill="#23264a"/>
+        <circle cx="16" cy="24" r="3.8" fill="#23264a"/><circle cx="16" cy="40" r="3.8" fill="#23264a"/>
+      </svg>
+      <h1>Písmen<span>kovo</span></h1>
+    </div>
+    <div class="head-actions">
+      <button class="pill" id="kidsBtn" aria-label="Pre Oliho"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="6.5" r="2.5"/></svg><span class="lbl">Pre Oliho</span></button>
+      <button class="pill" id="soundBtn" aria-label="Zvuk"></button>
+      <button class="pill" id="albumBtn" aria-label="Moja zbierka">
+        <svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>
+        <span class="lbl">Moja zbierka</span> <span id="albumCount"></span>
+      </button>
+    </div>
+  </header>
+  <p class="lead">Ahoj Oli! Vyber si písmenko. Choď s lienkou po čiarke a uvidíš, aké zvieratko sa skrýva za písmenkom!</p>
+  <button class="game-banner" id="gameBtn"></button>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" data-tab="1">Malé písmená <span>a b c</span></button>
+    <button class="tab" role="tab" data-tab="2">Veľké písmená <span>A B C</span></button>
+    <button class="tab" role="tab" data-tab="3">Doprava <span>🚗 ✈️</span></button>
+    <button class="tab" role="tab" data-tab="4">Vláčiky <span>🚂</span></button>
+  </div>
+  <div class="cards" id="cards"></div>
+  <p class="parents"><b>Pre rodičov:</b> funguje na mobile aj na tablete, stačí prst. Ak máte dotykové pero, počas písania perom sa dotyky dlane ignorujú. Hlas a zvuky zapnete tlačidlom hore. Na mobile sa oplatí vypnúť otáčanie displeja. Postup a zbierka obrázkov sa ukladajú iba v tomto zariadení. Appka funguje aj bez internetu.</p>
+  <div class="parents voicebox"><b>Hlas:</b> <select id="voiceSel" aria-label="Vyber hlas"></select> <button class="pill" id="voiceTest">Vyskúšať</button>
+    <span id="voiceTip"></span></div>
+  <label class="parents" style="display:flex;gap:10px;align-items:flex-start"><input type="checkbox" id="enToggle" style="width:22px;height:22px;flex:none;margin-top:2px"> <span><b>Angličtina:</b> po slovenskom slove zaznie aj anglické (zvieratká, farby, počítanie, vozidlá).</span></label>
+</section>
+
+<!-- ================= TRACE ================= -->
+<section id="trace" class="screen" hidden>
+  <header class="bar">
+    <button class="icon-btn" data-home aria-label="Domov"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></svg></button>
+    <div class="bar-title" id="traceTitle">Písmenko a</div>
+    <div class="bar-actions">
+      <button class="pill" id="demoBtn" aria-label="Ukáž mi"><svg viewBox="0 0 24 24"><path d="M2.5 12s3.5-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.5 6.5-9.5 6.5S2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="lbl">Ukáž mi</span></button>
+      <button class="pill" id="clearBtn" aria-label="Znova"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg><span class="lbl">Znova</span></button>
+    </div>
+  </header>
+  <div class="stage" id="traceStage">
+    <canvas id="traceCanvas"></canvas>
+    <div class="praise" id="praise" hidden>Výborne!</div>
+  </div>
+</section>
+
+<!-- ================= COLOR ================= -->
+<section id="color" class="screen" hidden>
+  <header class="bar">
+    <button class="icon-btn" data-home aria-label="Domov"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></svg></button>
+    <div class="bar-title" id="colorTitle">Vyfarbi auto</div>
+    <div class="bar-actions">
+      <button class="pill primary" id="doneBtn"><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></svg>Hotovo</button>
+    </div>
+  </header>
+  <div class="color-body">
+    <div class="scene-wrap" id="sceneWrap">
+      <div class="scene-box fill-mode" id="sceneBox">
+        <div id="sceneSvg"></div>
+        <div class="ctoast" id="ctoast" hidden></div>
+        <canvas id="drawCanvas"></canvas>
+      </div>
+    </div>
+    <aside class="tools">
+      <div class="rainbow" id="rainbow" aria-label="Moje farby"></div>
+      <div class="modes">
+        <button class="mode on" data-mode="fill"><svg viewBox="0 0 32 32"><path d="M5 15 15 5l11 11-10 10z"/><path d="M5 15h21"/><path d="M28 22c0 2.5-1.2 4-2.6 4s-2.6-1.5-2.6-4 2.6-5 2.6-5 2.6 2.5 2.6 5z"/></svg>Vyfarbi</button>
+        <button class="mode" data-mode="draw"><svg viewBox="0 0 32 32"><path d="M6 26l2-6L22 6l4 4L12 24z"/><path d="M19 9l4 4"/><path d="M6 26l6-2"/></svg>Kresli</button>
+        <button class="mode" data-mode="erase"><svg viewBox="0 0 32 32"><path d="M5 20 17 8l8 8-9 9H10z"/><path d="M11 14l8 8"/><path d="M14 26h14"/></svg>Guma</button>
+      </div>
+      <div class="palette" id="palette"></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= ALBUM ================= -->
+<section id="album" class="screen" hidden>
+  <header class="bar">
+    <button class="icon-btn" data-home aria-label="Domov"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></svg></button>
+    <div class="bar-title">Moja zbierka</div>
+  </header>
+  <div class="album-grid" id="albumGrid"></div>
+</section>
+
+<!-- ================= GAME ================= -->
+<section id="game" class="screen" hidden>
+  <header class="bar">
+    <button class="icon-btn" data-home aria-label="Domov"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></svg></button>
+    <div class="bar-title">Hľadačka písmenok</div>
+    <div class="g-dots" id="gDots" aria-label="Postup v kole"></div>
+    <button class="icon-btn" id="gRepeat" aria-label="Zopakuj otázku"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5c1.6 1.8 1.6 5.2 0 7"/><path d="M19 6c3 3 3 9 0 12"/></svg></button>
+  </header>
+  <div class="g-body" id="gBody">
+    <p class="g-ask" id="gAsk"></p>
+    <div class="g-prompt" id="gPrompt"></div>
+    <div class="g-choices" id="gChoices"></div>
+  </div>
+  <div class="g-body" id="gEnd" hidden>
+    <div class="g-end">
+      <div class="big-stars" id="gStars"></div>
+      <h2 id="gEndTitle">Super!</h2>
+      <div class="g-end-actions">
+        <button class="pill primary" id="gAgain"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg>Hrať znova</button>
+        <button class="pill" data-home><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/></svg>Domov</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LETTER TRAIN ================= -->
+<section id="wtrain" class="screen" hidden>
+  <header class="bar">
+    <button class="icon-btn" data-home aria-label="Domov"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></svg></button>
+    <div class="bar-title">Písmenkový vláčik</div>
+    <button class="icon-btn" id="wtRepeat" aria-label="Zopakuj"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5c1.6 1.8 1.6 5.2 0 7"/><path d="M19 6c3 3 3 9 0 12"/></svg></button>
+  </header>
+  <div class="wt-body">
+    <div class="wt-pic" id="wtPic"></div>
+    <div class="wt-track"><div class="wt-train" id="wtTrain"></div></div>
+    <div class="wt-choices" id="wtChoices"></div>
+  </div>
+</section>
+
+<!-- ================= RAIL PUZZLE ================= -->
+<section id="rails" class="screen" hidden>
+  <header class="bar">
+    <button class="icon-btn" data-home aria-label="Domov"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></svg></button>
+    <div class="bar-title" id="railsTitle">Staviame koľajnice</div>
+    <button class="icon-btn" id="railsRepeat" aria-label="Zopakuj"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5c1.6 1.8 1.6 5.2 0 7"/><path d="M19 6c3 3 3 9 0 12"/></svg></button>
+  </header>
+  <div class="rails-body">
+    <div class="rails-board" id="railsBoard"></div>
+    <div class="rails-msg" id="railsMsg"></div>
+  </div>
+</section>
+
+</div>
+
+<script>
+(() => {
+'use strict';
+/*CORE-START*/
+/* ================= letters & lessons ================= */
+const SLANT = 0.3;           // cursive slant (x shifts right as the stroke goes up)
+const INK = '#23264a';
+const PALETTE = ['#e63946','#ff8c42','#ffd23f','#8ac926','#2a9d55','#2ec4b6','#3a86ff','#22306b','#8e5bd6','#ff7eb6','#9c6644','#2b2b3a','#ffffff'];
+
+// Unit space: baseline y=0, half-line y=-1, top line y=-2, descender y=+1.
+// A stroke is {start, cmds} where a cmd is a cubic Bézier [c1x,c1y,c2x,c2y,x,y] or a line [x,y];
+// or {dot:[x,y]} for the dot over i / j.
+const OVAL = [[0.65,-1.05, 0.25,-1.05, 0.1,-0.65],[-0.02,-0.3, 0.15,0.02, 0.4,0]];   // shared by a, d, g
+const LOOP = [[0.35,-0.5, 0.65,-1.5, 0.55,-1.85],[0.45,-2.15, 0.15,-2.05, 0.2,-1.6],[0.22,-1.0, 0.2,-0.4, 0.22,0]]; // b, h, k
+const TAIL = [0.82,0.02, 1.0,0.05, 1.2,-0.2];
+const LEAD = [0.15,-0.5, 0.3,-0.8, 0.35,-1.0];   // i, j
+const LEADIN = [0.0,-0.4, 0.15,-0.85, 0.22,-1.0]; // m, n: lead-in from the baseline
+const ARCH = x => [x+0.02,-0.6, x+0.18,-1.0, x+0.33,-0.98]; // m, n humps
+const M_STROKE = { start:[-0.2,0], cmds:[LEADIN, [0.22,0], ARCH(0.22), [0.7,-0.96, 0.72,-0.7, 0.72,0], ARCH(0.72), [1.2,-0.96, 1.22,-0.7, 1.22,-0.15], [1.22,0.02, 1.4,0.05, 1.6,-0.2]] };
+const N_STROKE = { start:[-0.2,0], cmds:[LEADIN, [0.22,0], ARCH(0.22), [0.7,-0.96, 0.72,-0.7, 0.72,-0.15], [0.72,0.02, 0.9,0.05, 1.1,-0.2]] };
+const U_UP = [0.1,-0.6, 0.18,-0.9, 0.2,-1.0];     // u, y lead-in
+const U_LEFT = [0.2,-0.3, 0.25,0.02, 0.45,0.0];   // u, y left side down
+const DOT = { dot:[0.35,-1.45], say:'A teraz bodka!' };
+const caron = cx => ({ start:[cx-0.14,-1.52], cmds:[[cx,-1.32],[cx+0.14,-1.52]], say:'A teraz mäkčeň!' });
+const shift = (def, dx) => ({ ...def, start:[def.start[0]+dx, def.start[1]],
+  cmds: def.cmds.map(c => c.length === 2 ? [c[0]+dx, c[1]] : [c[0]+dx, c[1], c[2]+dx, c[3], c[4]+dx, c[5]]) });
+const C_STROKE = { start:[0.72,-0.82], cmds:[[0.7,-1.02, 0.3,-1.05, 0.12,-0.7], [-0.05,-0.3, 0.15,0.02, 0.42,0], [0.65,-0.02, 0.8,-0.15, 0.95,-0.3]] };
+const H_STROKE = { start:[0,0], cmds:[...LOOP, [0.25,-0.6, 0.45,-1.0, 0.65,-0.95], [0.85,-0.9, 0.82,-0.5, 0.82,-0.15], TAIL] };
+const S_STROKE = { start:[0,-0.1], cmds:[[0.15,-0.4, 0.3,-0.8, 0.35,-1.02], [0.6,-0.7, 0.7,-0.35, 0.5,-0.05], [0.35,0.06, 0.12,0.02, 0.15,-0.1], [0.25,-0.02, 0.6,0.0, 0.9,-0.25]] };
+const Z_STROKE = { start:[0.0,-0.15], cmds:[[0.05,-0.5, 0.1,-0.8, 0.2,-0.9], [0.35,-1.02, 0.55,-0.95, 0.68,-0.97], [0.5,-0.6, 0.3,-0.25, 0.18,0.0], [0.4,-0.1, 0.55,0.06, 0.75,0.0], [0.9,-0.05, 1.05,-0.2, 1.15,-0.35]] };
+
+const LESSONS = [
+  { id:'vlnka', label:'vlnka', title:'Rozcvička: vlnka', animal:'delfín', Animal:'Delfín', acc:'delfína', pron:'ho',
+    caption:'Vlnka a delfín', praise:'Výborne! Na vlnkách skáče delfín!', color:'#2ec4b6', band:[-1.25,0.25], noSlant:true,
+    strokes:[{wave:true}] },
+  { id:'a', label:'a', animal:'antilopa', Animal:'Antilopa', acc:'antilopu', pron:'ju', color:'#e63946', band:[-1.35,0.4],
+    strokes:[{ start:[0.78,-0.82], cmds:[...OVAL, [0.65,-0.02, 0.78,-0.4, 0.82,-1], [0.82,-0.15], TAIL] }] },
+  { id:'b', label:'b', animal:'baran', Animal:'Baran', acc:'barana', pron:'ho', color:'#8e5bd6', band:[-2.3,0.4],
+    strokes:[{ start:[0,0], cmds:[...LOOP, [0.5,0.05, 0.85,-0.3, 0.8,-0.9], [0.78,-1.05, 0.6,-0.95, 0.68,-0.85], [0.8,-0.75, 1.0,-0.8, 1.15,-0.9]] }] },
+  { id:'c', label:'c', animal:'cikáda', Animal:'Cikáda', acc:'cikádu', pron:'ju', color:'#2a9d55', band:[-1.35,0.4],
+    strokes:[C_STROKE] },
+  { id:'č', label:'č', animal:'čmeliak', Animal:'Čmeliak', acc:'čmeliaka', pron:'ho', color:'#ffb300', band:[-1.75,0.4],
+    strokes:[C_STROKE, caron(0.45)] },
+  { id:'d', label:'d', animal:'diviak', Animal:'Diviak', acc:'diviaka', pron:'ho', color:'#9c6644', band:[-2.3,0.4],
+    strokes:[{ start:[0.78,-0.82], cmds:[...OVAL, [0.65,-0.02, 0.82,-0.5, 0.84,-2.0], [0.84,-0.15], [0.84,0.02, 1.0,0.05, 1.2,-0.2]] }] },
+  { id:'e', label:'e', animal:'emu', Animal:'Emu', acc:'emu', pron:'ho', color:'#ff8c42', band:[-1.35,0.4],
+    strokes:[{ start:[-0.05,-0.2], cmds:[[0.3,-0.4, 0.65,-0.6, 0.62,-0.85], [0.6,-1.05, 0.25,-1.05, 0.15,-0.75], [0.05,-0.45, 0.15,0.0, 0.45,0.0], [0.65,0.0, 0.8,-0.15, 0.95,-0.3]] }] },
+  { id:'f', label:'f', animal:'fretka', Animal:'Fretka', acc:'fretku', pron:'ju', color:'#ff7eb6', band:[-2.3,1.25],
+    strokes:[{ start:[0,0], cmds:[[0.35,-0.5, 0.6,-1.5, 0.5,-1.85], [0.42,-2.15, 0.12,-2.05, 0.18,-1.6], [0.22,-0.8, 0.22,0.3, 0.2,0.9], [0.2,1.12, 0.55,0.95, 0.5,0.55], [0.45,0.2, 0.35,0.0, 0.22,-0.02], [0.5,0.05, 0.8,-0.1, 1.0,-0.3]] }] },
+  { id:'g', label:'g', animal:'gunár', Animal:'Gunár', acc:'gunára', pron:'ho', color:'#3a86ff', band:[-1.35,1.25],
+    strokes:[{ start:[0.78,-0.82], cmds:[...OVAL, [0.65,-0.02, 0.78,-0.4, 0.82,-1], [0.82,0.9], [0.82,1.2, 0.35,1.15, 0.38,0.8], [0.42,0.4, 0.8,0.1, 1.15,-0.2]] }] },
+  { id:'h', label:'h', animal:'had', Animal:'Had', twin:'u', acc:'hada', pron:'ho', color:'#8ac926', band:[-2.3,0.4],
+    strokes:[H_STROKE] },
+  { id:'ch', label:'ch', animal:'chobotnica', Animal:'Chobotnica', acc:'chobotnicu', pron:'ju', color:'#ff7eb6', band:[-2.3,0.4],
+    strokes:[C_STROKE, shift(H_STROKE, 0.85)] },
+  { id:'i', label:'i', animal:'iguana', Animal:'Iguana', acc:'iguanu', pron:'ju', color:'#2a9d55', band:[-1.65,0.4],
+    strokes:[{ start:[0,-0.2], cmds:[LEAD, [0.35,-0.15], [0.35,0.02, 0.55,0.05, 0.75,-0.2]] }, DOT] },
+  { id:'j', label:'j', animal:'ježko', Animal:'Ježko', acc:'ježka', pron:'ho', color:'#9c6644', band:[-1.65,1.25],
+    strokes:[{ start:[0,-0.2], cmds:[LEAD, [0.35,0.9], [0.35,1.15, 0.0,1.15, 0.02,0.85], [0.05,0.5, 0.4,0.15, 0.8,-0.15]] }, DOT] },
+  { id:'k', label:'k', animal:'korytnačka', Animal:'Korytnačka', acc:'korytnačku', pron:'ju', color:'#2ec4b6', band:[-2.3,0.4],
+    strokes:[{ start:[0,0], cmds:[...LOOP, [0.3,-0.6, 0.75,-1.1, 0.8,-0.8], [0.82,-0.6, 0.55,-0.5, 0.4,-0.55], [0.6,-0.5, 0.7,-0.3, 0.75,-0.12], TAIL] }] },
+  { id:'l', label:'l', animal:'lev', Animal:'Lev', acc:'leva', pron:'ho', color:'#ff8c42', band:[-2.3,0.4],
+    strokes:[{ start:[0,0], cmds:[...LOOP, [0.3,0.05, 0.5,0.0, 0.7,-0.25]] }] },
+  { id:'m', label:'m', animal:'mačka', Animal:'Mačka', acc:'mačku', pron:'ju', color:'#8e5bd6', band:[-1.35,0.4],
+    strokes:[M_STROKE] },
+  { id:'n', label:'n', animal:'nosorožec', Animal:'Nosorožec', acc:'nosorožca', pron:'ho', color:'#6b7a99', band:[-1.35,0.4],
+    strokes:[N_STROKE] },
+  { id:'o', label:'o', animal:'opica', Animal:'Opica', twin:'š', acc:'opicu', pron:'ju', color:'#9c6644', band:[-1.35,0.4],
+    strokes:[{ start:[0.62,-0.95], cmds:[[0.4,-1.08, 0.05,-0.85, 0.08,-0.45], [0.1,-0.05, 0.55,0.0, 0.68,-0.35], [0.78,-0.65, 0.72,-0.95, 0.58,-0.96], [0.7,-0.88, 0.9,-0.9, 1.05,-0.98]] }] },
+  { id:'p', label:'p', animal:'pes', Animal:'Pes', acc:'psa', pron:'ho', color:'#e63946', band:[-1.35,1.25],
+    strokes:[{ start:[0,-0.3], cmds:[[0.1,-0.6, 0.2,-0.9, 0.25,-1.05], [0.2,1.0], [0.22,-0.6], [0.4,-1.05, 0.85,-0.95, 0.8,-0.45], [0.75,-0.05, 0.4,0.0, 0.24,-0.12], [0.45,-0.05, 0.7,-0.1, 0.95,-0.3]] }] },
+  { id:'r', label:'r', animal:'rak', Animal:'Rak', acc:'raka', pron:'ho', color:'#e63946', band:[-1.35,0.4],
+    strokes:[{ start:[0,-0.1], cmds:[[0.12,-0.5, 0.22,-0.9, 0.28,-1.02], [0.22,-0.85, 0.32,-0.8, 0.42,-0.85], [0.55,-0.92, 0.65,-0.95, 0.62,-0.7], [0.6,-0.4, 0.6,-0.2, 0.6,-0.12], [0.6,0.02, 0.78,0.05, 0.98,-0.2]] }] },
+  { id:'s', label:'s', animal:'sova', Animal:'Sova', acc:'sovu', pron:'ju', color:'#3a86ff', band:[-1.35,0.4],
+    strokes:[S_STROKE] },
+  { id:'š', label:'š', animal:'šimpanz', Animal:'Šimpanz', twin:'o', acc:'šimpanza', pron:'ho', color:'#2b2b3a', band:[-1.75,0.4],
+    strokes:[S_STROKE, caron(0.42)] },
+  { id:'t', label:'t', animal:'tiger', Animal:'Tiger', acc:'tigra', pron:'ho', color:'#ff8c42', band:[-1.85,0.4],
+    strokes:[{ start:[0,-0.2], cmds:[[0.15,-0.6, 0.3,-1.2, 0.35,-1.6], [0.35,-0.15], [0.35,0.02, 0.55,0.05, 0.75,-0.2]] },
+             { start:[0.08,-1.0], cmds:[[0.68,-1.0]], say:'A teraz čiarka!' }] },
+  { id:'u', label:'u', animal:'užovka', Animal:'Užovka', twin:'h', acc:'užovku', pron:'ju', color:'#2a9d55', band:[-1.35,0.4],
+    strokes:[{ start:[0,-0.3], cmds:[U_UP, U_LEFT, [0.6,-0.02, 0.7,-0.5, 0.72,-1.0], [0.72,-0.15], [0.72,0.02, 0.9,0.05, 1.1,-0.2]] }] },
+  { id:'v', label:'v', animal:'veverička', Animal:'Veverička', acc:'veveričku', pron:'ju', color:'#c0581f', band:[-1.35,0.4],
+    strokes:[{ start:[0,-0.75], cmds:[[0.1,-1.0, 0.2,-1.0, 0.22,-0.85], [0.25,-0.3, 0.35,0.02, 0.5,0.0], [0.7,-0.05, 0.8,-0.6, 0.78,-0.95], [0.75,-1.02, 0.6,-0.95, 0.68,-0.85], [0.8,-0.75, 1.0,-0.8, 1.15,-0.9]] }] },
+  { id:'y', label:'y', animal:'myš', Animal:'Myš', acc:'myš', pron:'ju', color:'#6b7a99', band:[-1.35,1.25], noGame:true,
+    caption:'y ako v slove myš', praise:'Výborne! Ypsilon počuješ v slove myš!',
+    strokes:[{ start:[0,-0.3], cmds:[U_UP, U_LEFT, [0.6,-0.02, 0.7,-0.5, 0.72,-1.0], [0.72,0.9], [0.72,1.2, 0.25,1.15, 0.28,0.8], [0.32,0.4, 0.7,0.1, 1.05,-0.2]] }] },
+  { id:'z', label:'z', animal:'zebra', Animal:'Zebra', acc:'zebru', pron:'ju', color:'#2b2b3a', band:[-1.35,0.4],
+    strokes:[Z_STROKE] },
+  { id:'ž', label:'ž', animal:'žirafa', Animal:'Žirafa', acc:'žirafu', pron:'ju', color:'#ffb300', band:[-1.75,0.4],
+    strokes:[Z_STROKE, caron(0.48)] },
+];
+
+/* ---------- capital cursive letters (level 2): same animal as the small letter ---------- */
+const scale = (def, sx, sy) => ({ ...def, start:[def.start[0]*sx, def.start[1]*sy], cmds: def.cmds.map(c => c.map((v, i) => i % 2 ? v*sy : v*sx)) });
+const caronAt = (cx, y) => ({ start:[cx-0.16,y-0.24], cmds:[[cx,y],[cx+0.16,y-0.24]], say:'A teraz mäkčeň!' });
+const BAR = { say:'A teraz čiarka!' };
+const BIG_C = scale(C_STROKE, 1.45, 2.0);
+const BIG_O = scale(LESSONS.find(l => l.id === 'o').strokes[0], 1.45, 2.0);
+const TOPBAR = { start:[0.1,-1.8], cmds:[[0.4,-2.1, 0.9,-1.8, 1.4,-2.0]] };
+const FT_STEM = { start:[0.85,-1.95], cmds:[[0.75,-1.0, 0.6,-0.2, 0.3,0.0], [0.1,0.05, 0.0,-0.2, 0.1,-0.3]] };
+const S_CAP = { start:[1.2,-1.85], cmds:[[1.0,-2.1, 0.3,-2.05, 0.35,-1.55], [0.4,-1.1, 1.1,-1.0, 1.05,-0.5], [1.0,0.0, 0.3,0.1, 0.05,-0.2]] };
+const Z_CAP = { start:[0.1,-1.8], cmds:[[0.5,-2.05, 0.9,-1.85, 1.2,-2.0], [0.1,0.0], [0.5,-0.15, 0.9,0.1, 1.3,-0.1]] };
+const U_CAP = [[0.1,-2.05, 0.3,-2.0, 0.3,-1.8], [0.25,-0.6, 0.35,0.05, 0.6,0.0], [0.9,-0.05, 1.0,-1.0, 1.05,-2.0]];
+const STEM = { start:[0.35,-2.0], cmds:[[0.2,0.0]] };
+const CAP_HOOK = { start:[0.0,-1.7], cmds:[[0.08,-2.0, 0.28,-2.08, 0.3,-1.88], [0.15,0.0]] };   // H, K: left stroke starts with a hook
+// capital M / N: the small letter, twice as tall, starting with a hook at the top instead of the lead-in
+const CAP_MN = st => { const b = scale(st, 1.0, 2.0); return { ...b, start:[0.05,-1.6], cmds:[[0.12,-1.98, 0.22,-2.05, 0.22,-1.8], ...b.cmds.slice(1)] }; };
+const CAPS = [
+  ['A','a', [scale(LESSONS.find(l => l.id === 'a').strokes[0], 1.25, 2.0)]],
+  ['B','b', [{ start:[0.3,-1.95], cmds:[[0.22,-1.2, 0.16,-0.5, 0.1,0.0]] }, { start:[0.3,-1.95], cmds:[[0.9,-2.2, 1.25,-1.4, 0.4,-1.05], [1.4,-1.0, 1.25,0.05, 0.1,0.0]] }]],
+  ['C','c', [BIG_C]],
+  ['Č','č', [BIG_C, caronAt(0.7,-2.3)]],
+  ['D','d', [{ start:[0.4,-2.0], cmds:[[0.35,-1.0, 0.3,-0.4, 0.25,0.0], [0.1,0.05, 0.05,-0.2, 0.2,-0.15], [0.9,0.05, 1.5,-0.6, 1.3,-1.4], [1.15,-2.0, 0.6,-2.1, 0.2,-1.85]] }]],
+  ['E','e', [{ start:[1.0,-1.75], cmds:[[0.8,-2.1, 0.2,-2.0, 0.3,-1.5], [0.35,-1.2, 0.6,-1.05, 0.7,-1.05], [0.1,-1.1, -0.1,-0.5, 0.2,-0.15], [0.5,0.15, 1.0,0.0, 1.2,-0.3]] }]],
+  ['F','f', [TOPBAR, FT_STEM, { ...BAR, start:[0.4,-1.0], cmds:[[1.0,-1.0]] }]],
+  ['G','g', [{ start:[1.1,-1.7], cmds:[[1.0,-2.1, 0.3,-2.05, 0.1,-1.2], [0.0,-0.4, 0.4,0.05, 0.8,-0.2], [1.0,-0.4, 1.0,-0.8, 1.0,-1.0], [1.0,0.9], [1.0,1.2, 0.5,1.15, 0.55,0.8], [0.6,0.4, 1.0,0.1, 1.35,-0.2]] }]],
+  ['H','h', [CAP_HOOK, { start:[1.15,-2.0], cmds:[[1.0,-0.15], [1.0,0.02, 1.15,0.05, 1.35,-0.2]] }, { ...BAR, start:[0.2,-1.0], cmds:[[1.1,-1.0]] }]],
+  ['CH','ch', [BIG_C, shift(H_STROKE, 1.3)]],
+  ['I','i', [{ start:[0.3,-1.75], cmds:[[0.5,-2.05, 0.9,-2.05, 0.9,-1.8], [0.85,-1.0, 0.7,-0.2, 0.45,-0.02], [0.2,0.1, 0.05,-0.2, 0.25,-0.3]] }]],
+  ['J','j', [{ start:[0.3,-1.75], cmds:[[0.5,-2.05, 0.9,-2.05, 0.9,-1.8], [0.8,-0.5, 0.7,0.5, 0.55,0.9], [0.4,1.2, 0.05,1.0, 0.2,0.6], [0.35,0.2, 0.8,-0.1, 1.2,-0.3]] }]],
+  ['K','k', [CAP_HOOK, { start:[1.2,-2.0], cmds:[[0.8,-1.6, 0.5,-1.1, 0.3,-1.0], [0.6,-0.9, 0.8,-0.3, 1.0,-0.05], [1.1,0.05, 1.2,0.0, 1.35,-0.15]] }]],
+  ['L','l', [{ start:[0.9,-1.85], cmds:[[0.8,-2.15, 0.4,-2.0, 0.45,-1.6], [0.5,-1.0, 0.35,-0.2, 0.05,-0.05], [-0.1,0.05, 0.1,0.15, 0.3,0.0], [0.6,-0.1, 0.9,0.05, 1.2,-0.1]] }]],
+  ['M','m', [CAP_MN(M_STROKE)]],
+  ['N','n', [CAP_MN(N_STROKE)]],
+  ['O','o', [BIG_O]],
+  ['P','p', [STEM, { start:[0.35,-2.0], cmds:[[1.3,-2.25, 1.3,-0.9, 0.3,-1.0]] }]],
+  ['R','r', [STEM, { start:[0.35,-2.0], cmds:[[1.3,-2.25, 1.3,-0.9, 0.35,-1.0], [0.8,-0.9, 0.9,-0.2, 1.1,-0.05], [1.2,0.02, 1.3,0.0, 1.4,-0.15]] }]],
+  ['S','s', [S_CAP]],
+  ['Š','š', [S_CAP, caronAt(0.75,-2.3)]],
+  ['T','t', [TOPBAR, FT_STEM]],
+  ['U','u', [{ start:[0,-1.8], cmds:[...U_CAP, [1.05,-0.15], [1.05,0.02, 1.2,0.05, 1.4,-0.2]] }]],
+  ['V','v', [{ start:[0,-1.8], cmds:[[0.1,-2.05, 0.3,-2.0, 0.35,-1.8], [0.4,-0.6, 0.5,0.0, 0.6,0.0], [0.8,0.0, 1.1,-1.4, 1.2,-2.0]] }]],
+  ['Y','y', [{ start:[0,-1.8], cmds:[...U_CAP, [1.05,0.9], [1.05,1.2, 0.55,1.15, 0.6,0.8], [0.65,0.4, 1.0,0.1, 1.35,-0.2]] }]],
+  ['Z','z', [Z_CAP]],
+  ['Ž','ž', [Z_CAP, caronAt(0.65,-2.3)]],
+];
+for (const [label, base, strokes] of CAPS){
+  const b = LESSONS.find(l => l.id === base);
+  const desc = strokes.some(s => s.cmds && s.cmds.some(c => c[c.length-1] > 0.5));
+  const top = strokes.some(s => s.say === 'A teraz mäkčeň!');
+  LESSONS.push({ id:label, label, base, scene:base, level:2, noGame:true,
+    animal:b.animal, Animal:b.Animal, acc:b.acc, pron:b.pron, color:b.color,
+    title:'Veľké písmeno ' + label,
+    caption: base === 'y' ? 'Y ako v slove myš' : label + ' ako ' + b.animal,
+    praise: base === 'y' ? 'Výborne! Veľké ypsilon!' : `Výborne! Veľké [[${label}]] ako ${b.animal}!`,
+    band:[top ? -2.8 : -2.3, desc ? 1.3 : 0.4], strokes });
+}
+/* ---------- level 3: vehicles drive along pre-writing lines instead of the ladybug ---------- */
+const VEHICLES = [
+  { id:'auto', Animal:'Auto', animal:'auto', acc:'auto', pron:'ho', color:'#e63946', rider:'car',
+    go:'choď s autom cez kopčeky.', praise:'Výborne! Auto prešlo cez kopčeky!',
+    strokes:[{ fn:t => [t*2.4, -0.12 - 0.75*Math.abs(Math.sin(3*Math.PI*t))], n:400 }] },
+  { id:'vlak', Animal:'Vlak', animal:'vlak', acc:'vlak', pron:'ho', color:'#2a9d55', rider:'train',
+    go:'choď s vlakom po koľajniciach.', praise:'Výborne! Vlak dorazil do stanice!',
+    strokes:[{ start:[0,-0.1], cmds:[[0.4,-0.1],[0.4,-0.9],[0.8,-0.9],[0.8,-0.1],[1.2,-0.1],[1.2,-0.9],[1.6,-0.9],[1.6,-0.1],[2.0,-0.1],[2.0,-0.9],[2.4,-0.9]] }] },
+  { id:'motorka', Animal:'Motorka', animal:'motorka', acc:'motorku', pron:'ju', color:'#ff8c42', rider:'moto',
+    go:'skáč s motorkou cez rampy.', praise:'Výborne! Motorka preskočila všetky rampy!',
+    strokes:[{ start:[0,-0.1], cmds:[[0.4,-0.9],[0.8,-0.1],[1.2,-0.9],[1.6,-0.1],[2.0,-0.9],[2.4,-0.1]] }] },
+  { id:'lietadlo', Animal:'Lietadlo', animal:'lietadlo', acc:'lietadlo', pron:'ho', color:'#3a86ff', rider:'plane',
+    go:'leť s lietadlom a urob veľký kotrmelec!', praise:'Výborne! Lietadlo urobilo kotrmelec!', band:[-2.0,0.3],
+    // one big loop: big enough that a finger cannot cut across it, even on a phone
+    strokes:[{ fn:t => { const a = Math.PI + 2*Math.PI*t; return [0.25*(a-Math.PI) - 0.9*Math.sin(a), -0.9 - 0.8*Math.cos(a)]; }, n:600 }] },
+];
+for (const v of VEHICLES) LESSONS.push({ band:[-1.45,0.3], ...v, label:v.Animal, level:3, noGame:true, noSlant:true, title:v.Animal, caption:v.Animal });
+
+/* ---------- level 5: first lines for a 3-year-old (pre-writing), very forgiving ---------- */
+const TODDLER_LINES = [
+  { id:'cesta', Animal:'Cesta', acc:'auto', pron:'ho', color:'#e63946', rider:'car', scene:'auto', band:[-1.2,0.2],
+    go:'choď s autom po ceste.', praise:'Výborne! Auto prišlo domov!', strokes:[{ start:[0,-0.5], cmds:[[2.2,-0.5]] }] },
+  { id:'dazd', Animal:'Dážď', acc:'obrázok', pron:'ho', color:'#3a86ff', rider:'drop', scene:'dazd', band:[-1.9,0.3],
+    go:'pusť kvapky z mráčika dolu.', praise:'Výborne! Prší, kvapky padajú!',
+    strokes:[{ start:[0,-1.6], cmds:[[0,0]] }, { start:[0.7,-1.6], cmds:[[0.7,0]], say:'A ďalšia kvapka!' }, { start:[1.4,-1.6], cmds:[[1.4,0]], say:'A ďalšia kvapka!' }] },
+  { id:'kopce', Animal:'Kopčeky', acc:'vláčik', pron:'ho', color:'#2a9d55', rider:'train', scene:'vlak', band:[-1.3,0.3],
+    go:'choď s vláčikom cez kopčeky.', praise:'Výborne! Vláčik prešiel cez kopčeky!',
+    strokes:[{ fn:t => [t*2.2, -0.1 - 0.8*Math.abs(Math.sin(2*Math.PI*t))], n:300 }] },
+  { id:'more', Animal:'Vlny', acc:'delfína', pron:'ho', color:'#3a86ff', rider:'boat', scene:'vlnka', band:[-1.25,0.25],
+    go:'plávaj s loďkou po vlnách.', praise:'Výborne! Loďka sa hojdá na vlnách!',
+    strokes:[{ fn:t => [t*2.2, -0.5 - 0.35*Math.sin(t*Math.PI*4)], n:300 }] },
+  { id:'kruh', Animal:'Kruh', acc:'loptu', pron:'ju', color:'#ff8c42', scene:'lopta', band:[-1.75,0.25],
+    go:'urob s lienkou veľký kruh.', praise:'Výborne! Máš krásnu loptu!',
+    strokes:[{ fn:t => { const a = -Math.PI/2 - t*2*Math.PI*0.96; return [0.8 + 0.75*Math.cos(a), -0.8 + 0.75*Math.sin(a)]; }, n:300 }] },
+  { id:'blesk', Animal:'Blesk', acc:'búrku', pron:'ju', color:'#ffb300', scene:'blesk', band:[-1.9,0.3],
+    go:'nakresli blesk. Cik, cak!', praise:'Výborne! Blesk! Bum, bum!',
+    strokes:[{ start:[0.2,-1.6], cmds:[[0.9,-1.1],[0.3,-0.6],[1.0,0]] }] },
+];
+for (const v of TODDLER_LINES) LESSONS.push({ ...v, animal:v.Animal.toLowerCase(), label:v.Animal, level:5, easy:true, noGame:true, noSlant:true, title:v.Animal, caption:v.Animal });
+// level 6: the finger lays the rails, the train follows
+const TODDLER_RAILS = [
+  { id:'trat1', Animal:'Rovná trať', band:[-1.2,0.2], strokes:[{ start:[0,-0.5], cmds:[[2.2,-0.5]] }] },
+  { id:'trat2', Animal:'Kopec', band:[-1.5,0.3], strokes:[{ start:[0,0], cmds:[[0.6,0, 0.6,-1.2, 1.1,-1.2], [1.6,-1.2, 1.6,0, 2.2,0]] }] },
+  { id:'trat3', Animal:'Oblúk', band:[-1.7,0.3], strokes:[{ start:[0,-1.4], cmds:[[0,-0.3, 0.5,0, 1.1,0], [1.7,0, 2.2,-0.3, 2.2,-1.4]] }] },
+  { id:'trat4', Animal:'Esíčko', band:[-1.6,0.3], strokes:[{ start:[0,-1.3], cmds:[[1.5,-1.3, 1.5,-0.65, 0.9,-0.65], [0.3,-0.65, 0.3,0, 1.8,0]] }] },
+];
+for (const v of TODDLER_RAILS) LESSONS.push({ ...v, animal:v.Animal.toLowerCase(), label:v.Animal, level:6, easy:true, rails:true, noGame:true, noSlant:true,
+  title:v.Animal, caption:'Vláčik', acc:'vláčik', pron:'ho', color:'#2a9d55', rider:'train', scene:'vlak',
+  go:'ťahaj prstom koľajnice a vláčik pôjde za tebou.', praise:'Výborne! Vláčik ide po nových koľajniciach!' });
+// level 7: letters with a vehicle instead of an animal (the vehicle drives along the letter)
+const LETTER_VEHICLES = [
+  ['a','auto','Auto','auto','ho','autom','#e63946','car','auto'],
+  ['b','bager','Bager','bager','ho','bagrom','#ffb300','car','bager'],
+  ['e','električka','Električka','električku','ju','električkou','#e63946','train','elektricka'],
+  ['h','helikoptéra','Helikoptéra','helikoptéru','ju','helikoptérou','#3a86ff','plane','helikoptera'],
+  ['k','kamión','Kamión','kamión','ho','kamiónom','#2a9d55','car','kamion'],
+  ['l','lietadlo','Lietadlo','lietadlo','ho','lietadlom','#3a86ff','plane','lietadlo'],
+  ['m','motorka','Motorka','motorku','ju','motorkou','#ff8c42','moto','motorka'],
+  ['p','ponorka','Ponorka','ponorku','ju','ponorkou','#ffb300','boat','ponorka'],
+  ['r','raketa','Raketa','raketu','ju','raketou','#e63946','plane','raketa'],
+  ['s','sanitka','Sanitka','sanitku','ju','sanitkou','#3a86ff','car','sanitka'],
+  ['t','traktor','Traktor','traktor','ho','traktorom','#2a9d55','car','traktor'],
+  ['v','vlak','Vlak','vlak','ho','vlakom','#2a9d55','train','vlak'],
+];
+for (const [ch, animal, Animal, acc, pron, ins, color, rider, scene] of LETTER_VEHICLES){
+  const base = LESSONS.find(l => l.id === ch);
+  LESSONS.push({ id:'dp' + ch, label:ch, animal, Animal, acc, pron, ins, color, rider, scene, band:base.band, strokes:base.strokes, level:7, noGame:true, caption:`${ch} ako ${animal}` });
+}
+const byId = Object.fromEntries(LESSONS.map(l => [l.id, l]));
+
+function buildStroke(def, noSlant){
+  let raw = [];
+  if (def.dot) raw = [def.dot.slice()];
+  else if (def.fn){
+    for (let i = 0; i <= def.n; i++) raw.push(def.fn(i/def.n));
+  }
+  else if (def.wave){
+    for (let i = 0; i <= 240; i++){ const t = i/240; raw.push([t*3, -0.55 - 0.36*Math.sin(t*Math.PI*4)]); }
+  } else {
+    let [x0,y0] = def.start; raw.push([x0,y0]);
+    for (const c of def.cmds){
+      if (c.length === 2){
+        for (let i = 1; i <= 20; i++){ const t = i/20; raw.push([x0+(c[0]-x0)*t, y0+(c[1]-y0)*t]); }
+        [x0,y0] = c;
+      } else {
+        const [x1,y1,x2,y2,x3,y3] = c;
+        for (let i = 1; i <= 40; i++){
+          const t = i/40, m = 1-t;
+          raw.push([m*m*m*x0+3*m*m*t*x1+3*m*t*t*x2+t*t*t*x3, m*m*m*y0+3*m*m*t*y1+3*m*t*t*y2+t*t*t*y3]);
+        }
+        x0 = x3; y0 = y3;
+      }
+    }
+  }
+  if (!noSlant) raw = raw.map(([x,y]) => [x - y*SLANT, y]);
+  if (raw.length === 1) return raw;
+  // resample evenly along the arc
+  const step = 0.02, out = [raw[0]]; let acc = 0;
+  for (let i = 1; i < raw.length; i++){
+    let [ax,ay] = raw[i-1]; const [bx,by] = raw[i];
+    let d = Math.hypot(bx-ax, by-ay);
+    while (acc + d >= step && d > 0){
+      const r = (step-acc)/d; ax += (bx-ax)*r; ay += (by-ay)*r;
+      out.push([ax,ay]); d = Math.hypot(bx-ax, by-ay); acc = 0;
+    }
+    acc += d;
+  }
+  out.push(raw[raw.length-1]);
+  return out;
+}
+LESSONS.forEach(l => {
+  l.title = l.title || 'Písmenko ' + l.label;
+  l.caption = l.caption || l.label + ' ako ' + l.animal;
+  l.praise = l.praise || `Výborne! [[${l.label.toUpperCase()}]] ako ${l.animal}!`;   // [[X]] = a letter: the recorded voice says its name
+  l.paths = l.strokes.map(s => buildStroke(s, l.noSlant));
+  l.says = l.strokes.map(s => s.say);
+  l.offs = []; let n = 0;
+  for (const p of l.paths){ l.offs.push(n); n += p.length; }
+  l.total = n;
+  let a=Infinity,b=-Infinity,c=Infinity,d=-Infinity;
+  for (const p of l.paths) for (const [x,y] of p){ a=Math.min(a,x); b=Math.max(b,x); c=Math.min(c,y); d=Math.max(d,y); }
+  l.box = {minX:a,maxX:b,minY:c,maxY:d};
+});
+
+/* ================= small svg helpers ================= */
+const f1 = n => Math.round(n*10)/10;
+function starPts(cx, cy, r){
+  let s = '';
+  for (let i = 0; i < 10; i++){ const a = -Math.PI/2 + i*Math.PI/5, rr = i%2 ? r*0.45 : r; s += f1(cx+Math.cos(a)*rr)+','+f1(cy+Math.sin(a)*rr)+' '; }
+  return s.trim();
+}
+function hexPts(cx, cy, r){
+  let s = '';
+  for (let i = 0; i < 6; i++){ const a = i*Math.PI/3; s += f1(cx+Math.cos(a)*r)+','+f1(cy+Math.sin(a)*r*0.85)+' '; }
+  return s.trim();
+}
+function cloudD(cx, cy, k){
+  return `M${cx-50*k} ${cy+15*k} a${22*k} ${22*k} 0 0 1 ${10*k} ${-36*k} a${28*k} ${28*k} 0 0 1 ${50*k} ${-12*k} a${24*k} ${24*k} 0 0 1 ${40*k} ${48*k} Z`;
+}
+// wool / feather outline: an ellipse made of outward bumps
+function scallopD(cx, cy, rx, ry, n){
+  const P = [];
+  for (let k = 0; k < n; k++){ const a = -Math.PI/2 + k*2*Math.PI/n; P.push([f1(cx+Math.cos(a)*rx), f1(cy+Math.sin(a)*ry)]); }
+  let d = `M${P[0][0]} ${P[0][1]}`;
+  for (let k = 1; k <= n; k++){
+    const [x0,y0] = P[k-1], [x1,y1] = P[k % n], r = f1(Math.hypot(x1-x0, y1-y0)*0.58);
+    d += ` A${r} ${r} 0 0 1 ${x1} ${y1}`;
+  }
+  return d + ' Z';
+}
+// spiky back over the upper half of an ellipse (hedgehog, boar mane, iguana crest)
+function spikesPts(cx, cy, rx, ry, from, to, n, len){
+  const pts = [];
+  for (let i = 0; i <= 2*n; i++){
+    const a = from + (to-from)*i/(2*n), k = i % 2 ? 1 + len : 1;
+    pts.push(f1(cx+Math.cos(a)*rx*k)+','+f1(cy+Math.sin(a)*ry*k));
+  }
+  return pts.join(' ');
+}
+function sun(R, D, x, y){
+  let rays = '';
+  for (let k = 0; k < 8; k++){ const a = k*Math.PI/4; rays += `M${f1(x+Math.cos(a)*42)} ${f1(y+Math.sin(a)*42)}L${f1(x+Math.cos(a)*56)} ${f1(y+Math.sin(a)*56)}`; }
+  return D('path', `d="${rays}" stroke="${INK}" stroke-width="5" stroke-linecap="round" fill="none"`) + R('slnko','circle',`cx="${x}" cy="${y}" r="32"`);
+}
+const SKY = R => R('nebo','rect','x="0" y="0" width="400" height="400"');
+const GRASS = R => R('trava','path','d="M0 322 Q100 300 200 318 T400 312 L400 400 L0 400 Z"');
+const eye = (D, x, y, r = 5) => D('circle', `cx="${x}" cy="${y}" r="${r}" fill="${INK}"`);
+const line = (D, d, w = 4) => D('path', `d="${d}" fill="none" stroke="${INK}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"`);
+
+/* ================= scenes (coloring pages, 400×400) ================= */
+// R = colorable region, D = decoration, L(cx, cy, scale) = the traced letter placed in the picture
+const SCENES = {
+  vlnka: (R, D, L) => SKY(R) + sun(R, D, 70, 70) + R('mrak','path',`d="${cloudD(300,80,1)}"`)
+    + R('chvost','path','d="M130 214 L94 226 L110 236 L100 254 L150 230 Z"')
+    + R('plutva1','path','d="M196 140 L220 100 L242 138 Z"')
+    + R('telo','path','d="M124 220 C150 130 262 108 312 164 L348 177 L344 190 L305 187 C258 172 190 180 150 230 Z"')
+    + R('plutva2','path','d="M236 170 L256 202 L270 172 Z"')
+    + eye(D, 298, 160, 4.5) + line(D, 'M318 182 Q330 186 342 185', 3)
+    + R('more','path','d="M0 262 Q50 244 100 262 T200 262 T300 262 T400 262 L400 400 L0 400 Z"')
+    + R('kvapka1','circle','cx="98" cy="268" r="9"') + R('kvapka2','circle','cx="80" cy="244" r="7"') + R('kvapka3','circle','cx="118" cy="246" r="6"')
+    + L(200, 330, 55),
+
+  a: (R, D, L) => SKY(R) + sun(R, D, 70, 66) + R('mrak','path',`d="${cloudD(205,70,0.9)}"`) + GRASS(R)
+    + R('noha1','rect','x="118" y="248" width="15" height="96" rx="6"') + R('noha2','rect','x="148" y="252" width="15" height="92" rx="6"')
+    + R('noha3','rect','x="244" y="252" width="15" height="92" rx="6"') + R('noha4','rect','x="272" y="248" width="15" height="96" rx="6"')
+    + R('chvost','path','d="M92 206 L70 236 L86 238 Z"')
+    + R('krk','path','d="M258 216 C270 172 282 140 288 116 L332 126 C322 152 316 188 314 226 Z"')
+    + R('telo','ellipse','cx="200" cy="226" rx="112" ry="52"')
+    + R('brucho','path','d="M122 244 Q200 290 290 244 Q290 270 200 278 Q122 272 122 244 Z"')
+    + R('roh1','path','d="M300 100 C290 60 298 30 316 16 C306 44 304 70 312 98 Z"')
+    + R('roh2','path','d="M314 100 C312 62 324 34 342 24 C330 50 326 74 326 102 Z"')
+    + R('ucho','path','d="M300 110 L268 98 L292 124 Z"')
+    + R('hlava','path','d="M296 104 Q322 92 350 112 L362 128 Q362 142 348 142 L310 138 Q292 128 296 104 Z"')
+    + eye(D, 328, 113) + eye(D, 356, 132, 3)
+    + L(198, 222, 42),
+
+  b: (R, D, L) => SKY(R) + sun(R, D, 335, 65) + R('mrak','path',`d="${cloudD(100,80,1)}"`) + GRASS(R)
+    + R('noha1','rect','x="112" y="270" width="22" height="70" rx="9"') + R('noha2','rect','x="152" y="276" width="22" height="66" rx="9"')
+    + R('noha3','rect','x="226" y="276" width="22" height="66" rx="9"') + R('noha4','rect','x="262" y="270" width="22" height="70" rx="9"')
+    + R('vlna','path',`d="${scallopD(190,232,118,74,18)}"`)
+    + R('ucho','ellipse','cx="362" cy="182" rx="22" ry="10"')
+    + R('hlava','ellipse','cx="320" cy="206" rx="36" ry="46"')
+    + R('roh','circle','cx="300" cy="176" r="20"') + line(D, 'M300 176 m-8 0 a8 8 0 1 1 8 8', 3)
+    + eye(D, 332, 200) + line(D, 'M316 236 q9 7 18 0', 3)
+    + L(186, 236, 32),
+
+  c: (R, D, L) => SKY(R) + sun(R, D, 66, 64)
+    + R('list','path','d="M30 370 C60 200 250 120 380 50 C340 230 200 340 30 370 Z"')
+    + R('kridlo1','path','d="M192 150 C110 160 70 300 140 345 C170 305 186 225 192 150 Z"')
+    + R('kridlo2','path','d="M208 150 C290 160 330 300 260 345 C230 305 214 225 208 150 Z"')
+    + line(D, 'M170 205 L122 186 M168 245 L114 256 M174 285 L134 314 M230 205 L278 186 M232 245 L286 256 M226 285 L266 314', 5)
+    + R('telo','ellipse','cx="200" cy="238" rx="44" ry="100"')
+    + line(D, 'M186 104 L168 70 M214 104 L232 70', 4)
+    + R('hlava','ellipse','cx="200" cy="130" rx="52" ry="30"')
+    + R('oko1','circle','cx="156" cy="122" r="17"') + R('oko2','circle','cx="244" cy="122" r="17"')
+    + eye(D, 152, 122, 6) + eye(D, 248, 122, 6)
+    + L(200, 246, 36),
+
+  d: (R, D, L) => SKY(R) + sun(R, D, 70, 65) + R('mrak','path',`d="${cloudD(310,80,1)}"`) + GRASS(R)
+    + R('noha1','rect','x="95" y="270" width="26" height="68" rx="8"') + R('noha2','rect','x="140" y="276" width="26" height="64" rx="8"')
+    + R('noha3','rect','x="226" y="276" width="26" height="64" rx="8"') + R('noha4','rect','x="268" y="270" width="26" height="68" rx="8"')
+    + line(D, 'M66 226 q-26 -6 -18 -28 q10 -10 16 4', 4)
+    + R('hriva','polygon',`points="${spikesPts(185,248,122,78,Math.PI*1.15,Math.PI*1.85,8,0.22)}"`)
+    + R('telo','ellipse','cx="185" cy="242" rx="122" ry="72"')
+    + R('ucho','path','d="M286 188 L296 148 L318 190 Z"')
+    + R('hlava','path','d="M276 192 Q336 180 360 226 L374 248 Q376 274 350 276 L300 282 Q268 270 268 234 Z"')
+    + R('rypak','ellipse','cx="370" cy="260" rx="13" ry="18"') + eye(D, 366, 254, 3) + eye(D, 372, 266, 3)
+    + R('kel','path','d="M346 276 Q354 296 340 302 Q342 288 334 278 Z"')
+    + eye(D, 322, 220)
+    + L(176, 246, 32),
+
+  e: (R, D, L) => SKY(R) + sun(R, D, 70, 65) + R('mrak','path',`d="${cloudD(350,150,0.7)}"`) + GRASS(R)
+    + R('noha1','path','d="M148 292 L162 292 L164 352 L150 352 Z"') + R('noha2','path','d="M196 292 L210 292 L212 352 L198 352 Z"')
+    + line(D, 'M136 354 L172 354 M184 354 L220 354', 6)
+    + R('krk','path','d="M232 206 C246 160 252 120 258 82 L284 82 C280 122 274 170 270 216 Z"')
+    + R('telo','path',`d="${scallopD(165,236,112,70,18)}"`)
+    + R('hlava','ellipse','cx="274" cy="72" rx="28" ry="22"')
+    + R('zobak','path','d="M298 64 L334 76 L298 86 Z"')
+    + eye(D, 278, 66)
+    + L(160, 238, 40),
+
+  f: (R, D, L) => SKY(R) + sun(R, D, 330, 62) + R('mrak','path',`d="${cloudD(95,78,1)}"`) + GRASS(R)
+    + R('chvost','path','d="M70 250 C30 245 15 205 40 188 C48 214 62 232 84 238 Z"')
+    + R('noha1','ellipse','cx="112" cy="290" rx="20" ry="15"') + R('noha2','ellipse','cx="152" cy="294" rx="20" ry="15"')
+    + R('noha3','ellipse','cx="246" cy="294" rx="20" ry="15"') + R('noha4','ellipse','cx="284" cy="290" rx="20" ry="15"')
+    + R('telo','ellipse','cx="188" cy="252" rx="132" ry="46"')
+    + R('ucho1','circle','cx="306" cy="184" r="14"') + R('ucho2','circle','cx="352" cy="188" r="14"')
+    + R('hlava','ellipse','cx="330" cy="220" rx="44" ry="37"')
+    + R('maska','ellipse','cx="332" cy="215" rx="33" ry="13"')
+    + D('circle',`cx="318" cy="214" r="5.5" fill="${INK}" stroke="#fff" stroke-width="2"`)
+    + D('circle',`cx="346" cy="214" r="5.5" fill="${INK}" stroke="#fff" stroke-width="2"`)
+    + eye(D, 368, 232, 6)
+    + L(172, 250, 25),
+
+  g: (R, D, L) => SKY(R) + sun(R, D, 70, 65) + R('mrak','path',`d="${cloudD(175,70,0.8)}"`)
+    + R('voda','path','d="M0 332 Q100 316 200 332 T400 332 L400 400 L0 400 Z"')
+    + R('noha1','path','d="M164 300 L174 300 L176 338 L166 338 Z"') + R('chodidlo1','path','d="M171 334 L150 352 L194 352 Z"')
+    + R('noha2','path','d="M214 300 L224 300 L226 338 L216 338 Z"') + R('chodidlo2','path','d="M221 334 L200 352 L244 352 Z"')
+    + R('krk','path','d="M250 234 C246 176 252 132 260 100 L290 100 C286 140 284 190 294 240 Z"')
+    + R('telo','ellipse','cx="190" cy="260" rx="112" ry="62"')
+    + R('kridlo','path','d="M108 246 C160 212 240 225 252 262 C212 286 150 290 108 246 Z"')
+    + R('hlava','ellipse','cx="278" cy="92" rx="30" ry="24"')
+    + R('zobak','path','d="M302 84 L346 94 L302 106 Z"')
+    + eye(D, 282, 86)
+    + L(184, 256, 26),
+
+  h: (R, D, L) => {
+    const P = [];
+    for (let k = 0; k <= 16; k++){ const t = k/16; P.push([f1(70 + t*262), f1(212 - 46*Math.sin(t*Math.PI*2.5))]); }
+    let segs = '';
+    for (let k = 0; k < 16; k++) segs += R('had'+k, 'circle', `cx="${P[k][0]}" cy="${P[k][1]}" r="${f1(14 + k*0.8)}"`);
+    const [hx, hy] = P[16];
+    return SKY(R) + sun(R, D, 70, 66) + R('mrak','path',`d="${cloudD(300,76,1)}"`) + GRASS(R)
+      + R('kamen','ellipse','cx="80" cy="338" rx="62" ry="46"')
+      + segs
+      + R('jazyk','path',`d="M${hx+24} ${hy+4} L${hx+46} ${hy+1} L${hx+39} ${hy+8} L${hx+47} ${hy+15} L${hx+24} ${hy+11} Z"`)
+      + R('hlava','circle',`cx="${hx}" cy="${hy}" r="31"`)
+      + D('circle',`cx="${hx+4}" cy="${hy-11}" r="9" fill="#fff" stroke="${INK}" stroke-width="3"`)
+      + eye(D, hx+7, hy-11, 4.5)
+      + line(D, `M${hx+6} ${hy+9} q8 7 16 0`, 3)
+      + L(82, 338, 25);
+  },
+
+  i: (R, D, L) => SKY(R) + sun(R, D, 330, 62)
+    + R('konar','path','d="M0 302 L400 290 L400 318 L0 332 Z"')
+    + R('chvost','path','d="M92 262 C40 266 18 300 36 344 C56 314 74 292 104 282 Z"')
+    + R('noha1','ellipse','cx="122" cy="294" rx="18" ry="14"') + R('noha2','ellipse','cx="162" cy="298" rx="18" ry="14"')
+    + R('noha3','ellipse','cx="236" cy="298" rx="18" ry="14"') + R('noha4','ellipse','cx="272" cy="294" rx="18" ry="14"')
+    + R('hreben','polygon',`points="${spikesPts(195,256,110,44,Math.PI*1.12,Math.PI*1.88,9,0.45)}"`)
+    + R('telo','ellipse','cx="195" cy="256" rx="110" ry="44"')
+    + R('lalok','path','d="M300 262 Q314 304 340 262 Z"')
+    + R('hlava','ellipse','cx="326" cy="238" rx="46" ry="30"')
+    + eye(D, 338, 228, 6) + line(D, 'M342 252 L368 246', 3)
+    + L(192, 258, 34),
+
+  j: (R, D, L) => SKY(R) + sun(R, D, 70, 62) + R('mrak','path',`d="${cloudD(310,74,1)}"`) + GRASS(R)
+    + R('noha1','ellipse','cx="150" cy="320" rx="20" ry="12"') + R('noha2','ellipse','cx="262" cy="320" rx="20" ry="12"')
+    + R('pichliace','polygon',`points="${spikesPts(200,258,128,98,Math.PI,Math.PI*2,11,0.2)}"`)
+    + R('brucho','path','d="M72 258 A128 64 0 0 0 328 258 Z"')
+    + R('tvar','ellipse','cx="322" cy="264" rx="48" ry="36"')
+    + R('nos','circle','cx="370" cy="264" r="10"')
+    + eye(D, 330, 252)
+    + R('jablko','circle','cx="200" cy="150" r="24"') + line(D, 'M200 126 L204 112', 4)
+    + R('listok','path','d="M204 118 Q222 104 234 116 Q216 130 204 118 Z"')
+    + L(192, 246, 27),
+
+  k: (R, D, L) => SKY(R) + sun(R, D, 330, 62) + R('mrak','path',`d="${cloudD(95,78,1)}"`) + GRASS(R)
+    + R('hlava','ellipse','cx="340" cy="254" rx="34" ry="26"') + eye(D, 352, 246) + line(D, 'M346 264 q10 6 18 -2', 3)
+    + R('noha1','ellipse','cx="120" cy="292" rx="24" ry="16"') + R('noha2','ellipse','cx="280" cy="292" rx="24" ry="16"')
+    + R('chvost','path','d="M82 272 L52 282 L84 290 Z"')
+    + R('pancier','path','d="M86 272 C86 148 314 148 314 272 Z"')
+    + R('plat1','polygon',`points="${hexPts(128,246,22)}"`) + R('plat2','polygon',`points="${hexPts(272,246,22)}"`)
+    + R('okraj','path','d="M78 268 L322 268 Q328 288 312 290 L88 290 Q72 288 78 268 Z"')
+    + L(200, 226, 26),
+  'č': (R, D, L) => SKY(R) + sun(R, D, 330, 62) + GRASS(R)
+    + line(D, 'M86 360 L90 270', 6)
+    + [0,1,2,3,4].map(k => { const a = -Math.PI/2 + k*2*Math.PI/5; return R('lupen'+k,'circle',`cx="${f1(90+Math.cos(a)*24)}" cy="${f1(262+Math.sin(a)*24)}" r="17"`); }).join('')
+    + R('stred','circle','cx="90" cy="262" r="15"')
+    + R('kridlo1','ellipse','cx="178" cy="150" rx="40" ry="26"') + R('kridlo2','ellipse','cx="244" cy="140" rx="44" ry="28"')
+    + line(D, 'M180 270 L170 300 M210 276 L206 306 M240 272 L246 302', 5)
+    + R('zihadlo','path','d="M128 216 L102 212 L126 234 Z"')
+    + R('telo','ellipse','cx="210" cy="224" rx="86" ry="60"')
+    + line(D, 'M172 168 Q160 224 172 282 M252 168 Q264 224 252 282', 8)
+    + line(D, 'M318 192 L330 158 M334 198 L352 168', 4)
+    + R('hlava','circle','cx="306" cy="218" r="36"')
+    + eye(D, 318, 208, 6) + line(D, 'M310 232 q8 6 16 0', 3)
+    + L(212, 222, 32),
+
+  ch: (R, D, L) => {
+    let arms = '';
+    for (let k = 0; k < 6; k++){ const x = 108 + k*34;
+      arms += R('chapadlo'+k,'path',`d="M${x} 246 C${x-6} 296 ${x+14} 318 ${x} 360 L${x+16} 362 C${x+28} 318 ${x+8} 296 ${x+24} 246 Z"`); }
+    return R('voda','rect','x="0" y="0" width="400" height="400"')
+      + R('bublina1','circle','cx="70" cy="80" r="16"') + R('bublina2','circle','cx="96" cy="130" r="10"')
+      + R('bublina3','circle','cx="330" cy="70" r="20"') + R('bublina4','circle','cx="350" cy="130" r="11"')
+      + R('piesok','path','d="M0 350 Q200 330 400 350 L400 400 L0 400 Z"')
+      + arms
+      + R('hlava','path','d="M104 258 C92 96 308 96 296 258 Z"')
+      + D('circle',`cx="166" cy="232" r="14" fill="#fff" stroke="${INK}" stroke-width="3"`) + eye(D, 168, 234, 6)
+      + D('circle',`cx="234" cy="232" r="14" fill="#fff" stroke="${INK}" stroke-width="3"`) + eye(D, 232, 234, 6)
+      + line(D, 'M186 250 q14 10 28 0', 3)
+      + L(200, 184, 28);
+  },
+
+  l: (R, D, L) => SKY(R) + sun(R, D, 70, 62) + GRASS(R)
+    + R('noha1','rect','x="108" y="258" width="24" height="84" rx="9"') + R('noha2','rect','x="146" y="264" width="24" height="78" rx="9"')
+    + R('noha3','rect','x="236" y="264" width="24" height="78" rx="9"') + R('noha4','rect','x="272" y="258" width="24" height="84" rx="9"')
+    + line(D, 'M92 218 C60 228 48 262 40 280', 5) + R('strapec','circle','cx="38" cy="286" r="13"')
+    + R('telo','ellipse','cx="195" cy="228" rx="112" ry="56"')
+    + R('hriva','path',`d="${scallopD(310,176,66,66,14)}"`)
+    + R('ucho1','circle','cx="280" cy="140" r="12"') + R('ucho2','circle','cx="340" cy="140" r="12"')
+    + R('hlava','circle','cx="310" cy="180" r="42"')
+    + eye(D, 296, 170) + eye(D, 324, 170)
+    + R('nos','path','d="M301 188 L319 188 L310 199 Z"') + line(D, 'M310 199 q-7 10 -15 4 M310 199 q7 10 15 4', 3)
+    + L(182, 230, 30),
+
+  m: (R, D, L) => SKY(R) + sun(R, D, 330, 62) + R('mrak','path',`d="${cloudD(95,78,1)}"`) + GRASS(R)
+    + R('chvost','path','d="M120 300 C50 300 40 200 72 168 C86 190 70 260 128 276 Z"')
+    + R('telo','ellipse','cx="200" cy="268" rx="86" ry="74"')
+    + R('labka1','ellipse','cx="165" cy="338" rx="26" ry="14"') + R('labka2','ellipse','cx="235" cy="338" rx="26" ry="14"')
+    + R('ucho1','path','d="M150 124 L158 70 L196 108 Z"') + R('ucho2','path','d="M250 124 L242 70 L204 108 Z"')
+    + R('hlava','ellipse','cx="200" cy="152" rx="64" ry="54"')
+    + eye(D, 178, 146, 6) + eye(D, 222, 146, 6)
+    + R('nos','path','d="M192 166 L208 166 L200 176 Z"') + line(D, 'M200 176 q-7 9 -14 3 M200 176 q7 9 14 3', 3)
+    + line(D, 'M150 168 L108 160 M150 178 L108 184 M250 168 L292 160 M250 178 L292 184', 3)
+    + L(196, 272, 30),
+
+  n: (R, D, L) => SKY(R) + sun(R, D, 70, 62) + GRASS(R)
+    + R('noha1','rect','x="100" y="258" width="34" height="84" rx="10"') + R('noha2','rect','x="146" y="264" width="34" height="78" rx="10"')
+    + R('noha3','rect','x="232" y="264" width="34" height="78" rx="10"') + R('noha4','rect','x="276" y="258" width="34" height="84" rx="10"')
+    + line(D, 'M76 214 q-18 10 -14 30', 5)
+    + R('telo','ellipse','cx="192" cy="226" rx="120" ry="68"')
+    + R('ucho','path','d="M282 166 L290 130 L308 168 Z"')
+    + R('hlava','path','d="M268 186 Q320 160 360 204 L374 244 Q372 266 346 266 L300 266 Q266 254 266 218 Z"')
+    + R('roh1','path','d="M346 204 L374 146 L376 214 Z"') + R('roh2','path','d="M322 190 L334 164 L342 196 Z"')
+    + eye(D, 316, 214) + eye(D, 362, 254, 3)
+    + L(182, 228, 36),
+
+  o: (R, D, L) => monkey(R, D, L, false),
+
+  p: (R, D, L) => SKY(R) + sun(R, D, 70, 62) + R('mrak','path',`d="${cloudD(300,76,1)}"`) + GRASS(R)
+    + R('noha1','rect','x="112" y="258" width="24" height="84" rx="9"') + R('noha2','rect','x="148" y="264" width="24" height="78" rx="9"')
+    + R('noha3','rect','x="232" y="264" width="24" height="78" rx="9"') + R('noha4','rect','x="268" y="258" width="24" height="84" rx="9"')
+    + R('chvost','path','d="M96 214 C70 198 62 166 74 156 C84 178 94 190 110 204 Z"')
+    + R('telo','ellipse','cx="190" cy="232" rx="106" ry="52"')
+    + R('hlava','ellipse','cx="304" cy="178" rx="46" ry="42"')
+    + R('papula','ellipse','cx="340" cy="196" rx="28" ry="19"')
+    + R('nos','circle','cx="364" cy="188" r="9"')
+    + R('ucho','path','d="M276 148 C250 148 244 208 262 220 C282 210 288 170 290 148 Z"')
+    + eye(D, 312, 166) + line(D, 'M334 210 q10 6 20 -2', 3)
+    + L(186, 238, 24),
+
+  r: (R, D, L) => SKY(R) + sun(R, D, 330, 62)
+    + R('voda','path','d="M0 120 Q100 108 200 120 T400 120 L400 400 L0 400 Z"')
+    + R('piesok','path','d="M0 318 Q200 296 400 318 L400 400 L0 400 Z"')
+    + line(D, 'M120 270 L84 300 M128 286 L98 320 M142 296 L122 332 M280 270 L316 300 M272 286 L302 320 M258 296 L278 332', 6)
+    + line(D, 'M136 226 L104 178 M264 226 L296 178', 9)
+    + R('klepeto1','path','d="M70 150 C70 112 128 104 132 146 L106 150 L128 168 C116 196 70 190 70 150 Z"')
+    + R('klepeto2','path','d="M330 150 C330 112 272 104 268 146 L294 150 L272 168 C284 196 330 190 330 150 Z"')
+    + line(D, 'M182 200 L174 160 M218 200 L226 160', 5)
+    + R('oko1','circle','cx="172" cy="152" r="13"') + R('oko2','circle','cx="228" cy="152" r="13"')
+    + eye(D, 174, 152, 5) + eye(D, 226, 152, 5)
+    + R('telo','ellipse','cx="200" cy="254" rx="102" ry="62"')
+    + line(D, 'M180 292 q20 12 40 0', 3)
+    + L(200, 248, 40),
+
+  s: (R, D, L) => SKY(R)
+    + R('hviezda1','polygon',`points="${starPts(340,66,28)}"`) + R('hviezda2','polygon',`points="${starPts(52,92,18)}"`)
+    + R('konar','path','d="M14 346 Q200 324 386 340 L386 362 Q200 350 14 370 Z"')
+    + R('kridlo1','path','d="M104 168 C58 192 58 286 112 304 C124 262 128 212 104 168 Z"')
+    + R('kridlo2','path','d="M296 168 C342 192 342 286 288 304 C276 262 272 212 296 168 Z"')
+    + R('ucho1','path','d="M128 130 L110 60 L172 104 Z"') + R('ucho2','path','d="M272 130 L290 60 L228 104 Z"')
+    + R('telo','ellipse','cx="200" cy="220" rx="108" ry="125"')
+    + R('brusko','ellipse','cx="200" cy="264" rx="70" ry="72"')
+    + R('oko1','circle','cx="161" cy="166" r="35"') + R('oko2','circle','cx="239" cy="166" r="35"')
+    + eye(D, 167, 170, 13) + eye(D, 233, 170, 13)
+    + D('circle','cx="171" cy="165" r="4" fill="#fff"') + D('circle','cx="237" cy="165" r="4" fill="#fff"')
+    + R('zobak','path','d="M186 196 L214 196 L200 221 Z"')
+    + R('nozka1','ellipse','cx="172" cy="343" rx="19" ry="10"') + R('nozka2','ellipse','cx="228" cy="343" rx="19" ry="10"')
+    + L(200, 268, 52),
+
+  'š': (R, D, L) => monkey(R, D, L, true),
+
+  t: (R, D, L) => SKY(R) + sun(R, D, 70, 62) + GRASS(R)
+    + R('noha1','rect','x="108" y="258" width="26" height="84" rx="9"') + R('noha2','rect','x="146" y="264" width="26" height="78" rx="9"')
+    + R('noha3','rect','x="236" y="264" width="26" height="78" rx="9"') + R('noha4','rect','x="272" y="258" width="26" height="84" rx="9"')
+    + R('chvost','path','d="M94 214 C58 196 52 250 28 238 C36 270 72 252 102 228 Z"')
+    + R('telo','ellipse','cx="195" cy="228" rx="112" ry="56"')
+    + line(D, 'M120 196 L134 214 M150 178 L158 200 M240 176 L236 198 M270 188 L262 206 M112 248 L128 252 M268 254 L290 246', 7)
+    + R('ucho1','circle','cx="284" cy="138" r="15"') + R('ucho2','circle','cx="336" cy="138" r="15"')
+    + R('hlava','circle','cx="310" cy="178" r="45"')
+    + line(D, 'M310 134 L310 150 M294 137 L298 150 M326 137 L322 150 M266 178 L280 180 M354 178 L340 180', 5)
+    + eye(D, 296, 168) + eye(D, 324, 168)
+    + R('papula','ellipse','cx="310" cy="198" rx="22" ry="15"')
+    + R('nos','path','d="M302 188 L318 188 L310 197 Z"')
+    + L(192, 232, 32),
+
+  u: (R, D, L) => {
+    const P = [];
+    for (let k = 0; k <= 16; k++){ const t = k/16; P.push([f1(52 + t*250), f1(250 - 40*Math.sin(t*Math.PI*2))]); }
+    let segs = '';
+    for (let k = 0; k < 16; k++) segs += R('had'+k, 'circle', `cx="${P[k][0]}" cy="${P[k][1]}" r="${f1(12 + k*0.7)}"`);
+    const [hx, hy] = P[16];
+    return SKY(R) + sun(R, D, 330, 62) + R('mrak','path',`d="${cloudD(95,76,1)}"`) + GRASS(R)
+      + R('kamen','ellipse','cx="318" cy="338" rx="64" ry="44"')
+      + segs
+      + R('skvrna1','circle',`cx="${hx-22}" cy="${hy-16}" r="13"`) + R('skvrna2','circle',`cx="${hx-22}" cy="${hy+16}" r="13"`)
+      + R('hlava','ellipse',`cx="${hx}" cy="${hy}" rx="30" ry="24"`)
+      + D('circle',`cx="${hx+8}" cy="${hy-8}" r="7" fill="#fff" stroke="${INK}" stroke-width="3"`) + eye(D, hx+10, hy-8, 3.5)
+      + line(D, `M${hx+28} ${hy+4} l16 0 l6 -5 m-6 5 l6 5`, 3)
+      + L(316, 338, 30);
+  },
+
+  v: (R, D, L) => SKY(R) + sun(R, D, 330, 62) + GRASS(R)
+    + R('chvost','path',`d="${scallopD(112,196,60,104,14)}"`)
+    + R('noha','ellipse','cx="226" cy="334" rx="40" ry="15"')
+    + R('telo','ellipse','cx="212" cy="264" rx="64" ry="72"')
+    + R('brucho','ellipse','cx="226" cy="282" rx="36" ry="48"')
+    + R('ucho','path','d="M226 110 L232 70 L258 112 Z"')
+    + R('hlava','circle','cx="244" cy="152" r="46"')
+    + eye(D, 260, 142) + eye(D, 288, 156, 4)
+    + R('oriesok','ellipse','cx="282" cy="222" rx="18" ry="22"')
+    + R('labka','ellipse','cx="262" cy="236" rx="15" ry="10"')
+    + L(214, 276, 34),
+
+  y: (R, D, L) => SKY(R) + sun(R, D, 70, 62) + GRASS(R)
+    + R('syr','path','d="M318 330 L392 298 L392 352 L318 352 Z"')
+    + D('circle',`cx="350" cy="334" r="6" fill="none" stroke="${INK}" stroke-width="3"`) + D('circle',`cx="374" cy="318" r="5" fill="none" stroke="${INK}" stroke-width="3"`)
+    + line(D, 'M100 286 C60 300 40 260 20 270', 5)
+    + R('labka1','ellipse','cx="150" cy="324" rx="22" ry="12"') + R('labka2','ellipse','cx="236" cy="324" rx="22" ry="12"')
+    + R('telo','ellipse','cx="190" cy="270" rx="96" ry="56"')
+    + R('ucho1','circle','cx="268" cy="196" r="28"') + R('ucho2','circle','cx="310" cy="204" r="22"')
+    + R('hlava','ellipse','cx="300" cy="246" rx="48" ry="38"')
+    + R('nos','circle','cx="348" cy="250" r="8"')
+    + eye(D, 312, 236) + line(D, 'M330 258 L370 262 M330 264 L366 276', 2.5)
+    + L(180, 272, 24),
+
+  z: (R, D, L) => SKY(R) + sun(R, D, 70, 62) + R('mrak','path',`d="${cloudD(205,72,0.9)}"`) + GRASS(R)
+    + R('noha1','rect','x="112" y="252" width="20" height="92" rx="7"') + R('noha2','rect','x="146" y="258" width="20" height="86" rx="7"')
+    + R('noha3','rect','x="240" y="258" width="20" height="86" rx="7"') + R('noha4','rect','x="272" y="252" width="20" height="92" rx="7"')
+    + line(D, 'M112 280 L132 276 M112 304 L132 300 M146 288 L166 284 M146 312 L166 308 M240 288 L260 284 M240 312 L260 308 M272 280 L292 276 M272 304 L292 300', 6)
+    + line(D, 'M90 210 L66 250', 5) + R('strapec','path','d="M66 246 L56 270 L76 266 Z"')
+    + R('krk','path','d="M256 212 C268 170 278 140 284 116 L324 126 C316 152 310 186 308 222 Z"')
+    + R('hriva','path','d="M280 116 L266 106 L274 130 L260 126 L270 148 L256 146 L264 168 L252 168 L262 190 Z"')
+    + R('telo','ellipse','cx="196" cy="226" rx="110" ry="54"')
+    + line(D, 'M110 210 Q124 226 112 246 M134 186 Q148 210 132 232 M262 186 Q250 210 266 232 M290 204 Q278 222 290 244', 6)
+    + line(D, 'M272 150 L300 160 M268 176 L304 186', 6)
+    + R('ucho','path','d="M298 112 L290 82 L312 108 Z"')
+    + R('hlava','path','d="M292 106 Q320 94 350 114 L362 132 Q362 146 348 146 L310 142 Q290 132 292 106 Z"')
+    + eye(D, 326, 116) + eye(D, 356, 136, 3)
+    + L(196, 230, 28),
+
+  'ž': (R, D, L) => SKY(R) + sun(R, D, 70, 62) + R('mrak','path',`d="${cloudD(195,70,0.8)}"`) + GRASS(R)
+    + R('noha1','rect','x="138" y="250" width="16" height="96" rx="6"') + R('noha2','rect','x="166" y="254" width="16" height="92" rx="6"')
+    + R('noha3','rect','x="246" y="254" width="16" height="92" rx="6"') + R('noha4','rect','x="272" y="250" width="16" height="96" rx="6"')
+    + line(D, 'M118 216 L98 252', 4)
+    + R('krk','path','d="M250 214 C264 150 276 100 282 68 L312 74 C306 110 298 160 294 224 Z"')
+    + R('telo','ellipse','cx="208" cy="228" rx="94" ry="48"')
+    + R('skvrna1','circle','cx="140" cy="216" r="13"') + R('skvrna2','circle','cx="272" cy="244" r="12"') + R('skvrna3','circle','cx="164" cy="254" r="10"')
+    + R('skvrna4','circle','cx="286" cy="150" r="9"') + R('skvrna5','circle','cx="294" cy="108" r="8"') + R('skvrna6','circle','cx="280" cy="196" r="9"')
+    + line(D, 'M298 50 L294 26 M312 50 L316 26', 4)
+    + R('rozok1','circle','cx="293" cy="24" r="7"') + R('rozok2','circle','cx="317" cy="24" r="7"')
+    + R('hlava','path','d="M284 56 Q312 42 342 58 L354 74 Q354 88 340 88 L300 84 Q282 76 284 56 Z"')
+    + eye(D, 314, 62) + eye(D, 348, 78, 3)
+    + L(208, 230, 26),
+
+  /* ----- pictures for the first lines (3-year-olds) ----- */
+  dazd: (R, D, L) => SKY(R) + GRASS(R)
+    + R('kaluz','ellipse','cx="190" cy="352" rx="110" ry="20"')
+    + R('mrak','path',`d="${cloudD(205,120,2.1)}"`)
+    + R('dazdnik','path','d="M262 262 Q312 196 362 262 Q345 252 328 262 Q312 250 296 262 Q279 252 262 262 Z"') + line(D, 'M312 262 L312 318 Q312 330 300 326', 5)
+    + line(D, 'M66 314 L66 342', 5) + R('kvet','circle','cx="66" cy="300" r="14"') + R('stred','circle','cx="66" cy="300" r="5"')
+    + L(160, 215, 50),
+
+  lopta: (R, D, L) => SKY(R) + sun(R, D, 335, 62) + GRASS(R)
+    + R('lopta','circle','cx="190" cy="215" r="92"')
+    + R('pruh1','path','d="M106 172 Q190 140 274 172 L284 198 Q190 166 98 198 Z"')
+    + R('pruh2','path','d="M98 232 Q190 264 284 232 L274 258 Q190 290 106 258 Z"')
+    + L(190, 215, 122),
+
+  blesk: (R, D, L) => SKY(R) + R('mrak1','path',`d="${cloudD(120,95,1.3)}"`) + R('mrak2','path',`d="${cloudD(275,80,1.4)}"`) + GRASS(R)
+    + R('dom','rect','x="250" y="250" width="100" height="80"') + R('strecha','path','d="M238 252 L300 204 L362 252 Z"')
+    + R('dvere','rect','x="286" y="292" width="28" height="38"') + R('okno','rect','x="260" y="264" width="20" height="18"')
+    + L(150, 215, 62),
+
+  /* ----- vehicles for the letters ----- */
+  bager: (R, D, L) => SKY(R) + sun(R, D, 330, 62) + R('mrak','path',`d="${cloudD(95,78,1)}"`) + GRASS(R)
+    + R('kopa','path','d="M250 332 Q305 248 370 332 Z"')
+    + R('pas','rect','x="58" y="286" width="194" height="48" rx="24"') + [92, 132, 172, 212].map((x, i) => R('kolo' + i,'circle',`cx="${x}" cy="310" r="14"`)).join('')
+    + R('telo','rect','x="78" y="216" width="152" height="70" rx="8"')
+    + R('kabina','rect','x="90" y="160" width="72" height="60" rx="6"') + R('okno','rect','x="102" y="172" width="48" height="36" rx="4"')
+    + R('rameno1','path','d="M222 232 L298 160 L313 174 L238 248 Z"') + R('rameno2','path','d="M298 160 L342 230 L326 238 L286 172 Z"')
+    + R('lopata','path','d="M318 226 L362 236 L354 274 L314 262 Z"')
+    + L(196, 108, 36),
+
+  elektricka: (R, D, L) => SKY(R) + sun(R, D, 70, 62) + GRASS(R)
+    + line(D, 'M0 112 L400 112', 3) + line(D, 'M200 112 L176 150 M200 112 L224 150', 5)
+    + R('telo','rect','x="40" y="150" width="320" height="140" rx="24"')
+    + R('pruh','rect','x="40" y="238" width="320" height="22"')
+    + [60, 130, 200, 270].map((x, i) => R('okno' + i,'rect',`x="${x}" y="170" width="55" height="50" rx="6"`)).join('')
+    + R('kolajnica','rect','x="0" y="312" width="400" height="10"')
+    + R('koleso1','circle','cx="100" cy="296" r="18"') + R('koleso2','circle','cx="300" cy="296" r="18"')
+    + L(300, 66, 44),
+
+  helikoptera: (R, D, L) => SKY(R) + sun(R, D, 70, 62) + R('mrak','path',`d="${cloudD(320,320,0.9)}"`)
+    + R('chvost','path','d="M230 200 L360 185 L360 205 L230 226 Z"') + R('plutva','path','d="M344 156 L366 156 L366 214 L344 204 Z"')
+    + R('telo','ellipse','cx="180" cy="210" rx="82" ry="56"')
+    + R('okno','path','d="M108 202 Q114 164 166 160 L166 205 Z"')
+    + line(D, 'M180 154 L180 134', 6) + R('vrtula','rect','x="58" y="124" width="244" height="12" rx="6"')
+    + line(D, 'M140 262 L130 290 M220 262 L230 290', 6) + R('lizina','rect','x="98" y="288" width="164" height="10" rx="5"')
+    + L(255, 70, 30),
+
+  kamion: (R, D, L) => SKY(R) + sun(R, D, 330, 62) + R('mrak','path',`d="${cloudD(95,78,1)}"`) + GRASS(R)
+    + R('cesta','rect','x="0" y="318" width="400" height="46"')
+    + R('naves','rect','x="28" y="168" width="232" height="122" rx="6"')
+    + R('kabina','path','d="M262 198 L330 198 L372 245 L372 290 L262 290 Z"')
+    + R('okno','path','d="M276 212 L324 212 L354 245 L276 245 Z"')
+    + [70, 130, 300, 346].map((x, i) => R('koleso' + i,'circle',`cx="${x}" cy="298" r="22"`) + R('disk' + i,'circle',`cx="${x}" cy="298" r="8"`)).join('')
+    + L(208, 104, 34),
+
+  ponorka: (R, D, L) => R('voda','rect','x="0" y="0" width="400" height="400"')
+    + R('piesok','path','d="M0 352 Q200 332 400 352 L400 400 L0 400 Z"')
+    + R('bublina1','circle','cx="250" cy="130" r="10"') + R('bublina2','circle','cx="262" cy="100" r="7"') + R('bublina3','circle','cx="252" cy="76" r="5"')
+    + R('ryba','path','d="M60 112 Q92 86 124 112 Q92 138 60 112 Z M62 112 L40 96 L40 128 Z"') + eye(D, 108, 108, 3)
+    + R('vez','rect','x="170" y="158" width="60" height="52" rx="8"') + line(D, 'M215 158 L215 124 L240 124', 6)
+    + R('telo','ellipse','cx="200" cy="242" rx="152" ry="56"')
+    + [140, 200, 260].map((x, i) => R('okno' + i,'circle',`cx="${x}" cy="236" r="14"`)).join('')
+    + R('vrtula','path','d="M50 226 L28 204 L28 278 L50 256 Z"')
+    + L(320, 96, 34),
+
+  raketa: (R, D, L) => SKY(R) + R('hviezda1','polygon',`points="${starPts(70,70,22)}"`) + R('hviezda2','polygon',`points="${starPts(330,90,16)}"`) + R('hviezda3','polygon',`points="${starPts(80,330,14)}"`)
+    + R('plamen','path','d="M172 300 Q200 378 228 300 Z"')
+    + R('kridlo1','path','d="M160 236 L116 302 L166 292 Z"') + R('kridlo2','path','d="M240 236 L284 302 L234 292 Z"')
+    + R('telo','path','d="M200 58 Q252 120 246 300 L154 300 Q148 120 200 58 Z"')
+    + R('spicka','path','d="M200 58 Q228 90 237 130 L163 130 Q172 90 200 58 Z"')
+    + R('okno','circle','cx="200" cy="182" r="24"')
+    + L(322, 240, 46),
+
+  sanitka: (R, D, L) => SKY(R) + sun(R, D, 330, 62) + GRASS(R) + R('cesta','rect','x="0" y="318" width="400" height="46"')
+    + R('telo','path','d="M48 290 L48 170 Q48 160 58 160 L270 160 L342 220 L352 290 Z"')
+    + R('okno','path','d="M276 174 L326 220 L276 220 Z"')
+    + R('kriz','path','d="M135 188 h30 v26 h26 v30 h-26 v26 h-30 v-26 h-26 v-30 h26 z"')
+    + R('majak','rect','x="150" y="144" width="32" height="16" rx="4"')
+    + [110, 292].map((x, i) => R('koleso' + i,'circle',`cx="${x}" cy="294" r="26"`) + R('disk' + i,'circle',`cx="${x}" cy="294" r="10"`)).join('')
+    + L(92, 92, 46),
+
+  traktor: (R, D, L) => SKY(R) + sun(R, D, 70, 62) + R('mrak','path',`d="${cloudD(320,78,0.9)}"`) + GRASS(R)
+    + line(D, 'M300 215 L300 172', 9)
+    + R('kapota','rect','x="200" y="214" width="132" height="62" rx="8"')
+    + R('kabina','rect','x="108" y="138" width="102" height="112" rx="8"') + R('okno','rect','x="124" y="154" width="70" height="56" rx="5"')
+    + R('koleso1','circle','cx="150" cy="276" r="58"') + R('disk1','circle','cx="150" cy="276" r="22"')
+    + R('koleso2','circle','cx="302" cy="296" r="34"') + R('disk2','circle','cx="302" cy="296" r="13"')
+    + L(236, 96, 32),
+
+  /* ----- vehicles ----- */
+  auto: (R, D, L) => SKY(R) + sun(R, D, 70, 66) + R('mrak','path',`d="${cloudD(320,78,0.9)}"`)
+    + R('kopec1','path','d="M-10 340 L-10 300 Q80 200 170 300 L170 340 Z"') + R('kopec2','path','d="M150 340 L150 300 Q270 180 410 300 L410 340 Z"')
+    + GRASS(R)
+    + R('cesta','rect','x="0" y="316" width="400" height="48"')
+    + line(D, 'M16 340 L56 340 M106 340 L146 340 M196 340 L236 340 M286 340 L326 340 M376 340 L400 340', 5)
+    + R('karoseria','path','d="M64 296 L64 254 Q66 238 86 236 L128 232 L162 194 Q170 186 184 186 L262 186 Q276 186 284 196 L316 232 L332 234 Q352 238 352 258 L352 296 Z"')
+    + R('okno1','path','d="M150 230 L176 200 L218 200 L218 230 Z"')
+    + R('okno2','path','d="M230 230 L230 200 L266 200 L292 230 Z"')
+    + line(D, 'M224 238 L224 290 M200 254 L212 254', 4)
+    + R('svetlo','path','d="M338 248 L352 248 L352 266 L340 266 Z"')
+    + R('koleso1','circle','cx="128" cy="298" r="30"') + R('disk1','circle','cx="128" cy="298" r="12"')
+    + R('koleso2','circle','cx="290" cy="298" r="30"') + R('disk2','circle','cx="290" cy="298" r="12"')
+    + L(200, 92, 36),
+
+  vlak: (R, D, L) => SKY(R) + sun(R, D, 64, 62) + GRASS(R)
+    + R('dym1','circle','cx="272" cy="146" r="15"') + R('dym2','circle','cx="298" cy="116" r="20"') + R('dym3','circle','cx="334" cy="80" r="25"')
+    + R('podklad','rect','x="0" y="326" width="400" height="14"')
+    + line(D, 'M20 326 L20 350 M60 326 L60 350 M100 326 L100 350 M140 326 L140 350 M180 326 L180 350 M220 326 L220 350 M260 326 L260 350 M300 326 L300 350 M340 326 L340 350 M380 326 L380 350', 5)
+    + R('komin','path','d="M250 216 L242 168 L282 168 L274 216 Z"')
+    + R('kotol','rect','x="150" y="214" width="156" height="90" rx="10"')
+    + R('predok','path','d="M306 232 L330 232 L342 304 L306 304 Z"')
+    + R('svetlo','circle','cx="320" cy="252" r="9"')
+    + R('strecha','rect','x="44" y="156" width="120" height="20" rx="6"')
+    + R('kabina','rect','x="56" y="172" width="96" height="132" rx="6"')
+    + R('okno','rect','x="76" y="190" width="56" height="44" rx="6"')
+    + R('koleso1','circle','cx="98" cy="304" r="24"') + R('koleso2','circle','cx="198" cy="310" r="18"') + R('koleso3','circle','cx="262" cy="310" r="18"')
+    + line(D, 'M98 304 L262 310', 5)
+    + L(176, 84, 32),
+
+  motorka: (R, D, L) => SKY(R) + sun(R, D, 330, 62) + R('mrak','path',`d="${cloudD(90,80,0.9)}"`) + GRASS(R)
+    + R('cesta','rect','x="0" y="330" width="400" height="40"')
+    + R('koleso1','circle','cx="104" cy="290" r="44"') + R('disk1','circle','cx="104" cy="290" r="15"')
+    + R('koleso2','circle','cx="300" cy="290" r="44"') + R('disk2','circle','cx="300" cy="290" r="15"')
+    + line(D, 'M104 290 L170 240 L262 240 L300 290 M262 240 L282 186 L306 180', 8)
+    + R('motor','rect','x="166" y="250" width="74" height="42" rx="10"')
+    + R('vyfuk','path','d="M120 300 L226 300 L230 314 L116 314 Z"')
+    + R('sedadlo','path','d="M100 230 Q102 212 156 214 L164 236 L104 238 Z"')
+    + R('nadrz','path','d="M156 238 Q166 200 214 200 Q252 202 262 238 Z"')
+    + R('svetlo','circle','cx="290" cy="214" r="13"')
+    + L(205, 116, 32),
+
+  lietadlo: (R, D, L) => SKY(R) + sun(R, D, 340, 62) + R('mrak','path',`d="${cloudD(150,74,0.9)}"`)
+    + R('mrak2','path',`d="${cloudD(330,330,0.8)}"`)
+    + R('kridlo2','path','d="M196 168 L244 168 L220 118 L190 118 Z"')
+    + R('chvost','path','d="M82 192 L62 112 L102 112 L136 172 Z"')
+    + R('trup','path','d="M66 200 Q66 170 108 168 L300 168 Q348 170 360 200 Q348 230 300 232 L108 232 Q66 230 66 200 Z"')
+    + R('okno1','circle','cx="150" cy="192" r="9"') + R('okno2','circle','cx="180" cy="192" r="9"') + R('okno3','circle','cx="240" cy="192" r="9"') + R('okno4','circle','cx="270" cy="192" r="9"')
+    + R('kokpit','path','d="M316 178 Q340 182 352 198 L316 198 Z"')
+    + R('kridlo','path','d="M186 208 L254 208 L206 286 L166 286 Z"')
+    + line(D, 'M368 164 L368 236', 6) + R('stred','circle','cx="362" cy="200" r="9"')
+    + L(150, 330, 34),
+};
+
+// opica (o) and šimpanz (š) share one body; the chimp gets big ears, no tail and a banana
+function monkey(R, D, L, chimp){
+  return SKY(R) + sun(R, D, 330, 62) + GRASS(R)
+    + (chimp ? '' : line(D, 'M262 312 C330 312 350 250 318 226 C302 216 292 236 304 242', 9))
+    + R('ruka1','ellipse','cx="132" cy="268" rx="20" ry="48"') + R('ruka2','ellipse','cx="268" cy="268" rx="20" ry="48"')
+    + R('telo','ellipse','cx="200" cy="272" rx="72" ry="72"')
+    + R('brucho','ellipse','cx="200" cy="284" rx="46" ry="50"')
+    + R('noha1','ellipse','cx="160" cy="340" rx="30" ry="16"') + R('noha2','ellipse','cx="240" cy="340" rx="30" ry="16"')
+    + R('ucho1','circle',`cx="${chimp ? 124 : 134}" cy="148" r="${chimp ? 32 : 22}"`)
+    + R('ucho2','circle',`cx="${chimp ? 276 : 266}" cy="148" r="${chimp ? 32 : 22}"`)
+    + R('hlava','circle','cx="200" cy="148" r="64"')
+    + (chimp ? R('tvar','path','d="M200 112 C170 96 140 116 150 150 C150 190 172 202 200 202 C228 202 250 190 250 150 C260 116 230 96 200 112 Z"')
+             : R('tvar','path','d="M200 124 C186 106 154 112 156 140 C140 160 156 200 200 200 C244 200 260 160 244 140 C246 112 214 106 200 124 Z"'))
+    + eye(D, 182, 146, 6) + eye(D, 218, 146, 6) + eye(D, 194, 170, 2.5) + eye(D, 206, 170, 2.5)
+    + line(D, 'M182 184 q18 14 36 0', 3)
+    + (chimp ? R('banan','path','d="M98 252 C90 224 102 200 124 190 C114 214 112 236 118 258 Z"') + line(D, 'M122 192 L128 182', 4) : '')
+    + L(200, 288, chimp ? 26 : 36);
+}
+
+
+function scenePaths(les, cx, cy, s){
+  const b = les.box, mx = (b.minX+b.maxX)/2, my = (b.minY+b.maxY)/2;
+  return les.paths.map(P => P.map(([x,y]) => [f1((x-mx)*s+cx), f1((y-my)*s+cy)]));
+}
+function ptsD(P){
+  if (P.length === 1) return `M${P[0][0]} ${P[0][1]} l0.1 0`;
+  return 'M' + P.filter((_,i) => i%2 === 0 || i === P.length-1).map(p => p[0]+' '+p[1]).join('L');
+}
+
+function sceneSVG(les, fills = {}, animate = true, hideLetter = false){
+  let i = 0;
+  const f = id => fills[id] || '#ffffff';
+  const R = (id, tag, attrs) => `<${tag} data-r="${id}" class="part" style="--i:${i++}" fill="${f(id)}" ${attrs}/>`;
+  const D = (tag, attrs) => `<${tag} class="part deco" style="--i:${i++}" ${attrs}/>`;
+  const L = (cx, cy, s) => {
+    if (hideLetter) return '';
+    const b = les.box, rb = (byId[les.scene] || les).box;
+    s *= Math.sqrt(Math.max(rb.maxX-rb.minX, rb.maxY-rb.minY) / Math.max(b.maxX-b.minX, b.maxY-b.minY)); // capitals: a bit bigger than the small letter, still fits the slot
+    const big = Math.max(b.maxX-b.minX, b.maxY-b.minY) * s;
+    const k = f1(Math.max(1, Math.min(3.2, 190/big)));
+    const col = fills.pismeno || les.color;
+    return `<g class="lg" style="--dx:${f1(200-cx)}px;--dy:${f1(200-cy)}px;--k:${k}">`
+      + scenePaths(les, cx, cy, s).map(P => `<path data-r="pismeno" data-mode="stroke" class="letter" pathLength="1" d="${ptsD(P)}" style="stroke:${col}"/>`).join('')
+      + '</g>';
+  };
+  return `<svg class="scene ${animate ? 'anim' : 'still'}" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">${SCENES[les.scene || les.id](R, D, L, les)}</svg>`;
+}
+
+function letterCardSVG(les, done){
+  const b = les.box, k = 100, pad = 34;
+  const x0 = b.minX*k - pad, w = (b.maxX-b.minX)*k + pad*2;
+  const y0 = les.band[0]*k, h = (les.band[1]-les.band[0])*k;
+  const lines = [[-2,'#dbe5f7',2,''],[-1,'#a9c2ec',2,'8 8'],[0,'#6f93d6',3,''],[1,'#dbe5f7',2,'']]
+    .filter(([y]) => y*k >= y0 - 1 && y*k <= y0 + h + 1)
+    .map(([y,c,sw,da]) => `<line x1="${f1(x0)}" x2="${f1(x0+w)}" y1="${y*k}" y2="${y*k}" stroke="${c}" stroke-width="${sw}" ${da?`stroke-dasharray="${da}"`:''}/>`).join('');
+  const col = done ? les.color : '#7b85aa';
+  const marks = les.paths.map(P => {
+    if (P.length === 1) return `<circle cx="${f1(P[0][0]*k)}" cy="${f1(P[0][1]*k)}" r="9" fill="${col}"/>`;
+    return `<path d="${ptsD(P.map(([x,y]) => [f1(x*k), f1(y*k)]))}" fill="none" stroke="${col}" stroke-width="${done ? 11 : 9}" stroke-linecap="round" stroke-linejoin="round" ${done ? '' : 'stroke-dasharray="1 13"'}/>`;
+  }).join('');
+  const st = les.paths[0][0];
+  return `<svg viewBox="${f1(x0)} ${f1(y0)} ${f1(w)} ${f1(h)}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">${lines}${marks}
+    <circle cx="${f1(st[0]*k)}" cy="${f1(st[1]*k)}" r="10" fill="${done ? les.color : '#38a556'}"/></svg>`;
+}
+function pairSVG(cap, low){
+  const k = 100, gap = 0.35, cb = cap.box, lb = low.box, dx = cb.maxX - lb.minX + gap;
+  const y0 = Math.min(cap.band[0], low.band[0])*k, y1 = Math.max(cap.band[1], low.band[1])*k;
+  const x0 = cb.minX*k - 30, x1 = (lb.maxX + dx)*k + 30;
+  const lines = [[-2,'#dbe5f7',2,''],[-1,'#a9c2ec',2,'8 8'],[0,'#6f93d6',3,''],[1,'#dbe5f7',2,'']]
+    .filter(([y]) => y*k >= y0 && y*k <= y1)
+    .map(([y,c,sw,da]) => `<line x1="${f1(x0)}" x2="${f1(x1)}" y1="${y*k}" y2="${y*k}" stroke="${c}" stroke-width="${sw}" ${da?`stroke-dasharray="${da}"`:''}/>`).join('');
+  const draw = (les, ox) => les.paths.map(P => P.length === 1
+    ? `<circle cx="${f1((P[0][0]+ox)*k)}" cy="${f1(P[0][1]*k)}" r="9" fill="${low.color}"/>`
+    : `<path d="${ptsD(P.map(([x,y]) => [f1((x+ox)*k), f1(y*k)]))}" fill="none" stroke="${low.color}" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>`).join('');
+  return `<svg viewBox="${f1(x0)} ${f1(y0)} ${f1(x1-x0)} ${f1(y1-y0)}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">${lines}${draw(cap,0)}${draw(low,dx)}</svg>`;
+}
+/*CORE-END*/
+
+/* ================= storage ================= */
+const KEY = 'pismenkovo-v2';
+let state = { done:{}, album:[], sound:true };
+try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (s) state = Object.assign(state, s); } catch(e){}
+state.album = state.album.filter(e => byId[e.id]);
+function save(){
+  for (let tries = 0; tries < 5; tries++){
+    try { localStorage.setItem(KEY, JSON.stringify(state)); return; }
+    catch(e){ if (state.album.length > 1) state.album.shift(); else return; }
+  }
+}
+
+/* ================= input: palm rejection ================= */
+let lastPen = -Infinity;   // no pen seen yet: fingers are always welcome
+function accept(e){
+  if (e.pointerType === 'pen'){ lastPen = performance.now(); return true; }
+  if (e.pointerType === 'touch' && performance.now() - lastPen < 15000) return false; // pencil in use → ignore palm
+  return true;
+}
+document.addEventListener('touchmove', e => { if (e.target.closest('.stage,.scene-box')) e.preventDefault(); }, {passive:false});
+
+/* ================= sound & voice ================= */
+let actx = null;
+function audio(){
+  if (!state.sound) return null;
+  try {
+    if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+    if (typeof dbg === 'function') setTimeout(() => dbg('ctx', ''), 0);
+    if (actx.state !== 'running') actx.resume();   // iPhone can also report 'interrupted'
+  } catch(e){ if (typeof dbg === 'function') dbg('last', 'audio chyba ' + (e && e.message || e)); return null; }
+  return actx;
+}
+function tone(freq, dur=0.18, type='triangle', vol=0.18, delay=0, slideTo=0){
+  const a = audio(); if (!a) return;
+  const t = a.currentTime + delay, o = a.createOscillator(), g = a.createGain();
+  o.type = type; o.frequency.setValueAtTime(freq, t);
+  if (slideTo) o.frequency.exponentialRampToValueAtTime(slideTo, t+dur);
+  g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t+0.02);
+  g.gain.exponentialRampToValueAtTime(0.0001, t+dur);
+  o.connect(g).connect(a.destination); o.start(t); o.stop(t+dur+0.05);
+}
+const SCALE = [523,587,659,784,880,1047,1175,1319,1568];
+const buzz = p => { if (state.sound) try { navigator.vibrate && navigator.vibrate(p); } catch(e){} };   // phones: a little vibration
+const sfx = {
+  step:i => tone(SCALE[Math.min(i,SCALE.length-1)], 0.16, 'triangle', 0.14),
+  boop:() => { tone(210, 0.18, 'sine', 0.12, 0, 160); buzz(25); },
+  pop:() => tone(520, 0.1, 'sine', 0.16, 0, 980),
+  fanfare:() => { [523,659,784,1047].forEach((f,i)=>tone(f,0.22,'triangle',0.18,i*0.11)); [523,659,784].forEach(f=>tone(f,0.6,'sine',0.08,0.48)); },
+};
+const NAME = 'Oli';
+let voices = [];
+// the nicest Slovak voice the device has: natural/online (Edge, Android) > enhanced/premium (iPhone, iPad) > the rest
+const voiceScore = v => (/natural|neural|online/i.test(v.name) ? 6 : 0) + (/enhanced|premium|vylepš/i.test(v.name) ? 4 : 0)
+  + (/google/i.test(v.name) ? 2 : 0) + (v.localService === false ? 1 : 0);
+function skVoices(){ return voices.filter(v => /^sk/i.test(v.lang)).sort((a, b) => voiceScore(b) - voiceScore(a)); }
+function pickVoice(){ const sk = skVoices(); return sk.find(v => v.name === state.voice) || sk[0] || null; }
+function loadVoices(){ try { voices = window.speechSynthesis.getVoices() || []; } catch(e){} renderVoices(); }
+function renderVoices(){
+  const sel = document.getElementById('voiceSel'); if (!sel) return;
+  const sk = skVoices(), cur = pickVoice();
+  sel.innerHTML = sk.length ? sk.map(v => `<option${cur && v.name === cur.name ? ' selected' : ''}>${v.name.replace(/</g,'')}</option>`).join('') : '<option>žiadny slovenský hlas</option>';
+  sel.disabled = !sk.length;
+  document.getElementById('voiceTip').textContent = !sk.length
+    ? 'Toto zariadenie nemá slovenský hlas. Na iPhone ho pridáte v Nastavenia → Prístupnosť → Čítaný obsah → Hlasy → Slovenčina, na Androide v nastaveniach Prevod textu na reč.'
+    : cur && voiceScore(cur) >= 4 ? '' : 'Tip: krajší hlas má iPhone (Slovenčina → Laura, vylepšený) a prehliadač Microsoft Edge (Viktoria Natural).';
+}
+loadVoices(); try { window.speechSynthesis.addEventListener('voiceschanged', loadVoices); } catch(e){}
+/* ---------- everything the app says, in one place (the recorded voice is generated from this list) ---------- */
+const LT = s => `[[${s.toUpperCase()}]]`;
+const cap1 = s => s.charAt(0).toUpperCase() + s.slice(1);
+const SAY = {
+  hello: () => `Ahoj ${NAME}!`,
+  voiceTest: () => `Ahoj ${NAME}! Poďme sa hrať s písmenkami.`,
+  voiceSel: () => `Ahoj ${NAME}! Takto znie môj hlas.`,
+  locked: l => `${NAME}, najprv obťahuj malé písmenko ${LT(l.base)}.`,
+  trace: l => l.go ? `${NAME}, ${l.go}` : l.id === 'vlnka' ? `${NAME}, choď s lienkou po vlnke.`
+    : (l.level || 1) === 1 || l.level === 7 ? `Písmenko ${LT(l.label)}. ${NAME}, choď ${l.ins ? 's ' + l.ins : 's lienkou'} po čiarke.` : `${NAME}, choď s lienkou po čiarke.`,
+  praise: l => l.praise.replace('Výborne!', `Výborne, ${NAME}!`),
+  color: l => `${NAME}, teraz si ${l.pron} vyfarbi! Skús veľa rôznych farieb.`,
+  album: l => l.level >= 5 ? `Obrázok je v tvojej zbierke, ${NAME}!` : `${l.Animal} je v tvojej zbierke, ${NAME}!`,
+  cname: c => cname(c)[0],
+  cyes: c => `Áno, ${cname(c)[0]}!`,
+  suggest: c => `${NAME}, skús teraz ${cname(c)[1]} farbu!`,
+  three: () => `Super, ${NAME}! Už máš tri farby.`,
+  five: () => `Výborne, ${NAME}! Použil si päť rôznych farieb!`,
+  qPic: l => `Ktorý obrázok začína na písmenko ${LT(l.label)}?`,
+  qLetter: l => `${cap1(l.animal)}. Na aké písmenko začína?`,
+  yes: l => `Áno, ${NAME}! ${cap1(l.animal)} začína na ${LT(l.label)}.`,
+  noPic: l => `To je ${l.animal}. Začína na ${LT(l.label)}.`,
+  noLetter: l => `${LT(l.label)} je ako ${l.animal}. Skús ešte raz.`,
+  gameEnd: n => n === ROUND ? `Všetko správne! Si šikovný, ${NAME}!` : `Máš ${n} ${n === 1 ? 'hviezdičku' : n >= 2 && n <= 4 ? 'hviezdičky' : 'hviezdičiek'}! Výborne, ${NAME}!`,
+};
+
+/* ---------- English: after the Slovak sentence a child's English voice says the word ("Pes …" → "Dog!") ---------- */
+const EN_ANIMAL = { p:'Dog!', m:'Cat!', b:'Sheep!', l:'Lion!', s:'Owl!', h:'Snake!', o:'Monkey!', d:'Boar!', g:'Goose!', y:'Mouse!', 'č':'Bee!', vlnka:'Dolphin!' };
+const EN_PALETTE = ['Red!','Orange!','Yellow!','Light green!','Green!','Turquoise!','Blue!','Dark blue!','Purple!','Pink!','Brown!','Black!','White!'];
+const enColor = c => EN_PALETTE[PALETTE.indexOf(c)] || null;
+const EN_LESSON = { cesta:'Car!', dazd:'Rain!', kopce:'Train!', more:'Boat!', kruh:'Ball!', blesk:'Lightning!', auto:'Car!', vlak:'Train!', motorka:'Motorbike!', lietadlo:'Airplane!',
+  dpa:'Car!', dpb:'Digger!', dpe:'Tram!', dph:'Helicopter!', dpk:'Truck!', dpl:'Airplane!', dpm:'Motorbike!', dpp:'Submarine!', dpr:'Rocket!', dps:'Ambulance!', dpt:'Tractor!', dpv:'Train!',
+  // the animals of the small letters
+  vlnka:'Dolphin!', a:'Antelope!', b:'Sheep!', c:'Cicada!', 'č':'Bumblebee!', d:'Boar!', e:'Emu!', f:'Ferret!', g:'Goose!', h:'Snake!', ch:'Octopus!', i:'Iguana!', j:'Hedgehog!',
+  k:'Turtle!', l:'Lion!', m:'Cat!', n:'Rhino!', o:'Monkey!', p:'Dog!', r:'Crab!', s:'Owl!', 'š':'Chimpanzee!', t:'Tiger!', u:'Snake!', v:'Squirrel!', y:'Mouse!', z:'Zebra!', 'ž':'Giraffe!' };
+const enLesson = l => EN_LESSON[l.id] || (l.rails ? 'Train!' : null);
+const EN_NUM = ['', 'One', 'two', 'three', 'four', 'five', 'six'];
+const enCount = n => EN_NUM.slice(1, n + 1).join(', ') + '!';
+const allEnglish = () => [...Object.values(EN_ANIMAL), ...EN_PALETTE, ...Object.values(EN_LESSON), ...[2, 3, 4, 5, 6].map(enCount)];
+
+/* ---------- recorded voice: voice/<hash>.mp3 listed in voice/index.json; anything missing falls back to the device voice ---------- */
+const hash = s => { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return ('0000000' + h.toString(16)).slice(-8); };
+let CLIPS = null, clipSrc = null, speakTok = 0, VOICE_VER = '', VOICE_PACKS = false;
+// temporary sound diagnostics, shown on Oli's home
+const DBG = { idx:'?', last:'-', ctx:'-' };
+const dbg = (k, v) => { DBG[k] = v; const el = document.getElementById('sndDbg'); if (el) el.textContent = `zvuk: zoznam ${DBG.idx} · posledná veta ${DBG.last} · audio ${!state.sound ? 'vypnuté' : actx ? actx.state : 'nie'}`; };
+// recordings live in 16 packs (voice/pack-<first hex digit>.json, base64 mp3) – loaded when first needed
+const packCache = {};
+const packOrder = [];
+// keep at most 3 packs in memory (phones close a page that uses too much memory)
+const loadPack = id => packCache[id] || (packOrder.push(id), packOrder.length > 3 && delete packCache[packOrder.shift()], packCache[id] = fetch('voice/pack-' + id + '.json' + VOICE_VER).then(r => { if (!r.ok) throw 0; return r.json(); }).catch(e => { delete packCache[id]; throw e; }));
+function clipBytes(h){
+  if (!VOICE_PACKS) return fetch('voice/' + h + '.mp3' + VOICE_VER).then(r => { if (!r.ok) throw 0; return r.arrayBuffer(); });
+  return loadPack(h[0]).then(p => { const b = atob(p[h] || ''); if (!b) throw 0; const u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return u.buffer; });
+}
+const clipBuf = {}, clipOrder = [];
+try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch(e){}   // iPhone: play even with the silent switch on
+fetch('voice/index.json?t=' + Date.now()).then(r => { dbg('idx', 'http ' + r.status + ' ' + (r.headers.get('content-type') || '').split(';')[0]); return r.ok ? r.json() : null; }).then(j => {
+  dbg('idx', j && j.clips ? j.clips.length + (j.packs ? ' (balíčky)' : '') : 'prázdny');
+  if (j && j.clips && j.clips.length){ CLIPS = new Set(j.clips); VOICE_VER = j.ver ? '?v=' + j.ver : ''; VOICE_PACKS = !!j.packs;
+    const vb = document.querySelector('.voicebox'); if (vb) vb.hidden = true; }
+}).catch(e => dbg('idx', 'chyba ' + (e && e.message || e)));
+// phones (above all iPhone) only allow sound after a real tap: unlock the audio on every tap/click
+// iPhone in silent mode mutes Web Audio; a looping silent <audio> element switches it to "media playback", which is not muted
+let silentEl = null;
+function silentWavURL(){
+  const n = 8000, buf = new ArrayBuffer(44 + n), v = new DataView(buf), w = (o, s) => [...s].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+  w(0, 'RIFF'); v.setUint32(4, 36 + n, true); w(8, 'WAVE'); w(12, 'fmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+  v.setUint32(24, 8000, true); v.setUint32(28, 8000, true); v.setUint16(32, 1, true); v.setUint16(34, 8, true); w(36, 'data'); v.setUint32(40, n, true);
+  for (let i = 0; i < n; i++) v.setUint8(44 + i, 128);
+  return URL.createObjectURL(new Blob([buf], { type:'audio/wav' }));
+}
+const unlockAudio = () => {
+  if (state.sound && (!silentEl || silentEl.paused)){
+    try {
+      if (!silentEl){ silentEl = document.createElement('audio'); silentEl.src = silentWavURL(); silentEl.loop = true; silentEl.setAttribute('playsinline', ''); silentEl.setAttribute('x-webkit-airplay', 'deny'); }
+      const pr = silentEl.play(); if (pr && pr.catch) pr.catch(() => {});
+    } catch(e){}
+  }
+  const a = audio(); if (!a) return;
+  try { const b = a.createBuffer(1, 1, 22050), s = a.createBufferSource(); s.buffer = b; s.connect(a.destination); s.start(0); } catch(e){}
+};
+['touchend', 'click', 'keydown'].forEach(ev => document.addEventListener(ev, unlockAudio, { capture:true, passive:true }));
+function stopVoice(){
+  if (clipSrc){ try { clipSrc.stop(); } catch(e){} clipSrc = null; }
+  try { window.speechSynthesis.cancel(); } catch(e){}
+}
+async function playClip(h, tok, then){
+  const a = audio(); if (!a) return false;
+  try {
+    if (!clipBuf[h]){
+      clipBuf[h] = clipBytes(h).then(b => new Promise((ok, no) => a.decodeAudioData(b, ok, no)));
+      clipOrder.push(h); if (clipOrder.length > 12) delete clipBuf[clipOrder.shift()];   // only the last few sentences stay decoded
+    }
+    const buf = await clipBuf[h];
+    if (tok !== speakTok) return true;          // something newer is being said
+    const s = a.createBufferSource(); s.buffer = buf; s.connect(a.destination); s.start(); clipSrc = s; dbg('last', 'OK ' + buf.duration.toFixed(1) + 's');
+    // the English word follows when the Slovak clip ends; a timer backs this up (iPhone does not always report the end)
+    let followed = false;
+    const follow = () => { if (followed) return; followed = true; if (clipSrc === s) clipSrc = null; if (then && tok === speakTok) setTimeout(then, 200); };
+    s.onended = follow;
+    setTimeout(follow, buf.duration*1000 + 150);
+    return true;
+  } catch(e){ delete clipBuf[h]; dbg('last', 'chyba ' + (e && e.message || e)); return false; }
+}
+function deviceSpeak(text, then){
+  try {
+    if (!voices.length) loadVoices();
+    const en = text.startsWith('en:');
+    const v = en ? (voices.find(v => /^en-GB/i.test(v.lang)) || voices.find(v => /^en/i.test(v.lang))) : pickVoice();
+    if (!v){ if (then) then(); return; }
+    const u = new SpeechSynthesisUtterance((en ? text.slice(3) : text).replace(/\[\[(.+?)\]\]/g, '$1')); u.voice = v; u.lang = v.lang; u.rate = 0.9; u.pitch = 1.05;
+    if (then) u.onend = then;
+    window.speechSynthesis.speak(u);
+  } catch(e){}
+}
+function sayOne(text, tok, then){
+  const h = hash(text);
+  if (CLIPS && CLIPS.has(h)) playClip(h, tok, then).then(ok => { if (!ok && tok === speakTok) deviceSpeak(text, then); });
+  else deviceSpeak(text, then);
+}
+// speak(slovak, english?): the English word follows when English is switched on
+// speak(slovak, english?, slovakAfter?): played one after another; the English part only when English is on
+function speak(text, en, extra){
+  if (!state.sound) return;
+  const tok = ++speakTok;
+  stopVoice();
+  const parts = [text];
+  if (en && state.english !== false) parts.push('en:' + en);
+  if (extra) parts.push(extra);
+  const step = i => { if (tok !== speakTok || i >= parts.length) return; sayOne(parts[i], tok, i + 1 < parts.length ? () => step(i + 1) : null); };
+  step(0);
+}
+
+/* ================= screens ================= */
+const $ = s => document.querySelector(s);
+let current = 'home';
+function show(id){
+  for (const s of document.querySelectorAll('.screen')) s.hidden = s.id !== id;
+  current = id;
+  if (id !== 'trace') cancelAnimationFrame(T.raf);
+}
+document.querySelectorAll('[data-home]').forEach(b => b.addEventListener('click', () => goHome()));
+// Oli (3 years) gets the picture home; parents and bigger kids get the letters home
+function goHome(){
+  if (state.mode !== 'big' && !state.sound){ state.sound = true; save(); }   // Oli's part always has sound (a toddler could switch it off by accident)
+  stopVoice(); renderHome(); renderKids(); show(state.mode === 'big' ? 'home' : 'kids');
+}
+
+let wakeLock = null;
+async function keepAwake(){ try { if (!wakeLock && navigator.wakeLock) { wakeLock = await navigator.wakeLock.request('screen'); wakeLock.addEventListener('release', () => wakeLock = null); } } catch(e){} }
+
+/* ================= home ================= */
+function stars(n){ n = Math.min(n,3); return '<i>★</i>'.repeat(n) + '★'.repeat(3-n); }
+function lastEntry(id){ for (let i = state.album.length-1; i >= 0; i--) if (state.album[i].id === id) return state.album[i]; return null; }
+function thumbHTML(entry){ return sceneSVG(byId[entry.id], entry.fills, false, !!entry.plain) + (entry.ink ? `<img src="${entry.ink}" alt="">` : ''); }
+
+const isLocked = les => les.level === 2 && !state.done[les.base];
+function renderHome(){
+  const tab = [1, 2, 3, 4].includes(state.tab) ? state.tab : 1;
+  document.querySelectorAll('.tab').forEach(t => { const on = +t.dataset.tab === tab; t.classList.toggle('on', on); t.setAttribute('aria-selected', on); });
+  $('#cards').innerHTML = LESSONS.filter(l => (l.level || 1) === tab).map(les => {
+    const done = state.done[les.id] || 0, last = lastEntry(les.id), locked = isLocked(les);
+    const reward = locked ? `<span class="mystery lock" style="--c:#c9d3e6"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>`
+      : last ? thumbHTML(last) : `<span class="mystery" style="--c:${les.color}">?</span>`;
+    const name = les.id === 'vlnka' ? 'Rozcvička' : les.level === 3 ? les.Animal : les.level === 2 ? 'Veľké ' + les.label : 'Písmenko ' + les.label;
+    const note = locked ? 'Najprv obťahuj malé ' + les.base : les.level === 3 ? (done ? 'Ideš znova?' : 'Choď po čiare') : done ? les.caption : 'Čo sa za ním skrýva?';
+    return `<button class="card${locked ? ' locked' : ''}" data-lesson="${les.id}">
+      <div class="card-top">${letterCardSVG(les, done > 0)}</div>
+      <div class="card-foot"><div class="reward">${reward}</div>
+        <div class="card-meta"><b>${name}</b>
+        <small>${note}</small>
+        <span class="stars" aria-label="${Math.min(done,3)} z 3 hviezdičiek">${stars(done)}</span></div></div>
+    </button>`;
+  }).join('');
+  if (tab === 4) $('#cards').innerHTML = trainCards();
+  $('#albumCount').textContent = state.album.length ? '(' + state.album.length + ')' : '';
+  renderSoundBtn();
+  renderGameBanner();
+}
+$('#cards').addEventListener('click', e => {
+  const g = e.target.closest('[data-game]');
+  if (g){ audio(); if (g.dataset.game === 'word') startWord(); else startRails(); return; }
+  const c = e.target.closest('[data-lesson]'); if (!c) return;
+  const les = byId[c.dataset.lesson];
+  if (isLocked(les)){
+    c.classList.remove('nope'); c.getBoundingClientRect(); c.classList.add('nope');
+    audio(); sfx.boop(); speak(SAY.locked(les));
+    return;
+  }
+  startTrace(les);
+});
+function renderSoundBtn(){
+  $('#soundBtn').innerHTML = state.sound
+    ? '<svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5c1.6 1.8 1.6 5.2 0 7"/><path d="M19 6c3 3 3 9 0 12"/></svg><span class="lbl">Zvuk zapnutý</span>'
+    : '<svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><span class="lbl">Zvuk vypnutý</span>';
+}
+$('#soundBtn').addEventListener('click', () => { state.sound = !state.sound; save(); renderSoundBtn(); if (state.sound){ sfx.pop(); speak(SAY.hello()); } else stopVoice(); });
+
+/* ================= trace ================= */
+const T = { raf:0, les:null, si:0, strokes:[], progress:0, done:false, active:null, off:false, lastBoop:0, demo:null, parts:[], milestone:0 };
+const tc = $('#traceCanvas'), tctx = tc.getContext('2d');
+let dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+function startTrace(les){
+  Object.assign(T, { les, si:0, strokes:[], progress:0, done:false, active:null, off:false, demo:null, parts:[], milestone:0, run:(T.run || 0) + 1 });
+  $('#traceTitle').textContent = les.title;
+  $('#praise').hidden = true;
+  show('trace');
+  keepAwake();
+  sizeTrace();
+  audio();
+  setTimeout(() => { if (T.les === les && current === 'trace') { startDemo(); speak(SAY.trace(les)); } }, 350);
+  cancelAnimationFrame(T.raf); T.raf = requestAnimationFrame(frame);
+}
+function sizeTrace(){
+  const r = tc.getBoundingClientRect();
+  T.W = r.width; T.H = r.height; T.rect = r;
+  tc.width = Math.round(r.width*dpr); tc.height = Math.round(r.height*dpr);
+  const les = T.les; if (!les) return;
+  const b = les.box, [yT, yB] = les.band;
+  const s = Math.min(T.H*0.8/(yB-yT), T.W*0.8/(b.maxX-b.minX));
+  T.L = { s, ox: T.W/2 - s*(b.minX+b.maxX)/2, oy: T.H/2 - s*(yT+yB)/2 };
+  T.coarse = T.coarse || !!(window.matchMedia && matchMedia('(pointer:coarse)').matches);   // finger: more forgiving
+  setTol();
+}
+function setTol(){
+  const s = T.L.s;
+  T.tol = T.coarse ? Math.max(44, Math.min(110, s*0.26)) : Math.max(30, Math.min(95, s*0.17));
+  if (T.les && T.les.easy) T.tol = Math.min(140, T.tol*1.6);   // little fingers: very forgiving
+  else if (state.mode !== 'big') T.tol = Math.min(120, T.tol*1.3);   // letters opened from Oli's home: a bit more forgiving too
+}
+const px = p => [T.L.ox + p[0]*T.L.s, T.L.oy + p[1]*T.L.s];
+
+function startDemo(){ T.demo = { t0: performance.now(), dur: Math.min(3800, Math.max(1600, T.les.total*13)) }; }
+$('#demoBtn').addEventListener('click', () => { if (!T.done){ startDemo(); audio(); } });
+$('#clearBtn').addEventListener('click', () => { if (T.les) startTrace(T.les); });
+
+function local(e){ return [e.clientX - T.rect.left, e.clientY - T.rect.top]; }
+tc.addEventListener('pointerdown', e => {
+  if (T.active !== null && performance.now() - (T.lastMove || 0) > 400) T.active = null;   // a lost pointerup must never lock tracing
+  if (!accept(e) || T.active !== null || T.done) return;
+  e.preventDefault();
+  if (e.pointerType === 'touch' && !T.coarse){ T.coarse = true; setTol(); }
+  T.rect = tc.getBoundingClientRect();
+  try { tc.setPointerCapture(e.pointerId); } catch(_){}
+  T.active = e.pointerId; T.demo = null; audio();
+  T.lastXY = null; T.budget = T.tol;
+  T.stroke = []; T.strokes.push(T.stroke);
+  addPoint(e);
+});
+tc.addEventListener('pointermove', e => {
+  if (e.pointerId !== T.active) return;
+  e.preventDefault();
+  const evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
+  for (const ev of (evs.length ? evs : [e])) addPoint(ev);
+});
+const endStroke = e => { if (e.pointerId === T.active){ T.active = null; T.off = false; } };
+tc.addEventListener('pointerup', endStroke);
+tc.addEventListener('pointercancel', endStroke);
+tc.addEventListener('lostpointercapture', endStroke);
+
+function addPoint(ev){
+  T.lastMove = performance.now();
+  const [x, y] = local(ev);
+  const p = ev.pointerType === 'pen' ? (ev.pressure || 0.5) : 0.5;
+  T.stroke.push([(x - T.L.ox)/T.L.s, (y - T.L.oy)/T.L.s, p]);
+  advance(x, y);
+}
+function advance(x, y){
+  if (T.done) return;
+  // the ladybug may only travel about as far as the finger really moved: no shortcuts across loops
+  const moved = T.lastXY ? Math.hypot(x - T.lastXY[0], y - T.lastXY[1]) : 0;
+  T.lastXY = [x, y];
+  T.budget = Math.min((T.budget || 0) + moved*1.6, T.tol*2);
+  const stepPx = 0.02*T.L.s;
+  const les = T.les, P = les.paths[T.si], N = P.length;
+  if (N === 1){                                   // the dot: touch it
+    const [qx, qy] = px(P[0]);
+    if (Math.hypot(qx-x, qy-y) < T.tol*1.15) strokeDone();
+    return;
+  }
+  const tol2 = T.tol*T.tol, far2 = tol2*2.6;
+  let best = -1;
+  const end = Math.min(N-1, T.progress + (T.coarse ? 50 : 16));   // a fast finger may run ahead of the ladybug
+  for (let i = T.progress; i <= end; i++){
+    const [qx, qy] = px(P[i]); const dx = qx-x, dy = qy-y, d2 = dx*dx + dy*dy;
+    if (d2 < tol2 && (i - T.progress)*stepPx <= T.budget) best = i;
+    else if (best >= 0 && d2 > far2) break;   // left the finger's neighbourhood: never skip to a later pass over the same line
+  }
+  if (best > T.progress){
+    T.budget = Math.max(0, T.budget - (best - T.progress)*stepPx);
+    T.progress = best; T.off = false;
+    const m = Math.floor((les.offs[T.si] + best) / les.total * 9);
+    if (m > T.milestone){ T.milestone = m; sfx.step(m); }
+  } else if (best < 0){
+    let md = Infinity;
+    for (let i = Math.max(0, T.progress-10); i <= Math.min(N-1, T.progress+30); i++){
+      const [qx, qy] = px(P[i]); md = Math.min(md, Math.hypot(qx-x, qy-y));
+    }
+    T.off = md > T.tol*1.5;
+    const now = performance.now();
+    if (T.off && now - T.lastBoop > 800 && !les.easy && state.mode === 'big'){ T.lastBoop = now; sfx.boop(); }
+  }
+  if (T.progress >= N-3) strokeDone();
+}
+function strokeDone(){
+  const les = T.les;
+  if (T.si < les.paths.length - 1){
+    T.si++; T.progress = 0; T.off = false;
+    tone(1047, 0.18, 'triangle', 0.16); tone(1319, 0.2, 'triangle', 0.14, 0.1);
+    if (les.says[T.si]) speak(les.says[T.si]);
+  } else finish();
+}
+
+function finish(){
+  const les = T.les;
+  T.done = true; T.active = null;
+  state.done[les.id] = (state.done[les.id] || 0) + 1; save();
+  for (const P of les.paths){
+    for (let i = 0; i < P.length; i += Math.max(1, Math.floor(les.total/14))){
+      const [x, y] = px(P[i]);
+      for (let k = 0; k < 4; k++){
+        const a = Math.random()*Math.PI*2, v = 2 + Math.random()*5;
+        T.parts.push({ x, y, vx: Math.cos(a)*v, vy: Math.sin(a)*v - 3, life: 1, r: 8 + Math.random()*10, rot: Math.random()*6, c: PALETTE[(Math.random()*11)|0] });
+      }
+    }
+  }
+  sfx.fanfare(); buzz([30,60,30]);
+  $('#praise').hidden = false;
+  speak(SAY.praise(les), enLesson(les));
+  const run = T.run;   // reopening the same letter quickly must not jump to coloring mid-trace
+  setTimeout(() => { if (T.run === run && current === 'trace') openColor(les); }, 3600);   // let the praise (and the English word) finish
+}
+
+function strokePath(ctx, P, from, to){
+  ctx.beginPath();
+  for (let i = from; i <= to; i++){ const [x, y] = px(P[i]); i === from ? ctx.moveTo(x, y) : ctx.lineTo(x, y); }
+}
+function drawStar(ctx, x, y, r, rot){
+  ctx.beginPath();
+  for (let i = 0; i < 10; i++){ const a = rot + i*Math.PI/5, rr = i%2 ? r*0.45 : r; ctx.lineTo(x+Math.cos(a)*rr, y+Math.sin(a)*rr); }
+  ctx.closePath();
+}
+function drawLienka(ctx, x, y, ang, r){
+  ctx.save(); ctx.translate(x, y); ctx.rotate(ang);
+  ctx.fillStyle = 'rgba(35,38,74,.18)'; ctx.beginPath(); ctx.ellipse(3, 5, r*1.05, r*0.95, 0, 0, 7); ctx.fill();
+  ctx.fillStyle = INK; ctx.beginPath(); ctx.arc(r*0.85, 0, r*0.5, 0, 7); ctx.fill();
+  ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(r*1.05, -r*0.2, r*0.13, 0, 7); ctx.arc(r*1.05, r*0.2, r*0.13, 0, 7); ctx.fill();
+  ctx.fillStyle = '#e5383b'; ctx.strokeStyle = INK; ctx.lineWidth = Math.max(2, r*0.12);
+  ctx.beginPath(); ctx.arc(0, 0, r, 0, 7); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(r*0.55, 0); ctx.lineTo(-r, 0); ctx.stroke();
+  ctx.fillStyle = INK;
+  for (const [dx, dy, dr] of [[0.25,0.45,0.2],[0.25,-0.45,0.2],[-0.45,0.42,0.17],[-0.45,-0.42,0.17]]){
+    ctx.beginPath(); ctx.arc(dx*r, dy*r, dr*r, 0, 7); ctx.fill();
+  }
+  ctx.restore();
+}
+// side-view vehicles facing +x; wheels sit on the line
+function drawVehicle(ctx, kind, x, y, ang, r, col){
+  ctx.save(); ctx.translate(x, y); ctx.rotate(ang);
+  ctx.lineWidth = Math.max(2, r*0.11); ctx.strokeStyle = INK; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  const shape = (fill, f) => { ctx.beginPath(); f(); ctx.fillStyle = fill; ctx.fill(); ctx.stroke(); };
+  const box = (x0, y0, w, h, rad) => () => { if (ctx.roundRect) ctx.roundRect(x0, y0, w, h, rad); else ctx.rect(x0, y0, w, h); };
+  const wheel = (cx, cy, rr) => { shape(INK, () => ctx.arc(cx, cy, rr, 0, 7)); shape('#fff', () => ctx.arc(cx, cy, rr*0.4, 0, 7)); };
+  if (kind === 'car'){
+    ctx.translate(0, -r*0.62);
+    shape('#bfe3ff', () => { ctx.moveTo(-r*0.55,-r*0.35); ctx.lineTo(-r*0.3,-r*0.9); ctx.lineTo(r*0.4,-r*0.9); ctx.lineTo(r*0.7,-r*0.35); ctx.closePath(); });
+    shape(col, box(-r*1.2, -r*0.4, r*2.4, r*0.75, r*0.25));
+    shape('#ffd23f', () => ctx.arc(r*1.05, -r*0.1, r*0.1, 0, 7));
+    wheel(-r*0.65, r*0.35, r*0.3); wheel(r*0.65, r*0.35, r*0.3);
+  } else if (kind === 'train'){
+    ctx.translate(0, -r*0.5);
+    shape(INK, box(r*0.55, -r*1.0, r*0.28, r*0.5, r*0.05));
+    shape(col, box(-r*0.25, -r*0.55, r*1.35, r*0.75, r*0.15));
+    shape('#e63946', box(-r*1.15, -r*1.05, r*0.95, r*1.25, r*0.12));
+    shape('#bfe3ff', box(-r*0.95, -r*0.85, r*0.55, r*0.4, r*0.08));
+    wheel(-r*0.7, r*0.3, r*0.28); wheel(r*0.05, r*0.32, r*0.22); wheel(r*0.65, r*0.32, r*0.22);
+  } else if (kind === 'moto'){
+    ctx.translate(0, -r*0.4);
+    wheel(-r*0.8, 0, r*0.4); wheel(r*0.8, 0, r*0.4);
+    ctx.beginPath(); ctx.moveTo(-r*0.8, 0); ctx.lineTo(-r*0.2, -r*0.45); ctx.lineTo(r*0.45, -r*0.45); ctx.lineTo(r*0.8, 0);
+    ctx.moveTo(r*0.45, -r*0.45); ctx.lineTo(r*0.6, -r*0.9); ctx.stroke();
+    shape(INK, () => ctx.ellipse(-r*0.5, -r*0.55, r*0.32, r*0.1, 0, 0, 7));
+    shape(col, () => ctx.ellipse(r*0.05, -r*0.56, r*0.42, r*0.2, 0, 0, 7));
+    shape('#ffd23f', () => ctx.arc(r*0.7, -r*0.62, r*0.13, 0, 7));
+  } else if (kind === 'boat'){
+    ctx.translate(0, -r*0.15);
+    ctx.beginPath(); ctx.moveTo(-r*0.05, -r*0.25); ctx.lineTo(-r*0.05, -r*1.35); ctx.stroke();
+    shape('#fff', () => { ctx.moveTo(r*0.02, -r*0.32); ctx.lineTo(r*0.02, -r*1.3); ctx.lineTo(r*0.8, -r*0.4); ctx.closePath(); });
+    shape(col, () => { ctx.moveTo(-r*1.15, -r*0.25); ctx.lineTo(r*1.15, -r*0.25); ctx.lineTo(r*0.75, r*0.32); ctx.lineTo(-r*0.75, r*0.32); ctx.closePath(); });
+  } else if (kind === 'drop'){
+    shape('#5aa9e6', () => { ctx.moveTo(-r*1.1, 0); ctx.quadraticCurveTo(-r*0.2, -r*0.62, r*0.25, -r*0.55); ctx.arc(r*0.25, 0, r*0.55, -Math.PI/2, Math.PI/2); ctx.quadraticCurveTo(-r*0.2, r*0.62, -r*1.1, 0); });
+    ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(r*0.38, -r*0.2, r*0.12, 0, 7); ctx.fill();
+  } else {   // plane
+    shape('#fff', () => { ctx.moveTo(-r*0.9, -r*0.1); ctx.lineTo(-r*1.2, -r*0.8); ctx.lineTo(-r*0.85, -r*0.8); ctx.lineTo(-r*0.45, -r*0.15); ctx.closePath(); });
+    shape(col, () => ctx.ellipse(0, 0, r*1.2, r*0.34, 0, 0, 7));
+    shape('#fff', () => { ctx.moveTo(-r*0.15, r*0.06); ctx.lineTo(r*0.35, r*0.06); ctx.lineTo(-r*0.2, r*0.85); ctx.lineTo(-r*0.5, r*0.85); ctx.closePath(); });
+    ctx.fillStyle = '#fff';
+    for (const wx of [-0.55, -0.25, 0.05, 0.35]){ ctx.beginPath(); ctx.arc(wx*r, -r*0.1, r*0.08, 0, 7); ctx.fill(); }
+    ctx.beginPath(); ctx.moveTo(r*1.28, -r*0.42); ctx.lineTo(r*1.28, r*0.42); ctx.stroke();
+  }
+  ctx.restore();
+}
+// rails lessons: the part already traced becomes real track (sleepers + two rails)
+function drawRailsGuide(P, k){
+  const ctx = tctx, s = T.L.s, N = P.length;
+  const upto = (k < T.si || T.done) ? N-1 : (k === T.si ? T.progress : 0);
+  ctx.strokeStyle = '#efe5d2'; ctx.lineWidth = s*0.34; strokePath(ctx, P, 0, N-1); ctx.stroke();
+  ctx.strokeStyle = '#b9a98c'; ctx.lineWidth = Math.max(4, s*0.03); ctx.setLineDash([s*0.05, s*0.07]); strokePath(ctx, P, 0, N-1); ctx.stroke(); ctx.setLineDash([]);
+  if (upto <= 0) return;
+  const off = (i, d) => { const [x, y] = px(P[i]), a = tangent(P, i) + Math.PI/2; return [x + Math.cos(a)*d, y + Math.sin(a)*d]; };
+  ctx.strokeStyle = '#d8c3a0'; ctx.lineWidth = s*0.3; strokePath(ctx, P, 0, upto); ctx.stroke();
+  ctx.strokeStyle = '#8a5a3b'; ctx.lineWidth = Math.max(5, s*0.05);
+  for (let i = 0; i <= upto; i += 6){ const a = off(i, -s*0.15), b = off(i, s*0.15); ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); }
+  ctx.strokeStyle = '#4a4f63'; ctx.lineWidth = Math.max(3, s*0.035);
+  for (const sg of [-1, 1]){ ctx.beginPath(); for (let i = 0; i <= upto; i++){ const [x, y] = off(i, sg*s*0.09); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.stroke(); }
+}
+function tangent(P, i){
+  if (P.length === 1) return -Math.PI/2;
+  const a = P[Math.max(0, i-2)], b = P[Math.min(P.length-1, i+2)];
+  return Math.atan2(b[1]-a[1], b[0]-a[0]);
+}
+
+function frame(t){
+  if (current !== 'trace') return;
+  T.raf = requestAnimationFrame(frame);
+  const ctx = tctx, W = T.W, H = T.H, L = T.L, s = L.s, les = T.les;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.fillStyle = '#fbfdff'; ctx.fillRect(0, 0, W, H);
+
+  // notebook ruling: margin + writing lines (top, half-line, baseline, descender)
+  ctx.strokeStyle = '#f3b3b5'; ctx.lineWidth = 2;
+  if (!les.easy){ ctx.beginPath(); ctx.moveTo(W*0.05, 0); ctx.lineTo(W*0.05, H); ctx.stroke(); }
+  for (const [y, c, w, dash] of (les.easy ? [] : [[-2,'#d6e2f7',2,null],[-1,'#9fbbe8',2.5,[12,12]],[0,'#6f93d6',3.5,null],[1,'#d6e2f7',2,null]])){
+    const yy = L.oy + y*s; if (yy < -4 || yy > H+4) continue;
+    ctx.strokeStyle = c; ctx.lineWidth = w; ctx.setLineDash(dash || []);
+    ctx.beginPath(); ctx.moveTo(0, yy); ctx.lineTo(W, yy); ctx.stroke();
+  }
+  ctx.setLineDash([]);
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+
+  // guide for every stroke: soft road + dashed center line; dots as dashed targets
+  les.paths.forEach((P, k) => {
+    if (P.length === 1){
+      const [x, y] = px(P[0]);
+      ctx.fillStyle = '#e4ebf8'; ctx.beginPath(); ctx.arc(x, y, s*0.085, 0, 7); ctx.fill();
+      ctx.strokeStyle = '#8590b6'; ctx.lineWidth = Math.max(3, s*0.018); ctx.setLineDash([s*0.03, s*0.03]);
+      ctx.beginPath(); ctx.arc(x, y, s*0.06, 0, 7); ctx.stroke(); ctx.setLineDash([]);
+      if (k < T.si || T.done){ ctx.fillStyle = les.color; ctx.beginPath(); ctx.arc(x, y, s*0.06, 0, 7); ctx.fill(); }
+      return;
+    }
+    if (les.rails){ drawRailsGuide(P, k); return; }
+    ctx.strokeStyle = '#e4ebf8'; ctx.lineWidth = s*(les.easy ? 0.3 : T.coarse ? 0.2 : 0.13); strokePath(ctx, P, 0, P.length-1); ctx.stroke();
+    ctx.strokeStyle = '#8590b6'; ctx.lineWidth = Math.max(4, s*0.03); ctx.setLineDash([s*0.045, s*0.075]);
+    strokePath(ctx, P, 0, P.length-1); ctx.stroke(); ctx.setLineDash([]);
+    const upto = (k < T.si || T.done) ? P.length-1 : (k === T.si ? T.progress : 0);
+    if (upto > 0){
+      ctx.globalAlpha = 0.4; ctx.strokeStyle = les.color; ctx.lineWidth = s*(les.easy ? 0.3 : T.coarse ? 0.2 : 0.13);
+      strokePath(ctx, P, 0, upto); ctx.stroke(); ctx.globalAlpha = 1;
+    }
+  });
+
+  // demo ghost walks through all strokes in order
+  if (T.demo){
+    const k = Math.min(1, (t - T.demo.t0) / T.demo.dur);
+    if (k >= 0){
+      let g = Math.floor(k*(les.total-1)), gs = 0;
+      while (gs < les.paths.length-1 && g >= les.offs[gs+1]) gs++;
+      const gi = g - les.offs[gs];
+      ctx.globalAlpha = 0.5; ctx.strokeStyle = les.color; ctx.lineWidth = s*0.06;
+      for (let q = 0; q <= gs; q++){
+        const P = les.paths[q]; if (P.length < 2) continue;
+        strokePath(ctx, P, 0, q < gs ? P.length-1 : Math.min(gi, P.length-1)); ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+      const [gx, gy] = px(les.paths[gs][Math.min(gi, les.paths[gs].length-1)]);
+      ctx.fillStyle = '#fff'; ctx.strokeStyle = les.color; ctx.lineWidth = 6;
+      ctx.beginPath(); ctx.arc(gx, gy, Math.max(12, s*0.05), 0, 7); ctx.fill(); ctx.stroke();
+    }
+    if (t - T.demo.t0 > T.demo.dur + 500) T.demo = null;
+  }
+
+  const P = les.paths[T.si], N = P.length;
+  if (!T.done && N > 1){
+    // direction chevrons ahead
+    for (let k = 1; k <= 3; k++){
+      const i = T.progress + k*16; if (i >= N-3) break;
+      const [x, y] = px(P[i]), a = tangent(P, i), sz = Math.max(9, s*0.04);
+      ctx.save(); ctx.translate(x, y); ctx.rotate(a); ctx.globalAlpha = 1 - k*0.25;
+      ctx.strokeStyle = les.color; ctx.lineWidth = Math.max(4, s*0.022);
+      ctx.beginPath(); ctx.moveTo(-sz*0.6, -sz); ctx.lineTo(sz*0.5, 0); ctx.lineTo(-sz*0.6, sz); ctx.stroke();
+      ctx.restore();
+    }
+    ctx.globalAlpha = 1;
+    // goal star at the end of the current stroke
+    const [x, y] = px(P[N-1]), r = Math.max(16, s*0.06) * (1 + 0.08*Math.sin(t/250));
+    ctx.fillStyle = '#ffc93c'; ctx.strokeStyle = INK; ctx.lineWidth = 3;
+    drawStar(ctx, x, y, r, -Math.PI/2 + t/2000); ctx.fill(); ctx.stroke();
+  }
+
+  // child's ink
+  const baseW = Math.max(6, s*0.045);
+  ctx.strokeStyle = '#3346c8'; ctx.fillStyle = '#3346c8';
+  for (const st of T.strokes){
+    if (st.length === 1){ const [x, y] = px(st[0]); ctx.beginPath(); ctx.arc(x, y, baseW*0.6, 0, 7); ctx.fill(); continue; }
+    for (let j = 1; j < st.length; j++){
+      const [x0, y0] = px(st[j-1]), [x1, y1] = px(st[j]);
+      ctx.lineWidth = baseW * (0.6 + 0.8*st[j][2]);
+      ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
+    }
+  }
+
+  if (!T.done){
+    // start pulse
+    if (T.progress === 0){
+      const [x, y] = px(P[0]), pr = (t % 1400) / 1400;
+      ctx.strokeStyle = `rgba(56,165,86,${1-pr})`; ctx.lineWidth = 5;
+      ctx.beginPath(); ctx.arc(x, y, Math.max(22, s*0.08) + pr*s*0.12, 0, 7); ctx.stroke();
+    }
+    // ladybug
+    const [x, y] = px(P[T.progress]);
+    const wob = T.off ? Math.sin(t/45)*0.45 : Math.sin(t/300)*0.06;
+    if (les.rider) drawVehicle(ctx, les.rider, x, y, tangent(P, T.progress) + wob, Math.max(26, Math.min(46, s*0.11)), les.color);
+    else drawLienka(ctx, x, y, tangent(P, T.progress) + wob, Math.max(18, Math.min(36, s*0.075)));
+  }
+
+  // confetti stars
+  if (T.parts.length){
+    for (const p of T.parts){
+      p.x += p.vx; p.y += p.vy; p.vy += 0.18; p.life -= 0.011; p.rot += 0.08;
+      ctx.globalAlpha = Math.max(0, p.life); ctx.fillStyle = p.c; ctx.strokeStyle = INK; ctx.lineWidth = 2;
+      drawStar(ctx, p.x, p.y, p.r, p.rot); ctx.fill(); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+    T.parts = T.parts.filter(p => p.life > 0);
+  }
+}
+
+/* ================= coloring ================= */
+const C = { les:null, fills:{}, mode:'fill', color:PALETTE[0], ptr:null, last:null, inked:false, taps:0, hint:false, ht:0, used:[], streak:0, lastColor:null };
+const CNAMES = [['červená','červenú'],['oranžová','oranžovú'],['žltá','žltú'],['svetlozelená','svetlozelenú'],['zelená','zelenú'],['tyrkysová','tyrkysovú'],
+  ['modrá','modrú'],['tmavomodrá','tmavomodrú'],['fialová','fialovú'],['ružová','ružovú'],['hnedá','hnedú'],['čierna','čiernu'],['biela','bielu']];
+const cname = c => CNAMES[PALETTE.indexOf(c)] || ['farba','farbu'];
+const RAINBOW = 5, WHITE = '#ffffff';
+function renderRainbow(pop){
+  const r = $('#rainbow');
+  r.innerHTML = Array.from({length:RAINBOW}, (_, i) => C.used[i]
+    ? `<i class="on${pop && i === C.used.length-1 ? ' new' : ''}" style="--c:${C.used[i]}"></i>` : '<i></i>').join('');
+}
+function colorToast(c){
+  const t = $('#ctoast');
+  t.innerHTML = `<b style="--c:${c}"></b>${cname(c)[0]}`;
+  t.hidden = true; t.getBoundingClientRect(); t.hidden = false;
+  clearTimeout(t._h); t._h = setTimeout(() => t.hidden = true, 1400);
+}
+function clearSuggest(){ document.querySelectorAll('.chip.suggest').forEach(x => x.classList.remove('suggest')); }
+function suggestColor(){
+  if (current !== 'color') return;
+  let pool = PALETTE.filter(x => x !== C.color && x !== WHITE && !C.used.includes(x));
+  if (!pool.length) pool = PALETTE.filter(x => x !== C.color && x !== WHITE);
+  const c = pool[Math.floor(Math.random()*pool.length)];
+  clearSuggest();
+  document.querySelectorAll('.chip').forEach(x => { if (x.dataset.color === c) x.classList.add('suggest'); });
+  setTimeout(clearSuggest, 3300);
+  speak(SAY.suggest(c));
+}
+const ARROW = '<span class="hint-arrow" aria-hidden="true"><svg viewBox="0 0 56 64"><path d="M28 3 L53 31 L38 31 L38 61 L18 61 L18 31 L3 31 Z" fill="#ffc93c" stroke="#23264a" stroke-width="4" stroke-linejoin="round"/></svg></span>';
+function hideDoneHint(){ clearTimeout(C.ht); const b = $('#doneBtn'); b.classList.remove('call'); b.querySelectorAll('.hint-arrow').forEach(x => x.remove()); }
+function showDoneHint(){
+  if (C.hint || current !== 'color') return;
+  C.hint = true; clearTimeout(C.ht);
+  const b = $('#doneBtn'); b.classList.add('call'); b.insertAdjacentHTML('beforeend', ARROW);
+  C.ht = setTimeout(hideDoneHint, 4500);   // only a short nudge, then it disappears
+  speak(`${NAME}, ak chceš ďalšie zvieratko, stlač Hotovo.`);
+}
+const dc = $('#drawCanvas'), dctx = dc.getContext('2d');
+const box = $('#sceneBox');
+
+$('#palette').innerHTML = PALETTE.map((c, i) => `<button class="chip${i ? '' : ' on'}" style="--c:${c}" data-color="${c}" aria-label="farba ${i+1}"></button>`).join('');
+$('#palette').addEventListener('click', e => {
+  const b = e.target.closest('[data-color]'); if (!b) return;
+  C.color = b.dataset.color;
+  document.querySelectorAll('.chip').forEach(x => x.classList.toggle('on', x === b));
+  if (C.mode === 'erase') setMode('fill');
+  tone(700, 0.06, 'sine', 0.08);
+  speak(b.classList.contains('suggest') ? SAY.cyes(C.color) : SAY.cname(C.color), enColor(C.color), colorTip(C.color));
+  clearSuggest();
+  colorToast(C.color);
+});
+// after picking a colour: what could Oli paint with it? (a part of the picture that is still white) – that part blinks
+const PART_WORD = { nebo:'nebo', slnko:'slniečko', mrak:'mráčik', trava:'trávu', kopec:'kopček', more:'more', voda:'vodu', piesok:'piesok', list:'list', listok:'lístok',
+  konar:'konár', kamen:'kameň', jablko:'jabĺčko', strecha:'strechu', kvet:'kvietok', hviezda:'hviezdičku', okno:'okienko', koleso:'koleso', zobak:'zobák',
+  cesta:'cestu', syr:'syr', kaluz:'mláčku', lopta:'loptu', dom:'domček' };
+const COLOR_PARTS = { '#3a86ff':['nebo','more','voda','okno'], '#22306b':['more','voda','nebo'], '#2ec4b6':['voda','more','nebo'],
+  '#ffd23f':['slnko','hviezda','syr','lopta','kvet'], '#ff8c42':['slnko','zobak','lopta','kvet'], '#8ac926':['trava','kopec','list','listok'],
+  '#2a9d55':['trava','list','listok','kopec'], '#9c6644':['konar','kamen','dom','cesta'], '#ffffff':['mrak','okno'],
+  '#e63946':['jablko','strecha','kvet','lopta','dom'], '#ff7eb6':['kvet','lopta'], '#8e5bd6':['kvet','lopta'], '#2b2b3a':['koleso','cesta'] };
+const TIP_ANIMAL = 'Vyfarbi ňou zvieratko.', TIP_VEHICLE = 'Vyfarbi ňou vozidlo.';
+function colorTip(c){
+  if (!C.les) return null;
+  const els = [...document.querySelectorAll('#sceneSvg [data-r]')];
+  const ids = [...new Set(els.map(e => e.dataset.r))].filter(id => id !== 'pismeno' && !C.fills[id]);
+  const flash = id => els.filter(e => e.dataset.r === id).forEach(e => { e.classList.remove('tip'); e.getBoundingClientRect(); e.classList.add('tip'); });
+  for (const key of COLOR_PARTS[c] || []){
+    const id = ids.find(i => i === key || (i.startsWith(key) && /^\d+$/.test(i.slice(key.length))));
+    if (id){ flash(id); return `Vyfarbi ňou ${PART_WORD[key]}.`; }
+  }
+  const body = ids.find(i => /^(telo|karoseria|trup|naves|kotol|vlna|hlava)/.test(i));
+  if (body){ flash(body); return [3, 7].includes(C.les.level) ? TIP_VEHICLE : TIP_ANIMAL; }
+  return null;
+}
+document.querySelectorAll('.mode').forEach(b => b.addEventListener('click', () => setMode(b.dataset.mode)));
+function setMode(m){
+  C.mode = m;
+  document.querySelectorAll('.mode').forEach(x => x.classList.toggle('on', x.dataset.mode === m));
+  box.classList.toggle('fill-mode', m === 'fill');
+}
+
+function openColor(les, plain){
+  Object.assign(C, { les, fills:{}, ptr:null, inked:false, taps:0, hint:false, used:[], streak:0, lastColor:null, sugN:0, sugT:0 });
+  renderRainbow(false); $('#rainbow').classList.remove('full'); clearSuggest(); $('#ctoast').hidden = true;
+  hideDoneHint();
+  setMode('fill');
+  $('#colorTitle').textContent = 'Vyfarbi ' + les.acc;
+  C.plain = !!plain;   // picked straight from the picture list: no traced line in it
+  $('#sceneSvg').innerHTML = sceneSVG(les, {}, true, C.plain);
+  show('color');
+  fitScene(true);
+  setTimeout(() => { if (C.les === les && current === 'color') speak(SAY.color(les)); }, 2800);
+}
+function fitScene(clear){
+  const r = $('#sceneWrap').getBoundingClientRect();
+  const size = Math.max(160, Math.floor(Math.min(r.width, r.height)));
+  box.style.width = box.style.height = size + 'px';
+  const pxSize = Math.round(size*dpr);
+  if (dc.width === pxSize && !clear) return;
+  let keep = null;
+  if (!clear && dc.width){ keep = document.createElement('canvas'); keep.width = dc.width; keep.height = dc.height; keep.getContext('2d').drawImage(dc, 0, 0); }
+  dc.width = dc.height = pxSize;
+  if (keep) dctx.drawImage(keep, 0, 0, pxSize, pxSize);
+}
+
+$('#sceneSvg').addEventListener('pointerdown', e => {
+  if (C.mode !== 'fill' || !accept(e)) return;
+  const el = e.target.closest('[data-r]'); if (!el) return;
+  e.preventDefault();
+  const id = el.dataset.r;
+  for (const x of $('#sceneSvg').querySelectorAll(`[data-r="${id}"]`)){
+    if (x.dataset.mode === 'stroke') x.style.stroke = C.color; else x.setAttribute('fill', C.color);
+  }
+  C.fills[id] = C.color;
+  el.classList.remove('bump'); el.getBoundingClientRect(); el.classList.add('bump');
+  sfx.pop();
+  C.taps++;
+  C.streak = C.color === C.lastColor ? C.streak + 1 : 1; C.lastColor = C.color;
+  let talked = false;
+  if (C.color !== WHITE && !C.used.includes(C.color) && C.used.length < RAINBOW){
+    C.used.push(C.color); renderRainbow(true);
+    if (C.used.length === RAINBOW){
+      talked = true;
+      setTimeout(() => { sfx.fanfare(); buzz([30,60,30]); const r = $('#rainbow'); r.classList.remove('full'); r.getBoundingClientRect(); r.classList.add('full');
+        speak(SAY.five()); }, 350);
+    } else if (C.used.length === 3){ talked = true; speak(SAY.three()); }
+  }
+  // suggest another colour only now and then: after 6 parts in one colour, at most twice per picture, 40 s apart
+  if (!talked && C.streak >= 6 && C.used.length < RAINBOW && (C.sugN || 0) < 2 && performance.now() - (C.sugT || 0) > 40000){
+    C.streak = 0; C.sugN = (C.sugN || 0) + 1; C.sugT = performance.now(); talked = true; setTimeout(suggestColor, 450);
+  }
+});
+
+function dpos(e){ const r = dc.getBoundingClientRect(); return [(e.clientX - r.left) * dc.width / r.width, (e.clientY - r.top) * dc.height / r.height, e.pointerType === 'pen' ? (e.pressure || 0.5) : 0.5]; }
+function dseg(a, b){
+  const k = dc.width / 600;
+  dctx.globalCompositeOperation = C.mode === 'erase' ? 'destination-out' : 'source-over';
+  dctx.strokeStyle = C.color; dctx.lineCap = dctx.lineJoin = 'round';
+  dctx.lineWidth = (C.mode === 'erase' ? 36 : 6 + 12*b[2]) * k;
+  dctx.beginPath(); dctx.moveTo(a[0], a[1]); dctx.lineTo(b[0] + 0.01, b[1]); dctx.stroke();
+}
+dc.addEventListener('pointerdown', e => {
+  if (C.mode === 'fill' || !accept(e) || C.ptr !== null) return;
+  e.preventDefault();
+  try { dc.setPointerCapture(e.pointerId); } catch(_){}
+  C.ptr = e.pointerId; C.last = dpos(e); dseg(C.last, C.last);
+  if (C.mode === 'draw') C.inked = true;
+});
+dc.addEventListener('pointermove', e => {
+  if (e.pointerId !== C.ptr) return;
+  e.preventDefault();
+  const evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
+  for (const ev of (evs.length ? evs : [e])){ const p = dpos(ev); dseg(C.last, p); C.last = p; }
+});
+const dend = e => { if (e.pointerId === C.ptr) C.ptr = null; };
+dc.addEventListener('pointerup', dend); dc.addEventListener('pointercancel', dend);
+
+$('#doneBtn').addEventListener('click', () => {
+  const les = C.les; if (!les) return;
+  hideDoneHint();
+  let ink = null;
+  if (C.inked){
+    try { const tmp = document.createElement('canvas'); tmp.width = tmp.height = 480; tmp.getContext('2d').drawImage(dc, 0, 0, 480, 480); ink = tmp.toDataURL('image/png'); } catch(e){}
+  }
+  state.album.push({ id: les.id, fills: { ...C.fills }, ink, t: Date.now(), plain: C.plain || undefined });
+  if (state.album.length > 40) state.album.shift();
+  save();
+  sfx.fanfare();
+  speak(SAY.album(les));
+  goHome();
+});
+
+/* ================= album ================= */
+$('#albumBtn').addEventListener('click', () => {
+  const items = state.album.slice().reverse();
+  $('#albumGrid').innerHTML = items.length
+    ? items.map(e => `<figure class="album-item"><div class="thumb">${thumbHTML(e)}</div><figcaption>${byId[e.id].caption}</figcaption></figure>`).join('')
+    : '<p class="empty">' + NAME + ', zatiaľ tu nič nie je. Obťahuj písmenko, vyfarbi obrázok a ťukni na Hotovo.</p>';
+  show('album');
+});
+
+/* ================= matching game ================= */
+// Only letters the child has already traced take part. Two question types alternate:
+// "pic"   – one letter, three pictures: which picture starts with it?
+// "letter" – one picture, three letters: which letter does it start with?
+const ROUND = 5;
+state.game = state.game || { misses:{}, rounds:0 };
+const G = { round:0, score:0, q:null, firstTry:true, busy:false, lastId:null, results:[] };
+
+const gamePool = () => LESSONS.filter(l => l.id !== 'vlnka' && !l.noGame && state.done[l.id]);
+const upper = l => l.label.charAt(0).toUpperCase() + l.label.slice(1);
+const fillsFor = l => (lastEntry(l.id) || {}).fills || {};
+const picTile = l => `<div class="ptile">${sceneSVG(l, fillsFor(l), false, true)}</div>`;
+const capOf = l => LESSONS.find(c => c.base === l.id);
+const letterTile = l => { const c = capOf(l);
+  return `<div class="ltile"><div class="lt-svg">${c ? pairSVG(c, l) : letterCardSVG(l, true)}</div><div class="lt-print">${upper(l)} ${l.label}</div></div>`; };
+function shuffle(a){ for (let i = a.length-1; i > 0; i--){ const j = Math.floor(Math.random()*(i+1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+function renderGameBanner(){
+  const pool = gamePool(), b = $('#gameBtn');
+  if (pool.length >= 3){
+    b.classList.remove('locked');
+    const pics = pool.slice(-3).map((l, i) => `<div class="reward" style="--r:${(i-1)*7}deg">${picTile(l)}</div>`).join('');
+    b.innerHTML = `<div class="gb-pics">${pics}</div><div class="gb-text"><b>Hľadačka písmenok</b><small>Nájdi, čo začína na ktoré písmenko. Hrá sa s ${pool.length} písmenkami.</small></div>`;
+  } else {
+    b.classList.add('locked');
+    const left = 3 - pool.length;
+    b.innerHTML = `<div class="gb-text"><b>Hľadačka písmenok</b><small>Otvorí sa, keď obťaháš ešte ${left} ${left === 1 ? 'písmenko' : 'písmenká'}.</small></div>`;
+  }
+}
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+  state.tab = +t.dataset.tab; save(); renderHome(); tone(700, 0.06, 'sine', 0.08);
+}));
+$('#gameBtn').addEventListener('click', () => { if (gamePool().length >= 3) startGame(); });
+$('#gAgain').addEventListener('click', startGame);
+$('#gRepeat').addEventListener('click', () => { if (G.q) speak(G.q.say); });
+
+function startGame(){
+  Object.assign(G, { round:0, score:0, results:[], busy:false, lastId:null });
+  $('#gEnd').hidden = true; $('#gBody').hidden = false;
+  show('game'); audio(); keepAwake();
+  nextQ();
+}
+function pickTarget(pool){
+  // letters the child got wrong come back more often
+  const cand = pool.filter(l => l.id !== G.lastId);
+  const w = cand.map(l => 1 + 2*(state.game.misses[l.id] || 0));
+  let r = Math.random() * w.reduce((a, b) => a + b, 0);
+  for (let i = 0; i < cand.length; i++){ r -= w[i]; if (r <= 0) return cand[i]; }
+  return cand[cand.length-1];
+}
+function renderDots(){
+  $('#gDots').innerHTML = Array.from({length:ROUND}, (_, i) =>
+    `<span class="${G.results[i] === true ? 'ok' : G.results[i] === false ? 'half' : ''}${i === G.round && G.results.length === i ? ' now' : ''}"></span>`).join('');
+}
+function nextQ(){
+  if (G.round >= ROUND) return endGame();
+  const pool = gamePool(), target = pickTarget(pool);
+  // look-alike pictures (opica/šimpanz, had/užovka) never share a question
+  let others = shuffle(pool.filter(l => l.id !== target.id && l.id !== target.twin));
+  if (others.length < 2) others = shuffle(pool.filter(l => l.id !== target.id));
+  others = others.slice(0, 2);
+  const type = Math.random() < 0.5 ? 'pic' : 'letter';
+  const U = upper(target);
+  G.q = { target, type, opts: shuffle([target, ...others]),
+    say: type === 'pic' ? SAY.qPic(target) : SAY.qLetter(target) };
+  G.firstTry = true; G.busy = false; G.lastId = target.id;
+  $('#gAsk').textContent = type === 'pic' ? `Čo začína na písmenko ${U}?` : 'Na aké písmenko to začína?';
+  const pr = $('#gPrompt');
+  pr.style.setProperty('--ar', type === 'pic' ? '4/3' : '1');
+  pr.innerHTML = type === 'pic' ? letterTile(target) : picTile(target);
+  $('#gChoices').innerHTML = G.q.opts.map(o =>
+    `<button class="choice" data-id="${o.id}" aria-label="${type === 'pic' ? o.animal : 'písmenko ' + o.label}">${type === 'pic' ? picTile(o) : letterTile(o)}</button>`).join('');
+  renderDots();
+  speak(G.q.say);
+}
+$('#gChoices').addEventListener('pointerdown', e => {
+  if (!accept(e) || G.busy) return;
+  const btn = e.target.closest('.choice'); if (!btn || btn.classList.contains('wrong')) return;
+  e.preventDefault();
+  const q = G.q, pick = byId[btn.dataset.id], t = q.target;
+  if (pick.id === t.id){
+    G.busy = true;
+    btn.classList.add('right');
+    G.results.push(G.firstTry);
+    if (G.firstTry){ G.score++; state.game.misses[t.id] = Math.max(0, (state.game.misses[t.id] || 0) - 1); }
+    save();
+    [784,1047,1319].forEach((f, i) => tone(f, 0.18, 'triangle', 0.16, i*0.09)); buzz(30);
+    speak(SAY.yes(t));
+    G.round++;
+    renderDots();
+    setTimeout(() => { if (current === 'game') nextQ(); }, 2300);
+  } else {
+    btn.classList.add('wrong');
+    if (G.firstTry){ state.game.misses[t.id] = (state.game.misses[t.id] || 0) + 1; save(); }
+    G.firstTry = false;
+    sfx.boop();
+    speak(q.type === 'pic' ? SAY.noPic(pick) : SAY.noLetter(pick));
+  }
+});
+function endGame(){
+  state.game.rounds = (state.game.rounds || 0) + 1; save();
+  $('#gBody').hidden = true; $('#gEnd').hidden = false; G.q = null;
+  const n = G.score;
+  $('#gStars').innerHTML = Array.from({length:ROUND}, (_, i) => i < n ? `<i style="--n:${i}">★</i>` : '★').join('');
+  $('#gEndTitle').textContent = n === ROUND ? `Všetko správne, ${NAME}!` : n >= 3 ? `Super, ${NAME}!` : `Dobrá práca, ${NAME}!`;
+  sfx.fanfare();
+  speak(SAY.gameEnd(n));
+}
+
+/* ================= trains: letter train (reading) + rail puzzle (logic) ================= */
+const WORDS = [['PES','p'],['RAK','r'],['LEV','l'],['HAD','h'],['EMU','e'],['MYŠ','y'],['SOVA','s'],['OPICA','o'],['ZEBRA','z'],['MAČKA','m'],['BARAN','b'],['TIGER','t'],['JEŽKO','j']];
+const ABC = 'ABCČDEFGHIJKLMNOPRSŠTUVYZŽ'.split('');
+const WAGON_COLORS = ['#e63946','#ff8c42','#ffd23f','#2a9d55','#3a86ff','#8e5bd6','#ff7eb6','#2ec4b6'];
+state.word = state.word || { done:0 };
+state.rails = state.rails || { level:1 };
+Object.assign(SAY, {
+  wordAsk: w => `${NAME}, poskladaj vláčik so slovom ${w.toLowerCase()}!`,
+  letter: L => LT(L),
+  wordFind: L => `Hľadáme písmenko ${LT(L)}.`,
+  wordDone: w => `${[...w].map(LT).join(', ')}. ${cap1(w.toLowerCase())}! Výborne, ${NAME}!`,
+  railsStart: () => `${NAME}, ťukaj na koľajnice a otáčaj ich, aby vláčik prišiel do stanice.`,
+  railsDone: () => `Hurá! Vláčik prišiel do stanice! Výborne, ${NAME}!`,
+});
+const toot = () => { tone(392, 0.35, 'square', 0.07); tone(523, 0.5, 'square', 0.06, 0.32); };
+const wagonSVG = (col, empty, attrs = '') => `<svg ${attrs} viewBox="0 0 100 90" aria-hidden="true"><path d="M0 50h7" stroke="${INK}" stroke-width="5"/>`
+  + `<rect x="5" y="6" width="90" height="56" rx="10" fill="${empty ? '#f1f4fb' : col}" stroke="${empty ? '#9aa3c2' : INK}" stroke-width="4"${empty ? ' stroke-dasharray="9 7"' : ''}/>`
+  + [26, 74].map(x => `<circle cx="${x}" cy="74" r="12" fill="${empty ? '#c9d0e2' : INK}"/><circle cx="${x}" cy="74" r="4" fill="#fff"/>`).join('') + '</svg>';
+// side view, facing left (the word is read left to right behind it)
+const locoSVG = (attrs = '') => `<svg ${attrs} viewBox="0 0 135 90" aria-hidden="true">`
+  + `<rect x="26" y="10" width="16" height="24" rx="3" fill="${INK}"/>`
+  + `<rect x="14" y="30" width="72" height="34" rx="9" fill="#2a9d55" stroke="${INK}" stroke-width="4"/>`
+  + `<rect x="78" y="10" width="50" height="54" rx="6" fill="#e63946" stroke="${INK}" stroke-width="4"/>`
+  + `<rect x="74" y="3" width="58" height="11" rx="4" fill="${INK}"/>`
+  + `<rect x="89" y="20" width="28" height="20" rx="4" fill="#bfe3ff" stroke="${INK}" stroke-width="3"/>`
+  + `<circle cx="18" cy="42" r="6" fill="#ffd23f" stroke="${INK}" stroke-width="3"/><rect x="2" y="52" width="14" height="8" rx="2" fill="${INK}"/>`
+  + [[34, 12], [62, 12], [106, 15]].map(([x, r]) => `<circle cx="${x}" cy="${76 - r + 12}" r="${r}" fill="${INK}"/><circle cx="${x}" cy="${76 - r + 12}" r="4" fill="#fff"/>`).join('') + '</svg>';
+
+function trainCards(){
+  const wordTop = `<svg viewBox="0 0 400 300" aria-hidden="true"><rect x="10" y="232" width="380" height="8" fill="#4a4f63"/>`
+    + locoSVG('x="20" y="140" width="135" height="90"')
+    + ['P','E','S'].map((c, i) => wagonSVG(WAGON_COLORS[[0,4,2][i]], false, `x="${155 + i*78}" y="160" width="78" height="70"`)
+      + `<text x="${194 + i*78}" y="205" text-anchor="middle" font-family="Baloo 2, sans-serif" font-weight="800" font-size="40" fill="#fff" stroke="${INK}" stroke-width="2" paint-order="stroke">${c}</text>`).join('')
+    + `<text x="200" y="95" text-anchor="middle" font-family="Baloo 2, sans-serif" font-weight="800" font-size="54" fill="${INK}">P E S</text></svg>`;
+  const railsTop = `<svg viewBox="0 0 400 300" aria-hidden="true"><rect x="40" y="50" width="320" height="200" rx="16" fill="#e6f4d7"/>`
+    + [[0,0,'s',0],[1,0,'c',2],[1,1,'c',0],[2,1,'s',0],[0,1,'tree',0],[2,0,'tree',0]].map(([x, y, t, k]) =>
+      `<g transform="translate(${50 + x*100} ${50 + y*100})"><rect x="2" y="2" width="96" height="96" rx="10" fill="#cfe9b0"/><g transform="rotate(${k*90} 50 50)">${pieceSVG(t)}</g></g>`).join('') + '</svg>';
+  const card = (game, top, color, icon, name, note) => `<button class="card" data-game="${game}"><div class="card-top train-card-top">${top}</div>
+    <div class="card-foot"><div class="reward"><span class="mystery" style="--c:${color}">${icon}</span></div>
+    <div class="card-meta"><b>${name}</b><small>${note}</small></div></div></button>`;
+  return card('word', wordTop, '#3a86ff', '🚂', 'Písmenkový vláčik', state.word.done ? `Poskladaš už ${state.word.done} ${state.word.done === 1 ? 'slovo' : state.word.done < 5 ? 'slová' : 'slov'}` : 'Poskladaj slovo z vagónov')
+       + card('rails', railsTop, '#2a9d55', '🛤️', 'Staviame koľajnice', `Trať číslo ${state.rails.level}`);
+}
+
+/* ----- letter train ----- */
+const W = { word:'', id:'', pos:0, placed:[], busy:false, last:'' };
+function startWord(){ show('wtrain'); keepAwake(); nextWord(); }
+function nextWord(){
+  const maxLen = Math.min(5, 3 + Math.floor((state.word.done || 0) / 4));   // longer words as Oli gets better
+  const pool = WORDS.filter(([w]) => w.length <= maxLen && w !== W.last);
+  const [w, id] = pool[Math.floor(Math.random()*pool.length)];
+  Object.assign(W, { word:w, id, pos:0, placed:[], busy:false, last:w });
+  $('#wtPic').innerHTML = picTile(byId[id]);
+  $('#wtTrain').classList.remove('go');
+  renderWordTrain();
+  const extra = shuffle(ABC.filter(c => !w.includes(c))).slice(0, w.length <= 3 ? 2 : 3);
+  const cols = shuffle(WAGON_COLORS.slice());
+  const opts = shuffle([...w, ...extra].map((c, i) => ({ c, col: cols[i % cols.length] })));
+  $('#wtChoices').innerHTML = opts.map(o => `<button class="wagon" data-c="${o.c}" data-col="${o.col}" aria-label="písmenko ${o.c}">${wagonSVG(o.col)}<b>${o.c}</b></button>`).join('');
+  speak(SAY.wordAsk(w));
+}
+function renderWordTrain(){
+  $('#wtTrain').innerHTML = `<div class="wt-loco">${locoSVG()}</div>` + [...W.word].map((c, i) => i < W.pos
+    ? `<div class="wagon">${wagonSVG(W.placed[i])}<b>${c}</b></div>`
+    : `<div class="wagon empty${i === W.pos ? ' next' : ''}">${wagonSVG(null, true)}<b>${c}</b></div>`).join('');
+}
+$('#wtChoices').addEventListener('pointerdown', e => {
+  if (!accept(e) || W.busy) return;
+  const b = e.target.closest('.wagon'); if (!b || b.classList.contains('used')) return;
+  e.preventDefault(); audio();
+  const want = W.word[W.pos];
+  if (b.dataset.c === want){
+    b.classList.add('used'); W.placed[W.pos] = b.dataset.col; W.pos++;
+    tone(SCALE[Math.min(W.pos + 1, SCALE.length - 1)], 0.16, 'triangle', 0.15);
+    renderWordTrain();
+    if (W.pos >= W.word.length) wordDone(); else speak(SAY.letter(want));
+  } else {
+    b.classList.remove('wrong'); b.getBoundingClientRect(); b.classList.add('wrong');
+    sfx.boop(); speak(SAY.wordFind(want));
+  }
+});
+function wordDone(){
+  W.busy = true; const w = W.word;
+  state.word.done = (state.word.done || 0) + 1; save();
+  sfx.fanfare(); buzz([30,60,30]);
+  speak(SAY.wordDone(w));
+  setTimeout(() => { if (current === 'wtrain' && W.word === w){ toot(); $('#wtTrain').classList.add('go'); } }, 3200);
+  setTimeout(() => { if (current === 'wtrain' && W.word === w) nextWord(); }, 6200);
+}
+$('#wtRepeat').addEventListener('click', () => { audio(); if (W.word) speak(W.pos < W.word.length ? SAY.wordAsk(W.word) : SAY.wordDone(W.word)); });
+
+/* ----- rail puzzle: rotate track pieces until the line joins the two stations ----- */
+const TS = 100, SM = 110;              // tile size, station margin (svg units)
+const DX = [0, 1, 0, -1], DY = [-1, 0, 1, 0];   // N E S W
+const BASE_DIRS = { s:[3, 1], c:[3, 0] };       // straight W–E, curve W–N (before rotation)
+const dirsOf = t => BASE_DIRS[t.type].map(d => (d + t.k) % 4);
+const RL = { C:4, R:3, tiles:[], r0:0, r1:0, won:false, raf:0, route:null };
+function pieceSVG(type){
+  if (type === 'tree') return `<circle cx="50" cy="42" r="25" fill="#5cb85c" stroke="${INK}" stroke-width="4"/><circle cx="40" cy="36" r="5" fill="#e63946"/><circle cx="60" cy="48" r="5" fill="#e63946"/>`
+    + `<rect x="45" y="64" width="10" height="20" rx="2" fill="#9c6644" stroke="${INK}" stroke-width="3"/>`;
+  if (type === 's') return `<rect x="0" y="36" width="100" height="28" fill="#d8c3a0"/>`
+    + [7, 21, 35, 49, 63, 77, 91].map(x => `<rect x="${x - 3.5}" y="31" width="7" height="38" rx="2" fill="#8a5a3b"/>`).join('')
+    + `<path d="M0 42H100M0 58H100" stroke="#4a4f63" stroke-width="5"/>`;
+  let sl = '';
+  for (const a of [10, 28, 46, 64, 82]){ const r = a*Math.PI/180, c = Math.cos(r), s = Math.sin(r);
+    sl += `<path d="M${f1(31*c)} ${f1(31*s)}L${f1(69*c)} ${f1(69*s)}" stroke="#8a5a3b" stroke-width="7" stroke-linecap="round"/>`; }
+  return `<path d="M0 50A50 50 0 0 0 50 0" fill="none" stroke="#d8c3a0" stroke-width="28"/>` + sl
+    + `<path d="M0 42A42 42 0 0 0 42 0M0 58A58 58 0 0 0 58 0" fill="none" stroke="#4a4f63" stroke-width="5"/>`;
+}
+function railsSize(level){
+  const portrait = window.innerHeight > window.innerWidth;
+  const S = portrait ? [[3,4],[3,5],[4,5],[4,6],[4,6]] : [[4,3],[5,3],[5,4],[6,4],[7,5]];
+  return S[Math.min(level, S.length) - 1];
+}
+const dirTo = (a, b) => DX.findIndex((dx, d) => a[0] + dx === b[0] && a[1] + DY[d] === b[1]);
+function genRails(level){
+  const [C, R] = railsSize(level);
+  for (let attempt = 0; attempt < 300; attempt++){
+    const r0 = Math.floor(Math.random()*R), r1 = Math.floor(Math.random()*R);
+    const cap = C + 1 + 2*level, path = [[0, r0]], seen = new Set(['0,' + r0]);
+    const dfs = (x, y) => {
+      if (x === C - 1 && y === r1) return true;
+      if (path.length >= cap) return false;
+      for (const d of shuffle([0, 1, 2, 3])){
+        const nx = x + DX[d], ny = y + DY[d], key = nx + ',' + ny;
+        if (nx < 0 || ny < 0 || nx >= C || ny >= R || seen.has(key)) continue;
+        seen.add(key); path.push([nx, ny]);
+        if (dfs(nx, ny)) return true;
+        path.pop(); seen.delete(key);
+      }
+      return false;
+    };
+    if (!dfs(0, r0)) continue;
+    if (level >= 2 && path.length < C + 2) continue;          // a little winding from the 2nd track on
+    const tiles = [];
+    for (let y = 0; y < R; y++) for (let x = 0; x < C; x++) tiles.push({ i:tiles.length, x, y, type:'tree', k:0, deg:0, onPath:false });
+    path.forEach(([x, y], i) => {
+      const inD = i === 0 ? 3 : (dirTo(path[i - 1], path[i]) + 2) % 4;
+      const outD = i === path.length - 1 ? 1 : dirTo(path[i], path[i + 1]);
+      const t = tiles[y*C + x]; t.onPath = true;
+      if ((inD + 2) % 4 === outD){ t.type = 's'; t.k = inD % 2 ? 0 : 1; }
+      else { t.type = 'c'; t.k = [0, 1, 2, 3].find(k => { const ds = [(3 + k) % 4, k]; return ds.includes(inD) && ds.includes(outD); }); }
+    });
+    for (const t of tiles) t.sol = t.k;   // the solution (path tiles)
+    for (const t of tiles){
+      if (!t.onPath && level >= 3 && Math.random() < 0.65){ t.type = Math.random() < 0.5 ? 's' : 'c'; t.k = Math.floor(Math.random()*4); }   // decoys
+      if (t.type !== 'tree' && (t.onPath ? Math.random() < 0.8 : true)) t.k = (t.k + 1 + Math.floor(Math.random()*3)) % 4;   // scramble
+      t.deg = t.k * 90;
+    }
+    Object.assign(RL, { C, R, tiles, r0, r1, won:false, route:null });
+    if (traceRails()) continue;                                 // already solved by chance: try again
+    return;
+  }
+}
+function traceRails(){
+  const { C, R, tiles } = RL;
+  let x = 0, y = RL.r0, inD = 3; const route = [];
+  for (let n = 0; n <= C*R; n++){
+    const t = tiles[y*C + x];
+    if (!t || t.type === 'tree') return null;
+    const ds = dirsOf(t); if (!ds.includes(inD)) return null;
+    const out = ds[0] === inD ? ds[1] : ds[0];
+    route.push({ x, y, inD, out });
+    const nx = x + DX[out], ny = y + DY[out];
+    if (nx < 0 || ny < 0 || nx >= C || ny >= R) return (out === 1 && x === C - 1 && y === RL.r1) ? route : null;
+    x = nx; y = ny; inD = (out + 2) % 4;
+  }
+  return null;
+}
+function stationSVG(x, row, end){
+  const y = row*TS;
+  let s = `<rect x="${x}" y="${y + 66}" width="${SM}" height="16" rx="4" fill="#b9c0d4" stroke="${INK}" stroke-width="3"/>`
+    + `<rect x="${x}" y="${y + 36}" width="${SM}" height="28" fill="#d8c3a0"/><path d="M${x} ${y + 42}h${SM}M${x} ${y + 58}h${SM}" stroke="#4a4f63" stroke-width="5"/>`;
+  if (end) s += `<rect x="${x + 30}" y="${y - 2}" width="56" height="32" rx="4" fill="#ffd23f" stroke="${INK}" stroke-width="3"/>`
+    + `<path d="M${x + 24} ${y + 2}L${x + 58} ${y - 24}L${x + 92} ${y + 2}Z" fill="#e63946" stroke="${INK}" stroke-width="3" stroke-linejoin="round"/>`
+    + `<rect x="${x + 50}" y="${y + 8}" width="14" height="22" fill="#9c6644"/>`
+    + `<path d="M${x + 98} ${y + 30}V${y - 20}" stroke="${INK}" stroke-width="3"/><path d="M${x + 98} ${y - 20}l18 6 -18 6z" fill="#2a9d55" stroke="${INK}" stroke-width="2"/>`;
+  return s;
+}
+// the train seen from above, facing +x
+const TRAIN_PARTS = [
+  { back:0, svg:`<rect x="-17" y="-13" width="34" height="26" rx="7" fill="#e63946" stroke="${INK}" stroke-width="3"/><rect x="-14" y="-10" width="13" height="20" rx="3" fill="#bfe3ff"/><circle cx="9" cy="0" r="5" fill="${INK}"/>` },
+  { back:38, svg:`<rect x="-15" y="-12" width="30" height="24" rx="5" fill="#3a86ff" stroke="${INK}" stroke-width="3"/>` },
+  { back:72, svg:`<rect x="-15" y="-12" width="30" height="24" rx="5" fill="#ffd23f" stroke="${INK}" stroke-width="3"/>` },
+];
+function renderRails(){
+  const { C, R } = RL, x0 = -SM, w = C*TS + 2*SM;
+  let s = `<svg viewBox="${x0} -30 ${w} ${R*TS + 40}" xmlns="http://www.w3.org/2000/svg"><rect x="${x0}" y="-30" width="${w}" height="${R*TS + 40}" rx="18" fill="#e6f4d7"/>`;
+  s += stationSVG(-SM, RL.r0, false) + stationSVG(C*TS, RL.r1, true);
+  for (const t of RL.tiles){
+    s += `<g class="tile${t.type === 'tree' ? ' fixed' : ''}" data-i="${t.i}" transform="translate(${t.x*TS} ${t.y*TS})"><rect x="2" y="2" width="96" height="96" rx="10" fill="#cfe9b0" stroke="#b5d993" stroke-width="2"/>`
+      + `<g class="rot" style="transform:rotate(${t.deg}deg)"><rect width="100" height="100" fill="none"/>${pieceSVG(t.type)}</g></g>`;
+  }
+  s += `<g id="railTrain">${TRAIN_PARTS.map(p => `<g>${p.svg}</g>`).join('')}</g></svg>`;
+  $('#railsBoard').innerHTML = s;
+  placeTrain(null, 0);
+}
+function placeTrain(pts, sHead){
+  const g = document.querySelectorAll('#railTrain > g'), y0 = RL.r0*TS + 50, x0 = -24;
+  TRAIN_PARTS.forEach((p, i) => {
+    let x, y, a = 0, s = sHead - p.back;
+    if (!pts || s <= 0){ x = x0 + s; y = y0; }                // still in the start station, heading east
+    else {
+      let k = 1; while (k < pts.length - 1 && pts[k].d < s) k++;
+      const A = pts[k - 1], B = pts[k], u = Math.min(1, (s - A.d) / Math.max(1e-6, B.d - A.d));
+      x = A.x + (B.x - A.x)*u; y = A.y + (B.y - A.y)*u; a = Math.atan2(B.y - A.y, B.x - A.x)*180/Math.PI;
+    }
+    g[i].setAttribute('transform', `translate(${f1(x)} ${f1(y)}) rotate(${f1(a)})`);
+  });
+}
+function startRails(){
+  show('rails'); keepAwake();
+  cancelAnimationFrame(RL.raf);
+  genRails(state.rails.level || 1);
+  $('#railsTitle').textContent = `Trať číslo ${state.rails.level || 1}`;
+  $('#railsMsg').textContent = '';
+  renderRails();
+  speak(SAY.railsStart());
+}
+$('#railsBoard').addEventListener('pointerdown', e => {
+  if (!accept(e) || RL.won) return;
+  const g = e.target.closest('.tile'); if (!g || g.classList.contains('fixed')) return;
+  e.preventDefault(); audio();
+  const t = RL.tiles[+g.dataset.i];
+  t.k = (t.k + 1) % 4; t.deg += 90;
+  g.querySelector('.rot').style.transform = `rotate(${t.deg}deg)`;
+  tone(660, 0.06, 'square', 0.05);
+  const route = traceRails();
+  if (route){ RL.won = true; setTimeout(() => railsWin(route), 260); }
+});
+function railsWin(route){
+  const y0 = RL.r0*TS + 50, edge = (x, y, d) => [x*TS + 50 + DX[d]*50, y*TS + 50 + DY[d]*50];
+  const P = [[-24, y0]];
+  for (const st of route){
+    const a = edge(st.x, st.y, st.inD), b = edge(st.x, st.y, st.out), c = [st.x*TS + 50, st.y*TS + 50];
+    const straight = (st.inD + 2) % 4 === st.out;
+    for (let i = 1; i <= 14; i++){
+      const u = i/14, m = 1 - u;
+      P.push(straight ? [a[0] + (b[0] - a[0])*u, a[1] + (b[1] - a[1])*u] : [m*m*a[0] + 2*m*u*c[0] + u*u*b[0], m*m*a[1] + 2*m*u*c[1] + u*u*b[1]]);
+    }
+  }
+  P.push([RL.C*TS + 80, RL.r1*TS + 50]);
+  let d = 0; const pts = P.map((p, i) => { if (i) d += Math.hypot(p[0] - P[i - 1][0], p[1] - P[i - 1][1]); return { x:p[0], y:p[1], d }; });
+  const total = d, t0 = performance.now(), speed = 230;
+  toot(); speak(SAY.railsDone()); buzz([30,60,30]);
+  state.rails.level = (state.rails.level || 1) + 1; save();
+  let lastChug = 0;
+  const step = now => {
+    if (current !== 'rails') return;
+    const s = Math.min(total, (now - t0)/1000*speed);
+    placeTrain(pts, s);
+    if (now - lastChug > 260){ lastChug = now; tone(150, 0.05, 'triangle', 0.05); }
+    if (s < total) RL.raf = requestAnimationFrame(step);
+    else {
+      sfx.fanfare();
+      $('#railsMsg').innerHTML = `<span>Hurá, vláčik je v stanici!</span><button class="pill primary" id="railsNext"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>Ďalšia trať</button>`;
+      $('#railsNext').addEventListener('click', () => { audio(); startRails(); });
+    }
+  };
+  RL.raf = requestAnimationFrame(step);
+}
+$('#railsRepeat').addEventListener('click', () => { audio(); speak(RL.won ? SAY.railsDone() : SAY.railsStart()); });
+
+/* ================= kids (3-year-old) part ================= */
+// natural colors so a little child recognizes the animal at once
+const NATURAL = { p:'#c68642', m:'#ff9f43', b:'#efe2c8', l:'#f4b942', s:'#a47148', h:'#8ac926', o:'#9c6644', 'š':'#5b4636', d:'#7a5c45', g:'#f4f4f4',
+  y:'#a3a9b8', 'č':'#ffd23f', t:'#ff8c42', c:'#5fae4e', e:'#8d6e63', f:'#e6cfa8', i:'#4caf50', j:'#8d6e63', k:'#4f9d69', n:'#9aa3b5', r:'#e63946',
+  u:'#6aa84f', v:'#c0581f', z:'#f7f7f7', 'ž':'#f6c445', vlnka:'#7fb7e6', a:'#d9a066', ch:'#ff7eb6' };
+const mixW = (hex, k) => { const n = parseInt(hex.slice(1), 16), m = v => Math.round(v + (255 - v)*k);
+  return '#' + ((1 << 24) + (m(n >> 16) << 16) + (m((n >> 8) & 255) << 8) + m(n & 255)).toString(16).slice(1); };
+const autoCache = {};
+function autoFills(les){
+  if (autoCache[les.id]) return autoCache[les.id];
+  const base = NATURAL[les.scene || les.id] || les.color, F = {};
+  const ids = new Set((sceneSVG(les, {}, false, true).match(/data-r="[^"]+"/g) || []).map(s => s.slice(8, -1)));
+  for (const id of ids){
+    F[id] = id === 'nebo' ? '#dff1ff' : id === 'slnko' || /^(svetlo|syr|banan|hviezda|stred)/.test(id) ? '#ffd23f' : /^(mrak|dym|kvapka|bublina)/.test(id) ? '#ffffff'
+      : id === 'trava' || /^kopec/.test(id) ? '#9bd36a' : /^(more|voda)$/.test(id) ? '#5aa9e6' : /^(piesok|kaluz)$/.test(id) ? '#cfe3f5'
+      : /^(cesta|podklad)$/.test(id) ? '#9aa0ad' : /^(kamen)/.test(id) ? '#b8bcc6' : /^(konar|oriesok|kmen)/.test(id) ? '#9c6644'
+      : /^(list|listok|stonka)$/.test(id) ? '#4caf50' : /^(zobak|chodidlo)/.test(id) ? '#ff9f1c' : /^(roh|rozok|kel)/.test(id) ? '#efe1c0'
+      : /^(pas|kolo\d|vrtula|lizina|kolajnica)/.test(id) ? '#4a4f63' : id === 'kopa' ? '#9c6644' : /^(plamen|ryba)/.test(id) ? '#ff8c42'
+      : /^(kriz|spicka|majak)/.test(id) ? '#e63946'
+      : /^oko/.test(id) ? '#ffffff' : /^okno/.test(id) ? '#bfe3ff' : /^(koleso)/.test(id) ? '#2b2b3a' : /^disk/.test(id) ? '#d0d4dc'
+      : /^(jazyk|jablko|kvet)/.test(id) ? '#e63946' : id === 'nos' ? '#4a3b35'
+      : /^(brucho|brusko|tvar|papula|maska|okraj|plat|lalok|labka|nozka|krk)/.test(id) && les.level !== 3 ? mixW(base, 0.45) : base;
+  }
+  return (autoCache[les.id] = F);
+}
+
+const ANIMAL_SOUNDS = { p:'hav, hav', m:'mňau, mňau', b:'bé, bé', l:'vrrr, rrrau', s:'hú, hú', h:'sss', o:'u, u, a, a', d:'chro, chro', g:'ga, ga, ga', y:'pí, pí', 'č':'bzzz', vlnka:'í, í, í' };
+const KANIMALS = Object.keys(ANIMAL_SOUNDS);
+const CT_COLORS = [['#e63946','červený'],['#ffd23f','žltý'],['#3a86ff','modrý'],['#2a9d55','zelený'],['#ff8c42','oranžový'],['#8e5bd6','fialový'],['#ff7eb6','ružový'],['#9c6644','hnedý']];
+// the train gets harder: more wagons (up to 6), more choices (up to 4), later also pink and brown
+const ctLevel = () => { const d = state.ct.done || 0; return { n: Math.min(6, 2 + Math.floor(d / 2)), k: d < 2 ? 2 : d < 5 ? 3 : 4, colors: CT_COLORS.slice(0, d >= 6 ? 8 : 6).map(x => x[0]) }; };
+const ctName = c => (CT_COLORS.find(x => x[0] === c) || [, 'farebný'])[1];
+const COUNT = ['', 'jeden', 'dva', 'tri', 'štyri', 'päť', 'šesť'];
+state.aq = state.aq || { wins:0 };
+state.ct = state.ct || { done:0 };
+Object.assign(SAY, {
+  kLines: () => `${NAME}, vyber si čiaru.`,
+  kColor: () => `${NAME}, vyber si obrázok na vyfarbenie.`,
+  kAnimals: () => `${NAME}, ťukni na zvieratko.`,
+  kTrains: () => `${NAME}, vyber si hru s vláčikom.`,
+  kRails: () => `${NAME}, vyber si trať.`,
+  kLetters: () => `${NAME}, vyber si písmenko.`,
+  anTap: l => `${cap1(l.animal)}.`,   // just the name – the English word follows
+  anAsk: l => `${NAME}, kde je ${l.animal}?`,
+  anYes: l => `Áno! To je ${l.animal}.`,
+  anAgain: l => `Skús ešte raz. Kde je ${l.animal}?`,
+  ctAsk: c => `${NAME}, daj do vláčika ${ctName(c)} vagón!`,
+  ctFind: c => `Hľadáme ${ctName(c)} vagón.`,
+  ctCount: n => `${COUNT.slice(1, n + 1).map(cap1).join(', ')}! Vláčik má ${COUNT[n]} ${n >= 5 ? 'vagónov' : 'vagóny'}! Výborne, ${NAME}!`,
+});
+
+const KID_TILES = [
+  { k:'lines', name:'Čiary', c:'#ffe7a3', svg:`<svg viewBox="0 0 200 140" aria-hidden="true"><path d="M20 95 Q55 35 90 95 T160 95" fill="none" stroke="#8590b6" stroke-width="9" stroke-dasharray="3 15" stroke-linecap="round"/><path d="M20 95 Q55 35 90 95" fill="none" stroke="#e63946" stroke-width="14" stroke-linecap="round" opacity=".45"/><circle cx="103" cy="95" r="10" fill="${INK}"/><circle cx="90" cy="95" r="16" fill="#e5383b" stroke="${INK}" stroke-width="3"/><path d="M101 95H75" stroke="${INK}" stroke-width="3"/><circle cx="88" cy="86" r="3.5" fill="${INK}"/><circle cx="88" cy="104" r="3.5" fill="${INK}"/></svg>` },
+  { k:'color', name:'Vyfarbuj', c:'#ffd0e4', svg:`<svg viewBox="0 0 200 140" aria-hidden="true"><path d="M95 15C45 15 18 45 18 75c0 24 22 34 42 28 15-4 20 10 28 18 12 12 90 0 90-48C178 38 145 15 95 15z" fill="#fff" stroke="${INK}" stroke-width="5"/>${[['#e63946',60,50],['#ffd23f',95,38],['#3a86ff',132,50],['#2a9d55',145,82],['#8e5bd6',60,78]].map(([c, x, y]) => `<circle cx="${x}" cy="${y}" r="13" fill="${c}" stroke="${INK}" stroke-width="3"/>`).join('')}</svg>` },
+  { k:'animals', name:'Zvieratká', c:'#c9f0c1', svg:`<svg viewBox="0 0 200 140" aria-hidden="true"><path d="M60 50 L66 10 L98 38 Z M140 50 L134 10 L102 38 Z" fill="#ff9f43" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/><ellipse cx="100" cy="75" rx="52" ry="46" fill="#ff9f43" stroke="${INK}" stroke-width="5"/><circle cx="82" cy="68" r="6" fill="${INK}"/><circle cx="118" cy="68" r="6" fill="${INK}"/><path d="M93 84 L107 84 L100 92 Z" fill="#e63946"/><path d="M100 92 q-7 9 -14 3 M100 92 q7 9 14 3 M58 84 L30 80 M58 92 L30 98 M142 84 L170 80 M142 92 L170 98" fill="none" stroke="${INK}" stroke-width="3" stroke-linecap="round"/></svg>` },
+  { k:'letters', name:'Písmenká', c:'#e6dcff', svg:`<svg viewBox="0 0 200 140" aria-hidden="true"><text x="100" y="112" text-anchor="middle" font-family="Baloo 2, sans-serif" font-weight="800" font-size="120" fill="#8e5bd6" stroke="${INK}" stroke-width="4" paint-order="stroke">Aa</text></svg>` },
+  { k:'trains', name:'Vláčiky', c:'#cfe3ff', svg:`<svg viewBox="0 0 200 140" aria-hidden="true"><rect x="8" y="118" width="184" height="6" fill="#4a4f63"/>${locoSVG('x="14" y="30" width="132" height="88"')}${wagonSVG('#ffd23f', false, 'x="140" y="60" width="60" height="56"')}</svg>` },
+];
+function renderKids(){
+  $('#kidsHello').textContent = `Ahoj ${NAME}!`;
+  $('#kidsGrid').innerHTML = KID_TILES.map(t => `<button class="ktile" data-k="${t.k}" style="--c:${t.c}" aria-label="${t.name}">${t.svg}<b>${t.name}</b></button>`).join('');
+
+}
+$('#kidsGrid').addEventListener('click', e => {
+  const t = e.target.closest('[data-k]'); if (!t) return;
+  audio(); keepAwake();
+  if (t.dataset.k === 'animals') openAnimals(); else openPick(t.dataset.k);
+});
+$('#kAlbum').addEventListener('click', () => $('#albumBtn').click());
+$('#kidsBtn').addEventListener('click', () => { state.mode = 'kids'; save(); goHome(); });
+// parents' door: hold the button for a moment (a quick tap by a toddler does nothing)
+(() => {
+  const b = $('#parentBtn'); let tm = 0;
+  const stop = () => { clearTimeout(tm); b.classList.remove('hold'); };
+  b.addEventListener('pointerdown', e => { e.preventDefault(); b.classList.add('hold'); tm = setTimeout(() => { stop(); state.mode = 'big'; save(); goHome(); }, 1400); });
+  b.addEventListener('pointerup', stop);   // (a long press fires pointercancel on phones – that must not stop the hold)
+  b.addEventListener('contextmenu', e => e.preventDefault());
+})();
+
+const kStars = n => `<span class="kstars">${stars(n)}</span>`;
+function openPick(kind, quiet){
+  const g = $('#kpickGrid'); let title = '', say = '';
+  if (kind === 'lines' || kind === 'rails' || kind === 'letters'){
+    const lt = state.ltab === 7 ? 7 : 1;   // letters: with animals (1) or with vehicles (7)
+    const list = LESSONS.filter(l => (l.level || 1) === ({ lines:5, rails:6, letters:lt })[kind]);
+    title = ({ lines:'Čiary', rails:'Koľajnice', letters:'Písmenká' })[kind];
+    say = ({ lines:SAY.kLines, rails:SAY.kRails, letters:SAY.kLetters })[kind]();
+    const letters = kind === 'letters';
+    g.innerHTML = (letters ? `<div class="ktabs"><button class="tab${lt === 1 ? ' on' : ''}" data-lt="1">🐾 Zvieratká</button><button class="tab${lt === 7 ? ' on' : ''}" data-lt="7">🚗 Vozidlá</button></div>` : '')
+      + list.map(l => { const d = state.done[l.id] || 0;
+      return `<button class="kcard${letters ? ' withbadge' : ''}" data-pl="${l.id}" aria-label="${l.Animal}"><div class="kline">${letterCardSVG(l, d > 0)}</div>`
+        + (letters ? `<div class="kbadge">${sceneSVG(l, autoFills(l), false, true)}</div>` : '') + `${kStars(d)}</button>`; }).join('');
+  } else if (kind === 'color'){
+    title = 'Vyfarbuj'; say = SAY.kColor();
+    const list = LESSONS.filter(l => !l.level || l.level === 3 || (l.level === 5 && ['dazd', 'kruh', 'blesk'].includes(l.id))
+      || (l.level === 7 && !['dpa', 'dpl', 'dpm', 'dpv'].includes(l.id)));
+    g.innerHTML = list.map(l => { const last = lastEntry(l.id);
+      return `<button class="kcard" data-pc="${l.id}" aria-label="${l.Animal}"><div class="ptile">${last ? thumbHTML(last) : sceneSVG(l, {}, false, true)}</div></button>`; }).join('');
+  } else {
+    title = 'Vláčiky'; say = SAY.kTrains();
+    g.innerHTML = `<button class="kcard big" data-pt="ct" style="--c:#fff3c4">${locoSVG('style="width:45%"')}<div style="display:flex;gap:4px;width:70%">${['#e63946', '#ffd23f', '#3a86ff'].map(c => wagonSVG(c, false, 'style="width:33%"')).join('')}</div><b>Farebný vláčik</b></button>`
+      + `<button class="kcard big" data-pt="rails" style="--c:#dff3d1"><svg viewBox="0 0 200 120" aria-hidden="true"><path d="M10 95 C60 95 60 30 110 30 S170 60 190 60" fill="none" stroke="#d8c3a0" stroke-width="30"/><path d="M10 95 C60 95 60 30 110 30 S170 60 190 60" fill="none" stroke="#8a5a3b" stroke-width="26" stroke-dasharray="5 9"/><path d="M10 86 C56 86 56 21 110 21 S170 51 190 51 M10 104 C64 104 64 39 110 39 S170 69 190 69" fill="none" stroke="#4a4f63" stroke-width="4"/></svg><b>Koľajnice</b></button>`;
+  }
+  $('#kpickTitle').textContent = title;
+  show('kpick'); g.scrollTop = 0;
+  if (!quiet) speak(say);
+}
+$('#kpickGrid').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  audio();
+  if (b.dataset.lt){ state.ltab = +b.dataset.lt; save(); tone(700, 0.06, 'sine', 0.08); openPick('letters', true); return; }
+  if (b.dataset.pl) startTrace(byId[b.dataset.pl]);
+  else if (b.dataset.pc) openColor(byId[b.dataset.pc], true);
+  else if (b.dataset.pt === 'ct') startCT();
+  else if (b.dataset.pt === 'rails') openPick('rails');
+});
+
+/* ----- animals: tap to hear the name and the sound; then "where is ...?" (2, later 3 pictures) ----- */
+const colorTile = l => `<div class="ptile">${sceneSVG(l, autoFills(l), false, true)}</div>`;
+function openAnimals(){
+  $('#anGrid').innerHTML = KANIMALS.map(id => `<button class="kcard" data-an="${id}" aria-label="${byId[id].animal}">${colorTile(byId[id])}</button>`).join('');
+  show('animals'); $('#anGrid').scrollTop = 0;
+  speak(SAY.kAnimals());
+}
+$('#anGrid').addEventListener('pointerdown', e => {
+  if (!accept(e)) return;
+  const b = e.target.closest('[data-an]'); if (!b) return;
+  audio(); b.classList.remove('bounce'); b.getBoundingClientRect(); b.classList.add('bounce');
+  sfx.pop(); speak(SAY.anTap(byId[b.dataset.an]), EN_ANIMAL[b.dataset.an]);
+});
+const AQ = { round:0, score:0, q:null, firstTry:true, busy:false, results:[], last:'' };
+function startAQ(){
+  Object.assign(AQ, { round:0, score:0, results:[], busy:false });
+  $('#aqEnd').hidden = true; $('#aqBody').hidden = false;
+  show('aquiz'); audio(); keepAwake(); nextAQ();
+}
+function aqDots(){
+  $('#aqDots').innerHTML = Array.from({length:ROUND}, (_, i) => `<span class="${AQ.results[i] === true ? 'ok' : AQ.results[i] === false ? 'half' : ''}${i === AQ.round && AQ.results.length === i ? ' now' : ''}"></span>`).join('');
+}
+function nextAQ(){
+  if (AQ.round >= ROUND) return endAQ();
+  const n = (state.aq.wins || 0) >= 2 ? 3 : 2;
+  const target = shuffle(KANIMALS.filter(id => id !== AQ.last))[0];
+  const opts = shuffle([target, ...shuffle(KANIMALS.filter(id => id !== target)).slice(0, n - 1)]);
+  Object.assign(AQ, { q:{ target, opts }, firstTry:true, busy:false, last:target });
+  $('#aqAsk').textContent = `Kde je ${byId[target].animal}?`;
+  const ch = $('#aqChoices');
+  ch.style.gridTemplateColumns = `repeat(${n},minmax(0,1fr))`;
+  ch.innerHTML = opts.map(id => `<button class="choice" data-id="${id}" aria-label="${byId[id].animal}">${colorTile(byId[id])}</button>`).join('');
+  aqDots(); speak(SAY.anAsk(byId[target]));
+}
+$('#aqChoices').addEventListener('pointerdown', e => {
+  if (!accept(e) || AQ.busy) return;
+  const b = e.target.closest('.choice'); if (!b || b.classList.contains('wrong')) return;
+  e.preventDefault(); audio();
+  const t = byId[AQ.q.target];
+  if (b.dataset.id === AQ.q.target){
+    AQ.busy = true; b.classList.add('right');
+    AQ.results.push(AQ.firstTry); if (AQ.firstTry) AQ.score++;
+    [784, 1047, 1319].forEach((f, i) => tone(f, 0.18, 'triangle', 0.16, i*0.09)); buzz(30);
+    speak(SAY.anYes(t), EN_ANIMAL[t.id]); AQ.round++; aqDots();
+    setTimeout(() => { if (current === 'aquiz') nextAQ(); }, state.english !== false ? 4400 : 3000);   // room for the English word
+  } else {
+    b.classList.add('wrong'); AQ.firstTry = false;
+    tone(330, 0.15, 'sine', 0.08); speak(SAY.anAgain(t));
+  }
+});
+function endAQ(){
+  if (AQ.score >= 4) state.aq.wins = (state.aq.wins || 0) + 1; save();
+  $('#aqBody').hidden = true; $('#aqEnd').hidden = false; AQ.q = null;
+  $('#aqStars').innerHTML = Array.from({length:ROUND}, (_, i) => i < AQ.score ? `<i style="--n:${i}">★</i>` : '★').join('');
+  $('#aqEndTitle').textContent = AQ.score >= 3 ? `Super, ${NAME}!` : `Dobrá práca, ${NAME}!`;
+  sfx.fanfare(); speak(SAY.gameEnd(AQ.score));
+}
+$('#aqStart').addEventListener('click', startAQ);
+$('#aqAgain').addEventListener('click', startAQ);
+$('#aqRepeat').addEventListener('click', () => { audio(); if (AQ.q) speak(SAY.anAsk(byId[AQ.q.target])); });
+
+/* ----- color train: "put the yellow wagon in" (2, later 3 choices), then count the wagons aloud ----- */
+const CT = { n:2, want:[], placed:[], pos:0, busy:false, run:0 };
+const slotSVG = hint => `<svg viewBox="0 0 100 90" aria-hidden="true"><path d="M0 50h7" stroke="${INK}" stroke-width="5"/><rect x="5" y="6" width="90" height="56" rx="10" fill="${hint ? mixW(hint, 0.75) : '#f1f4fb'}" stroke="${hint || '#9aa3c2'}" stroke-width="${hint ? 6 : 4}" stroke-dasharray="9 7"/>`
+  + [26, 74].map(x => `<circle cx="${x}" cy="74" r="12" fill="#c9d0e2"/>`).join('') + '</svg>';
+function startCT(){ show('ctrain'); keepAwake(); nextCT(); }
+function nextCT(){
+  const done = state.ct.done || 0;
+  const lv = ctLevel(); CT.n = lv.n;
+  const want = []; for (let i = 0; i < CT.n; i++){ let c; do { c = lv.colors[Math.floor(Math.random()*lv.colors.length)]; } while (c === want[i - 1]); want.push(c); }
+  Object.assign(CT, { want, placed:[], pos:0, busy:false, run:CT.run + 1 });
+  $('#ctTrain').classList.remove('go');
+  stepCT();
+}
+function renderCT(){
+  $('#ctTrain').innerHTML = `<div class="wt-loco">${locoSVG()}</div>` + CT.want.map((c, i) => i < CT.pos
+    ? `<div class="wagon" data-n="${i + 1}">${wagonSVG(c)}</div>`
+    : `<div class="wagon empty${i === CT.pos ? ' next' : ''}">${slotSVG(i === CT.pos ? c : null)}</div>`).join('');
+}
+function stepCT(){
+  renderCT();
+  const c = CT.want[CT.pos];
+  $('#ctAsk').innerHTML = `<i style="--c:${c}"></i><span>${cap1(ctName(c))}</span>`;
+  const lv = ctLevel();
+  const opts = shuffle([c, ...shuffle(lv.colors.filter(x => x !== c)).slice(0, lv.k - 1)]);
+  $('#ctChoices').innerHTML = opts.map(o => `<button class="wagon" data-c="${o}" aria-label="${ctName(o)} vagón">${wagonSVG(o)}</button>`).join('');
+  speak(SAY.ctAsk(c), enColor(c));
+}
+$('#ctChoices').addEventListener('pointerdown', e => {
+  if (!accept(e) || CT.busy) return;
+  const b = e.target.closest('.wagon'); if (!b) return;
+  e.preventDefault(); audio();
+  const want = CT.want[CT.pos];
+  if (b.dataset.c !== want){
+    b.classList.remove('wrong'); b.getBoundingClientRect(); b.classList.add('wrong');
+    tone(330, 0.15, 'sine', 0.08); speak(SAY.ctFind(want)); return;
+  }
+  CT.pos++; tone(SCALE[Math.min(CT.pos + 1, SCALE.length - 1)], 0.16, 'triangle', 0.15);
+  if (CT.pos < CT.n){   // a calm pause before the next colour
+    CT.busy = true; renderCT(); $('#ctChoices').innerHTML = ''; const run = CT.run;
+    setTimeout(() => { if (CT.run === run && current === 'ctrain'){ CT.busy = false; stepCT(); } }, 1600);
+    return;
+  }
+  // full train: count the wagons one by one, then off it goes
+  CT.busy = true; const run = CT.run;
+  renderCT(); $('#ctChoices').innerHTML = ''; $('#ctAsk').innerHTML = '';
+  state.ct.done = (state.ct.done || 0) + 1; save();
+  speak(SAY.ctCount(CT.n), enCount(CT.n));
+  const wag = [...document.querySelectorAll('#ctTrain .wagon')];
+  wag.forEach((w, i) => setTimeout(() => { if (CT.run === run){ w.classList.add('counted'); tone(SCALE[i + 2], 0.2, 'triangle', 0.15); } }, 250 + i*750));
+  const tEnd = 250 + CT.n*750 + 1800 + (state.english !== false ? 700 + CT.n*350 : 0);   // time for the English counting
+  setTimeout(() => { if (CT.run === run && current === 'ctrain'){ sfx.fanfare(); buzz([30,60,30]); } }, tEnd - 1200);
+  setTimeout(() => { if (CT.run === run && current === 'ctrain'){ toot(); $('#ctTrain').classList.add('go'); } }, tEnd);
+  setTimeout(() => { if (CT.run === run && current === 'ctrain') nextCT(); }, tEnd + 2800);
+});
+$('#ctRepeat').addEventListener('click', () => { audio(); if (!CT.busy && CT.want.length) speak(SAY.ctAsk(CT.want[CT.pos])); });
+
+/* ================= resize ================= */
+let rz = 0;
+window.addEventListener('resize', () => {
+  clearTimeout(rz);
+  rz = setTimeout(() => {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    if (current === 'trace') sizeTrace();
+    if (current === 'color') fitScene(false);
+  }, 120);
+});
+
+$('#voiceSel').addEventListener('change', e => { state.voice = e.target.value; save(); audio(); speak(SAY.voiceSel()); });
+$('#voiceTest').addEventListener('click', () => { if (!state.sound){ state.sound = true; save(); renderSoundBtn(); } audio(); speak(SAY.voiceTest()); });
+
+// every sentence the app can say: used to generate the recorded voice
+function allPhrases(){
+  const P = new Set([SAY.hello(), SAY.voiceTest(), SAY.voiceSel(), SAY.three(), SAY.five()]);
+  for (const l of LESSONS){
+    P.add(SAY.trace(l)); P.add(SAY.praise(l)); P.add(SAY.color(l)); P.add(SAY.album(l));
+    if (l.level === 2) P.add(SAY.locked(l));
+    l.says.forEach(s => s && P.add(s));
+  }
+  for (const l of LESSONS.filter(l => l.id !== 'vlnka' && !l.noGame)){ P.add(SAY.qPic(l)); P.add(SAY.qLetter(l)); P.add(SAY.yes(l)); P.add(SAY.noPic(l)); P.add(SAY.noLetter(l)); }
+  for (const c of PALETTE){ P.add(SAY.cname(c)); P.add(SAY.cyes(c)); if (c !== WHITE) P.add(SAY.suggest(c)); }
+  for (let n = 0; n <= ROUND; n++) P.add(SAY.gameEnd(n));
+  for (const [w] of WORDS){ P.add(SAY.wordAsk(w)); P.add(SAY.wordDone(w)); }
+  for (const L of ABC){ P.add(SAY.letter(L)); P.add(SAY.wordFind(L)); }
+  P.add(SAY.railsStart()); P.add(SAY.railsDone());
+  [SAY.kLines(), SAY.kColor(), SAY.kAnimals(), SAY.kTrains(), SAY.kRails(), SAY.kLetters()].forEach(s => P.add(s));
+  for (const id of KANIMALS){ const l = byId[id]; P.add(SAY.anTap(l)); P.add(SAY.anAsk(l)); P.add(SAY.anYes(l)); P.add(SAY.anAgain(l)); }
+  for (const [c] of CT_COLORS){ P.add(SAY.ctAsk(c)); P.add(SAY.ctFind(c)); }
+  for (let n = 2; n <= 6; n++) P.add(SAY.ctCount(n));
+  for (const w of Object.values(PART_WORD)) P.add(`Vyfarbi ňou ${w}.`);
+  P.add(TIP_ANIMAL); P.add(TIP_VEHICLE);
+  for (const w of allEnglish()) P.add('en:' + w);
+  return [...P];
+}
+$('#enToggle').checked = state.english !== false;
+$('#enToggle').addEventListener('change', e => { state.english = e.target.checked; save(); });
+renderVoices();
+goHome();
+if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+})();
+</script>
+
+</body></html>

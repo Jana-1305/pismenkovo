@@ -1,8 +1,8 @@
 // Písmenkovo offline: the app is kept on the device; the voice packs are added in the background.
 // The page itself is always fetched fresh when online (so updates show at once), the saved copy is used offline.
 // Voice packs live in their own cache, so an app update does not download the voice again.
-const CACHE = 'pismenkovo-v6';
-const VOICE = 'pismenkovo-voice-1';
+const CACHE = 'pismenkovo-v7';
+const VOICE = 'pismenkovo-voice-2';
 const CORE = [
   './', './index.html', './manifest.webmanifest', './voice/index.json',
   './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon.png',

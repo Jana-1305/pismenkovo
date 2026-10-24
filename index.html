@@ -342,6 +342,12 @@ button:focus-visible{outline:4px solid var(--sun);outline-offset:3px}
 .kcard .kstars{position:absolute;left:0;right:0;bottom:6px;text-align:center;font-size:1.3rem;color:#d5dbea;letter-spacing:2px}
 .kcard .kstars i{font-style:normal;color:var(--sun);-webkit-text-stroke:1px #c58f00}
 .kcard.bounce{animation:hop .6s ease}
+/* the English word under a tapped animal (for the parent; Oli hears it) */
+.kcard .enw{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);background:#fff;border:3px solid var(--ink);border-radius:14px;padding:0 12px;
+  font-weight:800;font-size:clamp(1.1rem,3.6vw,1.6rem);line-height:1.5;box-shadow:0 3px 0 var(--ink);animation:starpop .45s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.en-pill{background:#e8f1ff}
+.en-pill .flag{display:inline-grid;place-items:center;font-size:.72em;font-weight:800;color:#fff;background:#3a86ff;border-radius:6px;padding:0 5px;line-height:1.5}
+.choice.hint{animation:wiggle .5s ease-in-out 5}
 .ct-ask{display:flex;align-items:center;gap:14px;font-weight:800;font-size:clamp(1.4rem,4.5vw,2.2rem)}
 .ct-ask i{width:clamp(56px,14vw,90px);aspect-ratio:1;border-radius:50%;border:4px solid var(--ink);background:var(--c);box-shadow:0 5px 0 var(--ink)}
 .ct-track{--w:clamp(50px,calc((100vw - 60px) / 6.6),110px)}
@@ -488,7 +494,7 @@ button:focus-visible{outline:4px solid var(--sun);outline-offset:3px}
   <header class="bar">
     <button class="icon-btn" data-home aria-label="Domov"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></svg></button>
     <div class="bar-title">Zvieratká</div>
-    <div class="bar-actions"><button class="pill primary" id="aqStart"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></svg>Hra</button></div>
+    <div class="bar-actions"><button class="pill primary" id="aqStart"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></svg>Hra</button><button class="pill en-pill" id="eqStart"><span class="flag" aria-hidden="true">EN</span>Po anglicky</button></div>
   </header>
   <div class="kpick-grid" id="anGrid"></div>
 </section>
@@ -892,6 +898,15 @@ for (const [ch, animal, Animal, acc, pron, ins, color, rider, scene] of LETTER_V
   LESSONS.push({ id:'dp' + ch, label:ch, animal, Animal, acc, pron, ins, color, rider, scene, band:base.band, strokes:base.strokes, level:7, noGame:true, caption:`${ch} ako ${animal}` });
 }
 const byId = Object.fromEntries(LESSONS.map(l => [l.id, l]));
+// animals without a letter: Oli's animal corner and the coloring pictures
+const ZOO = [
+  ['krava','krava','Krava','kravu','ju','#ffffff'], ['kon','kôň','Kôň','koňa','ho','#a0522d'], ['prasa','prasiatko','Prasiatko','prasiatko','ho','#ffb3c7'],
+  ['kacka','kačka','Kačka','kačku','ju','#ffd23f'], ['slon','slon','Slon','slona','ho','#9aa3b5'], ['ryba','rybka','Rybka','rybku','ju','#ff8c42'],
+  ['zaba','žaba','Žaba','žabu','ju','#5fbf4a'], ['zajac','zajko','Zajko','zajka','ho','#c8b8a6'],
+];
+for (const [id, animal, Animal, acc, pron, color] of ZOO)
+  byId[id] = { id, label:Animal, animal, Animal, acc, pron, color, level:8, noGame:true, title:Animal, caption:Animal,
+    strokes:[], paths:[], says:[], offs:[], total:0, band:[0, 1], box:{ minX:0, maxX:1, minY:0, maxY:1 } };
 
 function buildStroke(def, noSlant){
   let raw = [];
@@ -1329,6 +1344,95 @@ const SCENES = {
     + eye(D, 314, 62) + eye(D, 348, 78, 3)
     + L(208, 230, 26),
 
+  /* ----- animals only for Oli's animal corner and coloring (no letter) ----- */
+  krava: (R, D) => SKY(R) + sun(R, D, 70, 62) + R('mrak','path',`d="${cloudD(205,72,0.9)}"`) + GRASS(R)
+    + R('noha1','rect','x="108" y="258" width="26" height="86" rx="8"') + R('noha2','rect','x="146" y="264" width="26" height="80" rx="8"')
+    + R('noha3','rect','x="226" y="264" width="26" height="80" rx="8"') + R('noha4','rect','x="264" y="258" width="26" height="86" rx="8"')
+    + line(D, 'M84 214 Q60 240 68 284', 5) + R('strapec','path','d="M68 280 L56 306 L82 300 Z"')
+    + R('vemeno','ellipse','cx="200" cy="282" rx="24" ry="17"')
+    + R('telo','ellipse','cx="190" cy="226" rx="112" ry="56"')
+    + R('skvrna1','ellipse','cx="150" cy="208" rx="32" ry="22"') + R('skvrna2','ellipse','cx="234" cy="242" rx="24" ry="17"') + R('skvrna3','ellipse','cx="104" cy="240" rx="14" ry="12"')
+    + R('roh1','path','d="M290 140 Q280 112 296 102 Q294 122 302 138 Z"') + R('roh2','path','d="M334 140 Q344 112 328 102 Q330 122 322 138 Z"')
+    + R('ucho1','path','d="M286 158 Q258 142 250 162 Q266 172 288 168 Z"') + R('ucho2','path','d="M338 158 Q366 142 374 162 Q358 172 336 168 Z"')
+    + R('hlava','ellipse','cx="312" cy="176" rx="38" ry="44"')
+    + R('pysk','ellipse','cx="312" cy="222" rx="32" ry="22"')
+    + eye(D, 298, 170) + eye(D, 326, 170) + eye(D, 302, 224, 4) + eye(D, 322, 224, 4),
+
+  kon: (R, D) => SKY(R) + sun(R, D, 70, 62) + R('mrak','path',`d="${cloudD(190,74,0.8)}"`) + GRASS(R)
+    + R('noha1','rect','x="110" y="254" width="22" height="90" rx="7"') + R('noha2','rect','x="144" y="260" width="22" height="84" rx="7"')
+    + R('noha3','rect','x="234" y="260" width="22" height="84" rx="7"') + R('noha4','rect','x="268" y="254" width="22" height="90" rx="7"')
+    + R('chvost','path','d="M86 206 C50 214 44 270 58 302 C70 270 78 240 100 222 Z"')
+    + R('krk','path','d="M258 210 C268 170 280 138 290 112 L330 128 C320 156 312 190 306 224 Z"')
+    + R('telo','ellipse','cx="192" cy="222" rx="110" ry="50"')
+    + R('hriva','path','d="M292 106 L270 112 L280 130 L262 138 L274 154 L256 162 L268 178 L252 188 L264 204 L286 196 L300 130 Z"')
+    + R('ucho','path','d="M302 104 L298 72 L320 100 Z"')
+    + R('hlava','path','d="M296 100 Q332 86 354 118 L372 150 Q374 170 354 172 L322 166 Q296 150 296 100 Z"')
+    + eye(D, 324, 116) + eye(D, 362, 160, 3.5),
+
+  prasa: (R, D) => SKY(R) + sun(R, D, 70, 62) + R('mrak','path',`d="${cloudD(205,72,0.9)}"`) + GRASS(R)
+    + R('kaluz','ellipse','cx="110" cy="356" rx="80" ry="16"')
+    + R('noha1','rect','x="118" y="276" width="28" height="62" rx="9"') + R('noha2','rect','x="156" y="282" width="28" height="56" rx="9"')
+    + R('noha3','rect','x="226" y="282" width="28" height="56" rx="9"') + R('noha4','rect','x="262" y="276" width="28" height="62" rx="9"')
+    + line(D, 'M84 228 q-24 -4 -20 -24 q8 -12 17 0 q4 11 -9 13', 4)
+    + R('telo','ellipse','cx="192" cy="238" rx="112" ry="66"')
+    + R('ucho1','path','d="M274 152 L268 110 L304 136 Z"') + R('ucho2','path','d="M342 152 L348 110 L312 136 Z"')
+    + R('hlava','circle','cx="308" cy="188" r="50"')
+    + R('rypak','ellipse','cx="308" cy="210" rx="26" ry="18"') + eye(D, 300, 210, 4.5) + eye(D, 316, 210, 4.5)
+    + eye(D, 290, 176) + eye(D, 326, 176) + line(D, 'M294 234 q14 9 28 0', 3),
+
+  kacka: (R, D) => SKY(R) + sun(R, D, 335, 62) + R('mrak','path',`d="${cloudD(100,80,1)}"`)
+    + R('voda','path','d="M0 296 Q100 280 200 296 T400 296 L400 400 L0 400 Z"')
+    + R('chvost','path','d="M100 238 L58 194 L110 212 Z"')
+    + R('telo','path','d="M92 236 C92 186 150 176 214 192 L252 198 C304 204 324 244 304 282 C282 322 142 330 104 292 C84 272 86 254 92 236 Z"')
+    + R('kridlo','path','d="M146 236 C178 210 240 214 262 242 C232 266 180 270 146 236 Z"')
+    + R('hlava','circle','cx="284" cy="150" r="44"')
+    + R('zobak','path','d="M318 146 Q374 142 374 160 Q370 176 318 174 Z"') + line(D, 'M322 160 L364 160', 3)
+    + eye(D, 294, 138, 6)
+    + line(D, 'M40 330 q16 -10 32 0 M300 344 q16 -10 32 0 M180 356 q16 -10 32 0', 4),
+
+  slon: (R, D) => SKY(R) + sun(R, D, 70, 62) + R('mrak','path',`d="${cloudD(215,74,0.8)}"`) + GRASS(R)
+    + R('noha1','rect','x="100" y="262" width="40" height="80" rx="12"') + R('noha2','rect','x="150" y="268" width="40" height="74" rx="12"')
+    + R('noha3','rect','x="216" y="268" width="40" height="74" rx="12"') + R('noha4','rect','x="258" y="262" width="40" height="80" rx="12"')
+    + line(D, 'M72 214 q-16 22 -8 46', 4)
+    + R('telo','ellipse','cx="180" cy="222" rx="114" ry="74"')
+    + R('hlava','circle','cx="304" cy="186" r="54"')
+    + R('chobot','path','d="M340 214 C356 250 360 290 344 322 L366 328 C384 290 378 238 356 200 Z"')
+    + R('kel','path','d="M330 238 Q352 256 374 250 Q354 266 324 252 Z"')
+    + R('ucho','path','d="M270 140 C212 140 208 244 258 258 C288 248 298 200 296 154 Z"')
+    + eye(D, 322, 174, 6),
+
+  ryba: (R, D) => R('more','rect','x="0" y="0" width="400" height="400"')
+    + R('piesok','path','d="M0 338 Q100 324 200 338 T400 334 L400 400 L0 400 Z"')
+    + R('list','path','d="M60 340 C40 290 72 250 52 196 C84 238 74 300 82 340 Z"') + R('listok','path','d="M342 338 C362 298 330 262 350 218 C320 258 330 300 322 338 Z"')
+    + R('chvost','path','d="M120 200 L62 148 L76 200 L62 252 Z"')
+    + R('plutva','path','d="M164 146 Q200 92 254 146 Z"')
+    + R('telo','ellipse','cx="200" cy="200" rx="98" ry="66"')
+    + R('plutva2','path','d="M192 212 Q218 242 242 216 Q220 204 192 212 Z"')
+    + R('oko','circle','cx="252" cy="184" r="15"') + eye(D, 256, 184, 6.5)
+    + line(D, 'M290 214 q-10 7 -20 0', 3)
+    + R('bublina1','circle','cx="314" cy="140" r="11"') + R('bublina2','circle','cx="334" cy="100" r="8"') + R('bublina3','circle','cx="322" cy="66" r="6"'),
+
+  zaba: (R, D) => SKY(R) + sun(R, D, 335, 62) + R('mrak','path',`d="${cloudD(100,80,1)}"`)
+    + R('voda','path','d="M0 250 Q100 236 200 250 T400 250 L400 400 L0 400 Z"')
+    + R('list','ellipse','cx="200" cy="320" rx="160" ry="42"')
+    + R('noha1','path','d="M112 304 C78 304 76 248 122 238 L152 292 Z"') + R('noha2','path','d="M288 304 C322 304 324 248 278 238 L248 292 Z"')
+    + R('telo','ellipse','cx="200" cy="258" rx="96" ry="64"')
+    + R('brucho','ellipse','cx="200" cy="282" rx="56" ry="38"')
+    + R('labka1','ellipse','cx="160" cy="318" rx="24" ry="11"') + R('labka2','ellipse','cx="240" cy="318" rx="24" ry="11"')
+    + R('oko1','circle','cx="154" cy="190" r="30"') + R('oko2','circle','cx="246" cy="190" r="30"')
+    + eye(D, 158, 194, 11) + eye(D, 242, 194, 11)
+    + line(D, 'M148 244 Q200 274 252 244', 4),
+
+  zajac: (R, D) => SKY(R) + sun(R, D, 70, 62) + R('mrak','path',`d="${cloudD(330,150,0.7)}"`) + GRASS(R)
+    + R('chvost','circle','cx="104" cy="262" r="20"')
+    + R('telo','ellipse','cx="176" cy="262" rx="80" ry="62"')
+    + R('noha','ellipse','cx="146" cy="322" rx="42" ry="14"') + R('labka','ellipse','cx="232" cy="320" rx="22" ry="12"')
+    + R('ucho1','path','d="M230 152 C212 92 224 40 244 40 C262 50 258 112 252 152 Z"') + R('ucho2','path','d="M262 152 C262 92 290 46 306 54 C318 70 292 122 280 156 Z"')
+    + R('hlava','ellipse','cx="262" cy="188" rx="46" ry="42"')
+    + R('nos','path','d="M296 194 L310 194 L303 203 Z"')
+    + eye(D, 276, 178, 6) + line(D, 'M300 206 L338 198 M300 212 L338 216', 3)
+    + R('mrkva','path','d="M326 314 L368 258 L384 272 Z"') + R('vnat','path','d="M372 262 L378 236 L388 256 L400 242 L392 266 Z"'),
+
   /* ----- pictures for the first lines (3-year-olds) ----- */
   dazd: (R, D, L) => SKY(R) + GRASS(R)
     + R('kaluz','ellipse','cx="190" cy="352" rx="110" ry="20"')
@@ -1643,7 +1747,15 @@ const SAY = {
 };
 
 /* ---------- English: after the Slovak sentence a child's English voice says the word ("Pes …" → "Dog!") ---------- */
-const EN_ANIMAL = { p:'Dog!', m:'Cat!', b:'Sheep!', l:'Lion!', s:'Owl!', h:'Snake!', o:'Monkey!', d:'Boar!', g:'Goose!', y:'Mouse!', 'č':'Bee!', vlnka:'Dolphin!' };
+// Oli's animal corner, in this order (home animals first); the English word of each
+const EN_WORD = { p:'dog', m:'cat', krava:'cow', kon:'horse', prasa:'pig', b:'sheep', kacka:'duck', g:'goose', zajac:'rabbit', y:'mouse', ryba:'fish', zaba:'frog',
+  l:'lion', slon:'elephant', t:'tiger', 'ž':'giraffe', z:'zebra', o:'monkey', n:'rhino', s:'owl', d:'boar', h:'snake', 'č':'bee', j:'hedgehog', k:'turtle',
+  ch:'octopus', v:'squirrel', r:'crab', vlnka:'dolphin' };
+const EN_ANIMAL = Object.fromEntries(Object.entries(EN_WORD).map(([k, w]) => [k, cap1(w) + '!']));
+const enSay = id => cap1(EN_WORD[id]) + '.';                 // calm, for learning: "Dog."
+const enWhere = id => `Where is the ${EN_WORD[id]}?`;
+// the English game asks only for animals a small child knows well
+const EN_EASY = ['p', 'm', 'krava', 'kon', 'prasa', 'b', 'kacka', 'zajac', 'y', 'ryba', 'zaba', 'l', 'slon', 't', 'ž', 'o', 's', 'h', 'č'];
 const EN_PALETTE = ['Red!','Orange!','Yellow!','Light green!','Green!','Turquoise!','Blue!','Dark blue!','Purple!','Pink!','Brown!','Black!','White!'];
 const enColor = c => EN_PALETTE[PALETTE.indexOf(c)] || null;
 const EN_LESSON = { cesta:'Car!', dazd:'Rain!', kopce:'Train!', more:'Boat!', kruh:'Ball!', blesk:'Lightning!', auto:'Car!', vlak:'Train!', motorka:'Motorbike!', lietadlo:'Airplane!',
@@ -1654,7 +1766,8 @@ const EN_LESSON = { cesta:'Car!', dazd:'Rain!', kopce:'Train!', more:'Boat!', kr
 const enLesson = l => EN_LESSON[l.id] || (l.rails ? 'Train!' : null);
 const EN_NUM = ['', 'One', 'two', 'three', 'four', 'five', 'six'];
 const enCount = n => EN_NUM.slice(1, n + 1).join(', ') + '!';
-const allEnglish = () => [...Object.values(EN_ANIMAL), ...EN_PALETTE, ...Object.values(EN_LESSON), ...[2, 3, 4, 5, 6].map(enCount)];
+const allEnglish = () => [...Object.values(EN_ANIMAL), ...EN_PALETTE, ...Object.values(EN_LESSON), ...[2, 3, 4, 5, 6].map(enCount),
+  ...Object.keys(EN_WORD).map(enSay), ...EN_EASY.map(enWhere)];
 
 /* ---------- recorded voice: voice/<hash>.mp3 listed in voice/index.json; anything missing falls back to the device voice ---------- */
 const hash = s => { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return ('0000000' + h.toString(16)).slice(-8); };
@@ -1747,6 +1860,19 @@ function speak(text, en, extra){
   if (en && state.english !== false) parts.push('en:' + en);
   if (extra) parts.push(extra);
   const step = i => { if (tok !== speakTok || i >= parts.length) return; sayOne(parts[i], tok, i + 1 < parts.length ? () => step(i + 1) : null); };
+  step(0);
+}
+// speakSeq(['Pes. Po anglicky:', 'en:Dog.', 1800, 'en:Dog!']): sentences one after another, a number = a pause (ms) for Oli to repeat
+function speakSeq(parts){
+  if (!state.sound) return;
+  const tok = ++speakTok;
+  stopVoice();
+  const step = i => {
+    if (tok !== speakTok || i >= parts.length) return;
+    const x = parts[i];
+    if (typeof x === 'number'){ setTimeout(() => step(i + 1), x); return; }
+    sayOne(x, tok, i + 1 < parts.length ? () => step(i + 1) : null);
+  };
   step(0);
 }
 
@@ -2715,7 +2841,8 @@ $('#railsRepeat').addEventListener('click', () => { audio(); speak(RL.won ? SAY.
 // natural colors so a little child recognizes the animal at once
 const NATURAL = { p:'#c68642', m:'#ff9f43', b:'#efe2c8', l:'#f4b942', s:'#a47148', h:'#8ac926', o:'#9c6644', 'š':'#5b4636', d:'#7a5c45', g:'#f4f4f4',
   y:'#a3a9b8', 'č':'#ffd23f', t:'#ff8c42', c:'#5fae4e', e:'#8d6e63', f:'#e6cfa8', i:'#4caf50', j:'#8d6e63', k:'#4f9d69', n:'#9aa3b5', r:'#e63946',
-  u:'#6aa84f', v:'#c0581f', z:'#f7f7f7', 'ž':'#f6c445', vlnka:'#7fb7e6', a:'#d9a066', ch:'#ff7eb6' };
+  u:'#6aa84f', v:'#c0581f', z:'#f7f7f7', 'ž':'#f6c445', vlnka:'#7fb7e6', a:'#d9a066', ch:'#ff7eb6',
+  krava:'#ffffff', kon:'#a0522d', prasa:'#ffb3c7', kacka:'#ffd23f', slon:'#9aa3b5', ryba:'#ff8c42', zaba:'#5fbf4a', zajac:'#c8b8a6' };
 const mixW = (hex, k) => { const n = parseInt(hex.slice(1), 16), m = v => Math.round(v + (255 - v)*k);
   return '#' + ((1 << 24) + (m(n >> 16) << 16) + (m((n >> 8) & 255) << 8) + m(n & 255)).toString(16).slice(1); };
 const autoCache = {};
@@ -2725,7 +2852,9 @@ function autoFills(les){
   const ids = new Set((sceneSVG(les, {}, false, true).match(/data-r="[^"]+"/g) || []).map(s => s.slice(8, -1)));
   for (const id of ids){
     F[id] = id === 'nebo' ? '#dff1ff' : id === 'slnko' || /^(svetlo|syr|banan|hviezda|stred)/.test(id) ? '#ffd23f' : /^(mrak|dym|kvapka|bublina)/.test(id) ? '#ffffff'
-      : id === 'trava' || /^kopec/.test(id) ? '#9bd36a' : /^(more|voda)$/.test(id) ? '#5aa9e6' : /^(piesok|kaluz)$/.test(id) ? '#cfe3f5'
+      : id === 'trava' || /^kopec/.test(id) ? '#9bd36a' : /^(more|voda)$/.test(id) ? '#5aa9e6' : id === 'piesok' ? '#f2d79b' : id === 'kaluz' ? '#cfe3f5'
+      : /^(vemeno|pysk)$/.test(id) ? '#ffb3c7' : /^skvrna/.test(id) ? '#6b4a32' : id === 'mrkva' ? '#ff8c42' : id === 'vnat' ? '#4caf50'
+      : id === 'hriva' && les.id === 'kon' ? '#5b3a29' : id === 'krk' && les.id === 'kon' ? base
       : /^(cesta|podklad)$/.test(id) ? '#9aa0ad' : /^(kamen)/.test(id) ? '#b8bcc6' : /^(konar|oriesok|kmen)/.test(id) ? '#9c6644'
       : /^(list|listok|stonka)$/.test(id) ? '#4caf50' : /^(zobak|chodidlo)/.test(id) ? '#ff9f1c' : /^(roh|rozok|kel)/.test(id) ? '#efe1c0'
       : /^(pas|kolo\d|vrtula|lizina|kolajnica)/.test(id) ? '#4a4f63' : id === 'kopa' ? '#9c6644' : /^(plamen|ryba)/.test(id) ? '#ff8c42'
@@ -2738,7 +2867,7 @@ function autoFills(les){
 }
 
 const ANIMAL_SOUNDS = { p:'hav, hav', m:'mňau, mňau', b:'bé, bé', l:'vrrr, rrrau', s:'hú, hú', h:'sss', o:'u, u, a, a', d:'chro, chro', g:'ga, ga, ga', y:'pí, pí', 'č':'bzzz', vlnka:'í, í, í' };
-const KANIMALS = Object.keys(ANIMAL_SOUNDS);
+const KANIMALS = Object.keys(EN_WORD);
 const CT_COLORS = [['#e63946','červený'],['#ffd23f','žltý'],['#3a86ff','modrý'],['#2a9d55','zelený'],['#ff8c42','oranžový'],['#8e5bd6','fialový'],['#ff7eb6','ružový'],['#9c6644','hnedý']];
 // the train gets harder: more wagons (up to 6), more choices (up to 4), later also pink and brown
 const ctLevel = () => { const d = state.ct.done || 0; return { n: Math.min(6, 2 + Math.floor(d / 2)), k: d < 2 ? 2 : d < 5 ? 3 : 4, colors: CT_COLORS.slice(0, d >= 6 ? 8 : 6).map(x => x[0]) }; };
@@ -2757,6 +2886,11 @@ Object.assign(SAY, {
   anAsk: l => `${NAME}, kde je ${l.animal}?`,
   anYes: l => `Áno! To je ${l.animal}.`,
   anAgain: l => `Skús ešte raz. Kde je ${l.animal}?`,
+  anTapEn: l => `${l.Animal}. Po anglicky:`,   // … "Dog." … "Povedz, Oli!" … (pause) … "Dog!"
+  sayIt: () => `Povedz, ${NAME}!`,
+  eqYes: l => `Áno! ${l.Animal} je po anglicky`,   // … "Dog!"
+  eqHelp: l => `Pomôžem ti. Tu je ${l.animal}.`,
+  eqIntro: () => `${NAME}, teraz sa budem pýtať po anglicky. Počúvaj!`,
   ctAsk: c => `${NAME}, daj do vláčika ${ctName(c)} vagón!`,
   ctFind: c => `Hľadáme ${ctName(c)} vagón.`,
   ctCount: n => `${COUNT.slice(1, n + 1).map(cap1).join(', ')}! Vláčik má ${COUNT[n]} ${n >= 5 ? 'vagónov' : 'vagóny'}! Výborne, ${NAME}!`,
@@ -2806,7 +2940,7 @@ function openPick(kind, quiet){
   } else if (kind === 'color'){
     title = 'Vyfarbuj'; say = SAY.kColor();
     const list = LESSONS.filter(l => !l.level || l.level === 3 || (l.level === 5 && ['dazd', 'kruh', 'blesk'].includes(l.id))
-      || (l.level === 7 && !['dpa', 'dpl', 'dpm', 'dpv'].includes(l.id)));
+      || (l.level === 7 && !['dpa', 'dpl', 'dpm', 'dpv'].includes(l.id))).concat(ZOO.map(z => byId[z[0]]));
     g.innerHTML = list.map(l => { const last = lastEntry(l.id);
       return `<button class="kcard" data-pc="${l.id}" aria-label="${l.Animal}"><div class="ptile">${last ? thumbHTML(last) : sceneSVG(l, {}, false, true)}</div></button>`; }).join('');
   } else {
@@ -2839,28 +2973,39 @@ $('#anGrid').addEventListener('pointerdown', e => {
   if (!accept(e)) return;
   const b = e.target.closest('[data-an]'); if (!b) return;
   audio(); b.classList.remove('bounce'); b.getBoundingClientRect(); b.classList.add('bounce');
-  sfx.pop(); speak(SAY.anTap(byId[b.dataset.an]), EN_ANIMAL[b.dataset.an]);
+  const id = b.dataset.an, l = byId[id];
+  sfx.pop();
+  if (state.english === false){ speak(SAY.anTap(l)); return; }
+  // learning English: "Pes. Po anglicky: Dog. Povedz, Oli!" … a pause to repeat … "Dog!"
+  speakSeq([SAY.anTapEn(l), 'en:' + enSay(id), SAY.sayIt(), 1900, 'en:' + EN_ANIMAL[id]]);
+  document.querySelectorAll('#anGrid .enw').forEach(x => x.remove());
+  b.insertAdjacentHTML('beforeend', `<span class="enw">${EN_WORD[id]}</span>`);
 });
-const AQ = { round:0, score:0, q:null, firstTry:true, busy:false, results:[], last:'' };
-function startAQ(){
-  Object.assign(AQ, { round:0, score:0, results:[], busy:false });
+const AQ = { round:0, score:0, q:null, firstTry:true, busy:false, results:[], last:'', en:false, miss:0 };
+state.eq = state.eq || { wins:0 };
+function startAQ(en){
+  Object.assign(AQ, { round:0, score:0, results:[], busy:false, en: !!en });
   $('#aqEnd').hidden = true; $('#aqBody').hidden = false;
-  show('aquiz'); audio(); keepAwake(); nextAQ();
+  show('aquiz'); audio(); keepAwake();
+  if (AQ.en){ AQ.busy = true; speak(SAY.eqIntro()); setTimeout(() => { if (current === 'aquiz') nextAQ(); }, 3600); }
+  else nextAQ();
 }
+const aqAskSay = id => AQ.en ? speakSeq(['en:' + enWhere(id)]) : speak(SAY.anAsk(byId[id]));
 function aqDots(){
   $('#aqDots').innerHTML = Array.from({length:ROUND}, (_, i) => `<span class="${AQ.results[i] === true ? 'ok' : AQ.results[i] === false ? 'half' : ''}${i === AQ.round && AQ.results.length === i ? ' now' : ''}"></span>`).join('');
 }
 function nextAQ(){
   if (AQ.round >= ROUND) return endAQ();
-  const n = (state.aq.wins || 0) >= 2 ? 3 : 2;
-  const target = shuffle(KANIMALS.filter(id => id !== AQ.last))[0];
-  const opts = shuffle([target, ...shuffle(KANIMALS.filter(id => id !== target)).slice(0, n - 1)]);
-  Object.assign(AQ, { q:{ target, opts }, firstTry:true, busy:false, last:target });
-  $('#aqAsk').textContent = `Kde je ${byId[target].animal}?`;
+  const pool = AQ.en ? EN_EASY : KANIMALS;
+  const n = ((AQ.en ? state.eq : state.aq).wins || 0) >= 2 ? 3 : 2;
+  const target = shuffle(pool.filter(id => id !== AQ.last))[0];
+  const opts = shuffle([target, ...shuffle(pool.filter(id => id !== target)).slice(0, n - 1)]);
+  Object.assign(AQ, { q:{ target, opts }, firstTry:true, busy:false, last:target, miss:0 });
+  $('#aqAsk').textContent = AQ.en ? enWhere(target) : `Kde je ${byId[target].animal}?`;
   const ch = $('#aqChoices');
   ch.style.gridTemplateColumns = `repeat(${n},minmax(0,1fr))`;
   ch.innerHTML = opts.map(id => `<button class="choice" data-id="${id}" aria-label="${byId[id].animal}">${colorTile(byId[id])}</button>`).join('');
-  aqDots(); speak(SAY.anAsk(byId[target]));
+  aqDots(); aqAskSay(target);
 }
 $('#aqChoices').addEventListener('pointerdown', e => {
   if (!accept(e) || AQ.busy) return;
@@ -2871,23 +3016,32 @@ $('#aqChoices').addEventListener('pointerdown', e => {
     AQ.busy = true; b.classList.add('right');
     AQ.results.push(AQ.firstTry); if (AQ.firstTry) AQ.score++;
     [784, 1047, 1319].forEach((f, i) => tone(f, 0.18, 'triangle', 0.16, i*0.09)); buzz(30);
-    speak(SAY.anYes(t), EN_ANIMAL[t.id]); AQ.round++; aqDots();
-    setTimeout(() => { if (current === 'aquiz') nextAQ(); }, state.english !== false ? 4400 : 3000);   // room for the English word
+    if (AQ.en) speakSeq([SAY.eqYes(t), 'en:' + EN_ANIMAL[t.id]]);
+    else speak(SAY.anYes(t), EN_ANIMAL[t.id]);
+    AQ.round++; aqDots();
+    setTimeout(() => { if (current === 'aquiz') nextAQ(); }, AQ.en || state.english !== false ? 4600 : 3000);   // room for the English word
   } else {
-    b.classList.add('wrong'); AQ.firstTry = false;
-    tone(330, 0.15, 'sine', 0.08); speak(SAY.anAgain(t));
+    b.classList.add('wrong'); AQ.firstTry = false; AQ.miss++;
+    tone(330, 0.15, 'sine', 0.08);
+    if (!AQ.en) speak(SAY.anAgain(t));
+    else {   // Oli is just learning the words: help at once in Slovak and show the right picture
+      const r = $(`#aqChoices .choice[data-id="${t.id}"]`); r.classList.remove('hint'); r.getBoundingClientRect(); r.classList.add('hint');
+      speakSeq([SAY.eqHelp(t), 'en:' + enWhere(t.id)]);
+    }
   }
 });
 function endAQ(){
-  if (AQ.score >= 4) state.aq.wins = (state.aq.wins || 0) + 1; save();
+  const W = AQ.en ? state.eq : state.aq;
+  if (AQ.score >= 4) W.wins = (W.wins || 0) + 1; save();
   $('#aqBody').hidden = true; $('#aqEnd').hidden = false; AQ.q = null;
   $('#aqStars').innerHTML = Array.from({length:ROUND}, (_, i) => i < AQ.score ? `<i style="--n:${i}">★</i>` : '★').join('');
   $('#aqEndTitle').textContent = AQ.score >= 3 ? `Super, ${NAME}!` : `Dobrá práca, ${NAME}!`;
   sfx.fanfare(); speak(SAY.gameEnd(AQ.score));
 }
-$('#aqStart').addEventListener('click', startAQ);
-$('#aqAgain').addEventListener('click', startAQ);
-$('#aqRepeat').addEventListener('click', () => { audio(); if (AQ.q) speak(SAY.anAsk(byId[AQ.q.target])); });
+$('#aqStart').addEventListener('click', () => startAQ(false));
+$('#eqStart').addEventListener('click', () => startAQ(true));
+$('#aqAgain').addEventListener('click', () => startAQ(AQ.en));
+$('#aqRepeat').addEventListener('click', () => { audio(); if (AQ.q) aqAskSay(AQ.q.target); });
 
 /* ----- color train: "put the yellow wagon in" (2, later 3 choices), then count the wagons aloud ----- */
 const CT = { n:2, want:[], placed:[], pos:0, busy:false, run:0 };
@@ -2974,7 +3128,10 @@ function allPhrases(){
   for (const L of ABC){ P.add(SAY.letter(L)); P.add(SAY.wordFind(L)); }
   P.add(SAY.railsStart()); P.add(SAY.railsDone());
   [SAY.kLines(), SAY.kColor(), SAY.kAnimals(), SAY.kTrains(), SAY.kRails(), SAY.kLetters()].forEach(s => P.add(s));
-  for (const id of KANIMALS){ const l = byId[id]; P.add(SAY.anTap(l)); P.add(SAY.anAsk(l)); P.add(SAY.anYes(l)); P.add(SAY.anAgain(l)); }
+  for (const id of KANIMALS){ const l = byId[id]; P.add(SAY.anTap(l)); P.add(SAY.anAsk(l)); P.add(SAY.anYes(l)); P.add(SAY.anAgain(l)); P.add(SAY.anTapEn(l)); }
+  for (const id of EN_EASY){ const l = byId[id]; P.add(SAY.eqYes(l)); P.add(SAY.eqHelp(l)); }
+  P.add(SAY.sayIt()); P.add(SAY.eqIntro());
+  for (const [id] of ZOO){ P.add(SAY.color(byId[id])); P.add(SAY.album(byId[id])); }
   for (const [c] of CT_COLORS){ P.add(SAY.ctAsk(c)); P.add(SAY.ctFind(c)); }
   for (let n = 2; n <= 6; n++) P.add(SAY.ctCount(n));
   for (const w of Object.values(PART_WORD)) P.add(`Vyfarbi ňou ${w}.`);
